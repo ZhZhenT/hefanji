@@ -46,6 +46,15 @@
   </view>
 
   <view class='right'>
+
+    <view>
+      <scroll-view scroll-x>
+        <view class='dinner-time-wrap'>
+          <view bindtap='binddinnerTimeCurrentTap' data-index='{{index}}' class='time-list {{index==dinnerTimeCurrent?"active":""}}' wx:for='{{dinnerTimeList}}' wx:key='{{index}}'>{{item.text}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
     <scroll-view scroll-top="{{scrollTop}}" scroll-y style="height:{{scrollHeight}}px;box-sizing: border-box;" >
      
         <view  wx:key='{{index}}' wx:for='{{goodsList[scrollViewLeftCurrent].products}}' class='goods'>
@@ -59,7 +68,10 @@
             <view wx:if='{{item.zhekou && item.zhekou != 10}}' class='zhekou'>{{item.zhekou}}折</view>-->
   
         </view>
-        <view data-dateid='{{goodsList[scrollViewLeftCurrent].date}}'  data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail'  class='center'>
+        <view 
+        data-dateid='{{goodsList[scrollViewLeftCurrent].date}}'  
+        data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail'  
+        class='center'>
           <view  class='goods-details'>
             <view class='goods-name'> 
               <text class='renqi' wx:if='{{item.is_hot_sale}}'>人气</text>

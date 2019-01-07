@@ -18,7 +18,7 @@
   </view>
   
   <view bindtap='binSaoYiSaoTap' class='btn-saoyisao' style='left:50%;transform: translateX(-50%)'>
-    扫一1扫
+    扫一扫
   </view>
 
  <tabBarCustom class="tabBarCustom" current="0"  style="position: absolute;bottom: 0;left:0;right:0;"></tabBarCustom>

@@ -57,3 +57,7 @@ left: 75rpx;bottom:50rpx;}
 .scroll-wrap .prompt-layer .txt{padding: 25rpx 100rpx;background: url('https://www.yuexd.com/assets/images2/prompt-layer-icon.png') 40rpx center no-repeat;background-size: 38rpx 38rpx;}
 .scroll-wrap .prompt-layer .close{position: absolute;width: 70rpx;height: 70rpx;background: url('https://www.yuexd.com/assets/images2/prompt-layer-close-icon.png') center no-repeat;background-size: 14rpx 14rpx;top: 50%;transform: translateY(-50%);right: 10rpx;}
 
+.dinner-time-wrap {padding: 0 0 0 40rpx;display: flex;justify-content: space-around;border-bottom: 1rpx solid #f6f6f6}
+.dinner-time-wrap .time-list{color: #666666;font-size: 28rpx;padding: 20rpx 20rpx;font-weight: bold;position: relative}
+.dinner-time-wrap .time-list.active{color: #343434;}
+.dinner-time-wrap .time-list.active::after{content: '';position: absolute;left: 0;right: 0;height: 6rpx;background:#ff8339;bottom: 0 }

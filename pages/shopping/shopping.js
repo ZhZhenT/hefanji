@@ -54,10 +54,25 @@ Page({
     cartGoodList:{},
     dydtimer:null,
     scrollTop:0,
-    detail:[]
+    detail:[],
+    
+    dinnerTimeCurrent: 0,
+    dinnerTimeList: [
+      { id: 0, text: '早餐'},
+      { id: 1, text: '中餐' },
+      { id: 2, text: '下午茶'},
+      { id: 3, text: '晚餐'},
+    ]
 
   },
-
+  binddinnerTimeCurrentTap (ev) {
+    if (this.data.dinnerTimeCurrent == ev.currentTarget.dataset.index) {
+      return;
+    }
+    this.setData({
+      dinnerTimeCurrent: ev.currentTarget.dataset.index
+    })
+  },
   //跳转去详情页面
   binToGoodsDetail:function(ev){
 
@@ -110,6 +125,7 @@ Page({
     app.globalData.reducePrise = res.reducePrise;
 
   },
+  
   //自定义事件 增加
   onMyEventAddGoods: function (ev) {
 
