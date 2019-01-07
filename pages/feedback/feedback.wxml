@@ -1,0 +1,9 @@
+<!--pages/feedback/feedback.wxml-->
+<view class='feedback'>
+  <textarea bindinput='bindinputtext' placeholder-style='color:#a5a5a5;'  placeholder='请在这里输入您的反馈内容，我们的客服人员尽快与您联系'></textarea>
+  <input bindinput='bindinputphone' type='number' placeholder-style='color:#a5a5a5;'  placeholder='请在这里输入您的电话号码'></input>
+</view>
+
+  <view bindtap='bindToUserCenterTap' class='btn'>
+    提交
+  </view>

@@ -1,0 +1,28 @@
+.index{height: 100vh;background:url('https://www.yuexd.com/assets/images2/index-bg1.jpg') center no-repeat; position: relative; background-position: 0 0;}
+.logo{padding-top: 70rpx;text-align: center;}
+.once-use-list{font-size: 26rpx;color: #4d4d4d;margin-top: 40rpx;}
+.once-use-list .item{border-bottom:1rpx solid #f4f0ee;padding: 30rpx 0; background:url('https://www.yuexd.com/assets/images2/index-btn-toright.png') right 25rpx center no-repeat; background-size: 14rpx 22rpx;}
+.once-use-list .item .ads{padding:15rpx 0 15rpx 70rpx;background:url('https://www.yuexd.com/assets/images2/index-color-ads-icon.png') 25rpx center no-repeat; background-size: 27rpx 36rpx;}
+.btn-saoyisao{background: #ff8339;color: #ffffff;font-size: 30rpx;font-weight: bold;text-align: center;height: 100rpx;line-height: 100rpx;width: 350rpx;border-radius: 50rpx;position: absolute;margin-top: 50rpx;}
+
+/*.btn-saoyisao:after {
+  content: "";
+  background: #fff;
+  position: absolute;
+  width: 350rpx;
+  height: 100rpx;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  margin: auto;
+  border-radius: 50rpx;
+  transform: scale(1);
+  transition: all 0.75s ease-in-out;
+}
+.btn-saoyisao:active:after {
+  transform: scale(0);
+  opacity: 1;
+  transition: 0s;
+}*/

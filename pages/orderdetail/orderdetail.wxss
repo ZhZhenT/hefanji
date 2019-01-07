@@ -1,0 +1,29 @@
+/* pages/goodsdetail/goodsdetail.wxss */
+.goodsdetail{padding-bottom: 200rpx;}
+.shopCart{position: fixed;bottom: 0;left: 0;right: 0;height: 95rpx;}
+
+.date{background: #f9f4f2;text-align:center;}
+.date .icon{font-size: 26rpx;color: #4d4d4d;padding:15rpx 0 15rpx 50rpx;background: url('https://www.yuexd.com/assets/images2/date-icon.png') 0 center no-repeat;background-size: 35rpx 35rpx;box-sizing: border-box;display: inline-block;}
+.date .icon .jintian{color: #1aab3c;}
+.date .icon .yuding{color: #e91818;}
+
+
+ .goods{padding: 40rpx 15rpx 40rpx 25rpx;background: #ffffff;border-bottom: 1rpx solid #f5f5f5;display: flex;position: relative}
+ .goods .img{position: relative;}
+ .goods .img .good-hot{position: absolute; top: -20rpx;color: #fefefe;font-size: 20rpx;background: url('https://www.yuexd.com/assets/images2/goods-hot.png') no-repeat;background-size: 54rpx 50rpx;width: 54rpx;height: 50rpx;text-align: center;box-sizing: border-box;padding-top: 20rpx;}
+ .goods .img .zhekou{position: absolute; top: 0rpx; left:10rpx;color: #fefefe;font-size: 15rpx;background: url('https://www.yuexd.com/assets/images2/goods-dazhe.png') no-repeat;background-size: 40rpx 61rpx;width: 40rpx;height: 61rpx;text-align: center;box-sizing: border-box;padding-top: 10rpx;}
+ .goods .center{margin-left: 35rpx;display: flex; flex-direction:column;justify-content:space-between;flex-grow: 1}
+ .goods .center .goods-details .goods-name{font-size: 28rpx;color: #000000;font-weight: bold;}
+ .goods .center .goods-details .goods-kucun{font-size: 22rpx; color: #969696;margin-top: 10rpx;display: flex;align-items: center;}
+ .goods .center .goods-details .goods-kucun .goods-hot{display: flex}
+ .goods .center .goods-details .goods-kucun .goods-hot .hot{width: 30rpx;height: 30rpx;background: url('https://www.yuexd.com/assets/images2/goods-lajiao.png') center no-repeat;background-size: 26rpx 27rpx;}
+  .goods .center .goods-details .goods-num-text{font-size: 22rpx;color: #969696;margin-top: 5rpx;}
+ .goods .center .goods-price{font-size: 30rpx;color: #ff8339;display: flex;justify-content: flex-end;margin-top: 5rpx;font-weight: bold}
+ .goods .center .goods-price .goods-old-price{font-size: 22rpx;color: #969696;padding-top: 6rpx;text-decoration:line-through;font-weight: 400}
+ .goods .goods-num-controller{flex-grow:1;display: flex;color: #4d4d4d;font-size: 26rpx;align-items: flex-end;justify-content: flex-end;position: absolute;right: 15rpx;bottom:35rpx;}
+ .goods .goods-num-controller .icon{width: 60rpx;height: 60rpx;}
+ .goods .goods-num-controller .num{height: 60rpx;line-height: 60rpx;}
+ .goods .goods-num-controller .icon.reduce{background: url('https://www.yuexd.com/assets/images2/goods-reduce-icon.png') left center no-repeat;background-size: 48rpx 48rpx;}
+ .goods .goods-num-controller .icon.add{background: url('https://www.yuexd.com/assets/images2/goods-add-icon.png') right center no-repeat;background-size: 48rpx 48rpx;}/* pages/orderdetail/orderdetail.wxss */
+
+ .ordernobox .icon{width: 100%;text-align: center;background: url('https://www.yuexd.com/assets/images2/card-no.png') center 0 no-repeat; padding-top:230rpx;padding-left: 20rpx;font-size: 28rpx;color:#969696;margin-top: 250rpx;background-size: 217rpx 196rpx;}

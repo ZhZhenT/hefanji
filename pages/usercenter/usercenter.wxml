@@ -1,0 +1,24 @@
+<!--pages/usercenter/usercenter.wxml-->
+
+<view class='usercenter'>
+    <view class="userinfo">
+      <!--<image style='width:150rpx;height:150rpx;border-radius: 50%;' class="userinfo-avatar" src="{{userInfo.avatarUrl}}"  ></image>
+      <view class='username'>{{userInfo.nickName}}</view>-->
+      <open-data style='display:block;overflow:hidden;width:150rpx;height:150rpx;border-radius: 50%;margin:0 auto' class="userinfo-avatar" type="userAvatarUrl"></open-data>
+      <view class='username'><open-data type="userNickName"></open-data></view>
+  </view>
+
+  <view class='use-list'>
+  <view bindtap='binToOrderallTap' class='item'> <view class='txt order'>我的订单</view> </view>
+    <view bindtap='binCallTap' class='item'> <view class='txt phone'>客服热线</view> </view>
+    <view bindtap='bindToFeedbackTap' class='item'> <view class='txt yijian'>意见反馈</view> </view>
+  </view>
+
+  <view class='banquan'>
+    <view>©2017 月鲜稻（北京）科技有限公司</view>
+    <view>客服热线：182 1099 0920</view>
+  </view>
+
+</view>
+
+<tabBarCustom current="2" style="position: absolute;bottom: 0;left:0;right:0;"></tabBarCustom>

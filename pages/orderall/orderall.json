@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "tabBarCustom": "../components/tabBarCustom/tabBarCustom"
+  }
+}

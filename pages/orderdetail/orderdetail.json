@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "shopCart": "../components/shopCart/shopCart"
+  },
+  "navigationBarTitleText": "订单确认"
+}

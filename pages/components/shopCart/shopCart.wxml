@@ -1,0 +1,48 @@
+<!-- 这是自定义组件的内部WXML结构 -->
+<view class='shopCart'>
+  <view bindtap='bindShowShopCartTap' class='left'>
+    <view class='icon {{shopCartDYD?"dyd":""}}'>
+      <view wx:if="{{totalNum}}" class='total-num'>{{totalNum}}</view>
+    </view>
+    <view class='total-price'>
+      <view>总计￥{{totalPrise}}</view>
+      <view  wx:if='{{reducePrise}}' class='youhui'>已优惠￥{{reducePrise}}</view>
+    </view>
+   
+  </view>
+  <view bindtap='binToSubmitTap'  class='btn {{totalPrise!=0?"active":""}}'>结算{{testnum}}</view>
+</view>
+
+<view class='cart-layer {{isCartShow?"show":""}}'>
+  <view bindtap='bindHideShopCartTap' class='mask'></view>
+  <view class='cartwrapper'>
+
+    <view class='btn'>
+      <view class='have-goods'>已选商品</view>
+      <view bindtap='_bindRemoveShopCartTap' class='remove'>清空</view>
+    </view>
+
+    <view class='goods-list'>
+
+    <block wx:key='{{index}}' wx:for="{{goodsList}}" wx:for-item="items" >
+
+
+        <view  wx:key='{{idx}}' wx:for-index="idx"  class='date' wx:for='{{detail}}' wx:for-item="dates" >
+
+          <text wx:if='{{dates.order_date == items.date}}' class='icon'> 取餐日期：{{items.date}} <text class='{{items.datetext1 == "今天"?"jintian":"yuding"}}'>({{items.datetext1}})</text></text>
+        </view>
+
+      <view wx:if='{{item.selected}}' wx:for='{{items.products}}' wx:key='{{index}}'  class='goods'>
+        <view class='goods-name'>{{item.product.name}} </view>
+        <view class='goods-cardtotalprice'>￥{{item.price*item.selected}}</view>
+        <view class='goods-num-controller'>
+          <view data-dateid='{{items.date}}' data-goodsId='{{item.product.id}}'  bindtap='_bindReduceTap' class='reduce icon'></view>
+          <view  class='num'>{{item.selected}}</view>
+          <view data-available='{{item.available}}' data-total='{{item.selected}}' data-dateid='{{items.date}}' data-goodsId='{{item.product.id}}' bindtap='_bindAddTap' class='add icon'></view>
+        </view>
+      </view>
+    </block>
+
+    </view>
+  </view>
+</view>

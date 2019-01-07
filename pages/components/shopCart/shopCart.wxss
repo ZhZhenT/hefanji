@@ -1,0 +1,58 @@
+/* 这里的样式只应用于这个自定义组件 */
+.shopCart{display: flex;height: 95rpx;position: relative;z-index: 1000}
+.shopCart .left{width: 500rpx;background: #37383b;color: #fefefe;font-size: 30rpx;position: relative;}
+
+
+.shopCart .left .icon .total-num{width: 28rpx;height: 28rpx;background: #ff8339;border-radius: 50%;position: absolute;left: 73rpx;top: 26rpx;text-align: center;line-height: 28rpx;font-size: 20rpx;}
+.shopCart .left .total-price{position: absolute;left: 180rpx;top: 50%;transform: translateY(-50%)}
+.shopCart .left .total-price .youhui{font-size: 22rpx;color: #ff8339;}
+.shopCart .btn{width: 250rpx;display: flex;align-items: center;justify-content: center;color: #fefefe;font-size: 30rpx;background: #5e5e5e;}
+.shopCart .btn.active{background: #ff8339;}
+.cart-layer{position: fixed;left: 0;right: 0;bottom: 0;}
+.cart-layer .mask{opacity: 0;background: #37383b;left: 0;right: 0;bottom:-100%;top: 100%;position:fixed;transition:opacity 0.5s;}
+.cart-layer .cartwrapper{position: absolute;z-index: 100;left: 0;right: 0;bottom: -630rpx;transition: 0.5s;}
+.cart-layer .cartwrapper .btn{font-size: 26rpx;color: #acacac;background: #f5f5f5;height: 80rpx;display: flex;justify-content: space-between;padding: 0 15rpx;}
+.cart-layer .cartwrapper .btn .have-goods{/*padding-left: 40rpx;background: url('https://www.yuexd.com/assets/images2/shop-cart-show-goods.png') 0 center no-repeat;*/background-size: 32rpx 34rpx;line-height: 80rpx;}
+.cart-layer .cartwrapper .btn .remove{padding-left: 40rpx;background: url('https://www.yuexd.com/assets/images2/shop-cart-remove.png') 0 center no-repeat;background-size: 32rpx 34rpx;line-height: 80rpx;}
+.cart-layer .cartwrapper .goods-list{max-height: 550rpx;overflow-y: auto;background: #ffffff;padding: 0 15rpx;}
+.cart-layer .cartwrapper .goods-list .goods{padding: 35rpx 0;display: flex;justify-content: space-between;border-bottom: 1rpx solid #f5f5f5;align-items: center;}
+.cart-layer .cartwrapper .goods-list .goods .goods-name{font-size: 26rpx;color: #4d4d4d;width: 370rpx;}
+.cart-layer .cartwrapper .goods-list .goods .goods-num-controller{display: flex;color: #4d4d4d;font-size: 26rpx;align-items: flex-end;justify-content: flex-end;width: 150rpx;}
+.cart-layer .cartwrapper .goods-list .goods .goods-num-controller .icon{width: 60rpx;height: 60rpx;}
+.cart-layer .cartwrapper .goods-list .goods .goods-num-controller .num{height: 60rpx;line-height: 60rpx;}
+.cart-layer .cartwrapper .goods-list .goods .goods-num-controller .icon.reduce{background: url('https://www.yuexd.com/assets/images2/goods-reduce-icon.png') left center no-repeat;background-size: 48rpx 48rpx;}
+.cart-layer .cartwrapper .goods-list .goods .goods-num-controller .icon.add{background: url('https://www.yuexd.com/assets/images2/goods-add-icon.png') right center no-repeat;background-size: 48rpx 48rpx;}
+
+.goods-cardtotalprice{font-size: 30rpx;color: #ff8339;font-weight: bold;}
+
+.cart-layer.show .cartwrapper{bottom: 95rpx;}
+.cart-layer.show .mask{opacity: 0.3;bottom:0;top: 0;}
+
+.shopCart .left .icon{width: 120rpx;height: 120rpx;background: url('https://www.yuexd.com/assets/images2/shop-cart-icon.png') center no-repeat #37383b;background-size: 100rpx;position: absolute;top: -30rpx;border-radius: 50%;left: 40rpx; transition: 1s;}
+.shopCart .left .icon.dyd {
+    animation: shake 1.5s; transform-origin:bottom ;
+}
+
+.date{text-align: center;transform: translateY(15rpx)}
+.date .icon{font-size: 26rpx;color: #4d4d4d;padding:15rpx 0 15rpx 50rpx;background: url('https://www.yuexd.com/assets/images2/date-icon.png') 0 center no-repeat;background-size: 35rpx 35rpx;box-sizing: border-box;display: inline-block;}
+.date .icon .jintian{color: #1aab3c;}
+.date .icon .yuding{color: #e91818;}
+
+@keyframes shake {
+    0%, 100% {
+        -webkit-transform: translate(0,0) scale(1);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: translate(0,-5PX) scale(1.05);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -webkit-transform: translate(0,5px) scale(0.95);
+    }
+}

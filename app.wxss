@@ -1,0 +1,2 @@
+.goods-details .renqi{border: 3rpx solid #d81e06;color: #d81e06;font-size: 18rpx;border-radius: 6rpx;display: inline-block;padding: 0 5rpx;transform: translateY(-1rpx);font-weight: bolder;margin-right: 8rpx;}
+.goods-details .tuijian{border: 3rpx solid #3D9FF9;color: #3D9FF9;font-size: 18rpx;border-radius: 6rpx;display: inline-block;padding: 0 5rpx;transform: translateY(-1rpx);font-weight: bolder;}

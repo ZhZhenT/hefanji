@@ -1,0 +1,54 @@
+<!--pages/goodsdetail/goodsdetail.wxml-->
+<view class='goodsdetail'>
+
+
+
+      <block wx:key='{{idx}}'wx:for-index="idx" wx:for='{{goodsList}}' wx:for-item="items">
+
+        <view  wx:key='{{idx}}' wx:for-index="idx"  class='date' wx:for='{{detail}}' wx:for-item="dates" >
+          <text wx:if='{{dates.order_date == items.date}}' class='icon'> 取餐日期：{{items.date}} <text class='{{items.datetext1 == "今天"?"jintian":"yuding"}}'>({{items.datetext1}})</text></text>
+       </view>
+
+        <block wx:if='{{item.selected}}' wx:for='{{items.products}}' wx:key='{{index}}'>
+
+        <view class='goods'>
+        <view data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail' class='img'>
+           <image src='{{item.product.feature_image}}' style='width:154rpx;height:166rpx;display:block'></image>
+           <!-- 打折 zhekou  热销 good-hot -->
+
+          <!--  <view wx:if='{{item.discount||item.selling}}' class='{{item.selling?"zhekou":item.discount?"good-hot":""}}'>{{item.topText}}</view> -->
+
+          <!--<view wx:if='{{item.is_hot_sale}}' class='good-hot'>热销</view>
+          <view wx:if='{{item.zhekou && item.zhekou != 10}}' class='zhekou'>{{item.zhekou}}折</view>-->
+
+        </view>
+        <view data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail'  class='center'>
+          <view  class='goods-details'>
+            <view class='goods-name'>
+               <text class='renqi' wx:if='{{item.is_hot_sale}}'>人气</text>
+              <text class='tuijian' wx:if='{{item.is_friend_like}}'>推荐</text>
+            {{item.product.name}}<text wx:if='{{0}}'>{{item.product.description}}</text></view>
+            <!--<view class='goods-kucun'>剩余{{item.kucun}}份<view class='goods-hot'><view class='hot' wx:key='{{index}}' wx:for='{{item.hot}}'></view></view></view>-->
+            <view class='goods-num-text'>数量 x{{item.selected}}</view>
+          </view>
+          <view class='goods-price'>￥{{item.price}}<view wx:if='{{item.product.base_price}}' class='goods-old-price'>￥{{item.product.base_price}}</view></view>
+        </view>
+
+        <!--<view class='goods-num-controller'>
+          <view data-dateid='{{item.dateid}}' data-goodsId='{{item.id}}' wx:if='{{item.num}}' bindtap='bindReduceTap' class='reduce icon'></view>
+          <view wx:if='{{item.num}}' class='num'>{{item.num}}</view>
+          <view data-dateid='{{item.dateid}}' data-goodsId='{{item.id}}' bindtap='bindAddTap' class='add icon'></view>
+        </view>-->
+
+      </view>
+
+        </block>
+
+      </block>
+
+<view wx:if='{{showorderno}}' class='ordernobox'>
+  <view class='icon'>亲！您的购物车是空的！</view>
+</view>
+
+<shopCart  detail='{{detail}}' isCartShow="{{isCartShow}}" bindMyEventRemoveShopCartTap="onMyEventRemoveShopCartTap" bindMyEventReduceGoods="onMyEventReduceGoods"  bindMyEventAddGoods="onMyEventAddGoods" goodsList='{{goodsList}}' totalPrise='{{totalPrise}}' totalNum='{{totalNum}}' reducePrise='{{reducePrise}}' class='shopCart'></shopCart>  
+</view>

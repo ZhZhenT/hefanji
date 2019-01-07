@@ -1,0 +1,14 @@
+/* pages/usercenter/usercenter.wxss */
+.usercenter{height: 100vh;position: relative;}
+.use-list{font-size: 26rpx;color: #4d4d4d;margin-top: 60rpx;}
+.use-list .item{border-bottom:1rpx solid #f4f0ee;padding: 30rpx 0; background:url('https://www.yuexd.com/assets/images2/index-btn-toright.png') right 25rpx center no-repeat; background-size: 14rpx 22rpx;}
+.use-list .item .txt{padding:15rpx 0 15rpx 90rpx;}
+.use-list .item .txt.order{background:url('http://dailybox.cooc365.net/assets/images2/usercenter-order-icon.png') 30rpx center no-repeat; background-size: 40rpx 42rpx;}
+.use-list .item .txt.phone{background:url('http://dailybox.cooc365.net/assets/images2/usercenter-phone-icon.png') 30rpx center no-repeat; background-size: 40rpx 38rpx;}
+.use-list .item .txt.yijian{background:url('http://dailybox.cooc365.net/assets/images2/usercenter-yijian-icon.png') 30rpx center no-repeat; background-size: 40rpx 38rpx;}
+
+.userinfo{text-align: center;padding-top: 50rpx;}
+.userinfo .username{font-size: 30rpx;color:#4d4d4d;margin-top: 15rpx; }
+
+.banquan{font-size: 20rpx;color: #969696;text-align: center;}
+.banquan {position: absolute;left: 0;right: 0;bottom: 150rpx;}

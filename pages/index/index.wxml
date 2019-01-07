@@ -1,0 +1,26 @@
+<view class='index'  wx:hidden="{{indexshow}}" style='background-size:750rpx {{bgH+20}}px;'>
+  <view class='logo'>
+    <image src='https://www.yuexd.com/assets/images2/logo1.png' style="width:254rpx;height:259rpx;"></image>
+  </view>
+  
+  <view class='once-use-list'>
+
+
+    
+  
+  <scroll-view scroll-y style="height:186px" >
+    <view data-containerID='{{item.id}}' bindtap='bindToShoppingTap' wx:key='{{index}}' class='item' wx:for="{{useList}}">
+     <view class='ads'>{{item.ads}}</view>
+    </view>
+  </scroll-view>
+
+
+  </view>
+  
+  <view bindtap='binSaoYiSaoTap' class='btn-saoyisao' style='left:50%;transform: translateX(-50%)'>
+    扫一扫
+  </view>
+
+ <tabBarCustom class="tabBarCustom" current="0"  style="position: absolute;bottom: 0;left:0;right:0;"></tabBarCustom>
+
+</view>

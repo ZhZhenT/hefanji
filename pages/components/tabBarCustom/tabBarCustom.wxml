@@ -1,0 +1,5 @@
+<view wx:if='{{show}}' class='tabbarbox'>
+  <view bindtap='binToIndex' class='diancan icon {{current==0?"active":""}}'>点餐</view>
+  <view bindtap='binToDingdan' class='dingdan icon {{current==1?"active":""}}'>订单</view>
+  <view bindtap='binToUserCenter' class='wode icon {{current==2?"active":""}}'>我的</view>
+</view>

@@ -1,0 +1,84 @@
+<!--pages/goodsdetail/goodsdetail.wxml-->
+<view class='goodsdetail'>
+
+      <view wx:if='{{goodsid == item.product.id}}' wx:key='{{index}}' wx:for='{{goodsList[dateid].products}}' class='date'>
+  <text class='icon'>取餐日期：{{goodsList[dateid].date}} <text class='{{dateid == 0?"jintian":"yuding"}}'>（{{goodsList[dateid].datetext1 == "今天"?"今天":"预定"}}）</text></text>
+      </view>
+
+      
+
+      <view wx:if='{{goodsid == item.product.id}}' wx:key='{{index}}' wx:for='{{goodsList[dateid].products}}' class='goods'>
+        <view data-goodsId='{{item.product.id}}'  class='img'>
+           <image src='{{item.product.feature_image}}' style='width:154rpx;height:166rpx;display:block'></image>
+
+           <!-- 打折 zhekou  热销 good-hot -->
+           <!--<view wx:if='{{item.discount||item.selling}}' class='{{item.selling?"zhekou":item.discount?"good-hot":""}}'>{{item.topText}}</view>-->
+
+            <!--<view wx:if='{{item.is_hot_sale}}' class='good-hot'>热销</view>
+            <view wx:if='{{item.zhekou && item.zhekou != 10}}' class='zhekou'>{{item.zhekou}}折</view>-->
+
+        </view>
+        <view data-goodsId='{{item.product.id}}'   class='center'>
+          <view  class='goods-details'>
+            <view class='goods-name'> 
+            <text class='renqi' wx:if='{{item.is_hot_sale}}'>人气</text>
+              <text class='tuijian' wx:if='{{item.is_friend_like}}'>推荐</text> {{item.product.name}}<text wx:if='{{0}}'>{{item.product.description}}</text></view>
+            <view class='goods-kucun'>
+            <text wx:if='{{item.available}}'>剩余{{item.available}}份</text>
+            <text wx:else> 已售罄</text>
+
+            <view class='goods-hot'><view class='hot' wx:key='{{index}}' wx:for='{{item.product.spicy_rating}}'></view></view></view>
+          </view>
+          <view class='goods-price'>￥{{item.price}}<view wx:if='{{item.product.base_price}}' class='goods-old-price'>￥{{item.product.base_price}}</view></view>
+        </view>
+        <view wx:if='{{item.available}}' class='goods-num-controller'>
+          <view data-dateid='{{goodsList[dateid].date}}'  data-goodsId='{{item.product.id}}' wx:if='{{item.selected}}' bindtap='bindReduceTap' class='reduce icon'></view>
+          <view wx:if='{{item.selected}}' class='num'>{{item.selected}}</view>
+          <view data-available='{{item.available}}' data-total='{{item.selected}}' data-dateid='{{goodsList[dateid].date}}'  data-goodsId='{{item.product.id}}' bindtap='bindAddTap' class='add icon'></view>
+        </view>
+      </view>
+
+      <view class='content'>
+        <!--<view class='tit'>既客美食</view>-->
+
+        <!--<view class='describe-list'>
+          <view class='item'>
+          <image style='width:67rpx;height:61rpx;' src='https://www.yuexd.com/assets/images2/goods-describe1.png'></image>
+            <view class='stit'>甄选大米</view>
+            <view class='txt'>甄选东北大米口感筋道味甜</view>
+          </view>
+            <view class='item'>
+          <image style='width:67rpx;height:61rpx;' src='https://www.yuexd.com/assets/images2/goods-describe3.png'></image>
+            <view class='stit'>精准时间</view>
+            <view class='txt'>主厨严格把控口感筋道味甜</view>
+          </view>
+            <view class='item'>
+          <image style='width:67rpx;height:61rpx;' src='https://www.yuexd.com/assets/images2/goods-describe2.png'></image>
+            <view class='stit'>传统风味</view>
+            <view class='txt'>地道地区风味口感筋道味甜</view>
+          </view>
+        </view>-->
+      </view> 
+
+      <view class='goods-big-img' wx:if='{{bigimg}}'>
+        <image style='width:750rpx;' mode='widthFix' src='{{bigimg}}'></image>
+      </view>
+
+     
+
+      <view class='goods-big-img' wx:if='{{detailimg}}'>
+        <image style='width:750rpx;' mode='widthFix' src='{{detailimg}}'></image>
+      </view>
+      <!--<view class='goods-info'>
+        <view class='good-hot'>热销</view>
+        <view class='tuijian'>网友推荐</view>
+      </view>-->
+
+
+      <view class='tishi'>
+        <view class='txt'>温馨提示：图片仅供参考，请以实物为准，祝您用餐愉快！</view>
+      </view>
+      <view class='description' wx:if='{{description}}'><text >{{description}}</text></view>
+
+<shopCart detail='{{detail}}'  isOrderConfirm='{{isOrderConfirm}}' isCartShow="{{isCartShow}}" bindMyEventRemoveShopCartTap="onMyEventRemoveShopCartTap" bindMyEventReduceGoods="onMyEventReduceGoods" bindMyEventAddGoods="onMyEventAddGoods" goodsList='{{goodsList}}' totalPrise='{{totalPrise}}' totalNum='{{totalNum}}' reducePrise='{{reducePrise}}' class='shopCart'></shopCart>  
+</view>

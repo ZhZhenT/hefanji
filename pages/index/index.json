@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+      "tabBarCustom": "../components/tabBarCustom/tabBarCustom"
+    },
+    "disableScroll": true
+}

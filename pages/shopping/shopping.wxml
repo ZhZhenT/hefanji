@@ -1,0 +1,120 @@
+<view class='shopping'>
+
+<view class='container'>
+
+<view class='swiper-wrap'>
+
+  <swiper bindchange="bindSwiperChange"  circular='true' autoplay="{{0}}" interval="5000" duration="700">
+
+    <block wx:for="{{swiperImgUrls}}" wx:key='{{index}}'>
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" style='width:750rpx;height:300rpx;'/>
+      </swiper-item>
+    </block>
+
+
+  </swiper>
+
+  <view class='dian-list' wx:if='{{swiperImgUrls.length>1}}'>
+
+    <block wx:for="{{swiperImgUrls}}" wx:key="index">
+      <view class='dian {{index==swiperCurrent?"current":""}}'></view>
+    </block>
+  </view>
+
+  <view class='ads-mask'>
+    <view class='txt'>{{swiperAdsText}}</view>
+  </view>
+  
+</view>
+
+
+<view class='scroll-wrap'>
+
+  <view class='left'>
+    <scroll-view scroll-y style="height:{{scrollLeftHeight}}px;background:url('https://www.yuexd.com/assets/images2/index-scroll-date-jiantou.png') center bottom 5px no-repeat;background-size: 14rpx 14rpx;padding-top: 15rpx;" >
+      <view bindtap='bindScrollLeftTap' data-index='{{index}}' class='date {{index==scrollViewLeftCurrent?"current":""}} {{item=="今天"?"":"reserve"}}' wx:for="{{scrollViewLeftDateList}}" wx:key='{{index}}'>
+        <view class='text'>{{item}}</view>
+      </view>
+    </scroll-view>
+
+      <view bindtap='binToOrderallTap' class='qucan'>
+        <view class='text'>取餐</view>
+      </view>
+
+
+  </view>
+
+  <view class='right'>
+    <scroll-view scroll-top="{{scrollTop}}" scroll-y style="height:{{scrollHeight}}px;box-sizing: border-box;" >
+     
+        <view  wx:key='{{index}}' wx:for='{{goodsList[scrollViewLeftCurrent].products}}' class='goods'>
+
+        <view data-dateid='{{goodsList[scrollViewLeftCurrent].date}}'  data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail' class='img'>
+           <image src='{{item.product.feature_image}}' style='width:154rpx;height:166rpx;display:block'></image>
+           <!-- 打折 zhekou  热销 good-hot -->
+          <!-- <view wx:if='{{item.discount||item.selling}}' class='{{item.selling?"zhekou":item.discount?"good-hot":""}}'>{{item.topText}}</view> -->
+
+            <!--<view wx:if='{{item.is_hot_sale}}' class='good-hot'>热销</view>
+            <view wx:if='{{item.zhekou && item.zhekou != 10}}' class='zhekou'>{{item.zhekou}}折</view>-->
+  
+        </view>
+        <view data-dateid='{{goodsList[scrollViewLeftCurrent].date}}'  data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail'  class='center'>
+          <view  class='goods-details'>
+            <view class='goods-name'> 
+              <text class='renqi' wx:if='{{item.is_hot_sale}}'>人气</text>
+              <text class='tuijian' wx:if='{{item.is_friend_like}}'>推荐</text> {{item.product.name}}</view>
+            <view  class='goods-kucun'>
+                <text wx:if='{{item.available}}'>剩余{{item.available}}份</text>
+                <text wx:else> 已售罄</text>
+                <view class='goods-hot'>
+                <view class='hot' wx:key='{{index}}' wx:for='{{item.product.spicy_rating}}'>
+                </view>
+
+            </view>
+           </view>
+            
+          </view>
+          
+          <view class='goods-price'>￥{{item.price}} <view wx:if='{{item.product.base_price && item.price!=item.product.base_price}}' class='goods-old-price'>￥{{item.product.base_price}} </view></view>
+        </view>
+        <view wx:if='{{item.available}}' class='goods-num-controller'>
+          <view data-dateid='{{goodsList[scrollViewLeftCurrent].date}}' data-goodsId='{{item.product.id}}' wx:if='{{item.selected}}' bindtap='bindReduceTap' class='reduce icon'></view>
+          <view wx:if='{{item.selected}}' class='num'>{{item.selected}}</view>
+          <view data-available='{{item.available}}' data-total='{{item.selected}}'  data-dateid='{{goodsList[scrollViewLeftCurrent].date}}' data-goodsId='{{item.product.id}}' bindtap='bindAddTap' class='add icon'></view>
+        </view>
+      </view>
+
+      <view style='padding:35rpx 0;text-align:center;font-size:26rpx;color:#666666' wx:if='{{goodsList[scrollViewLeftCurrent].products.length > 3}}'> 没有更多了 </view>
+
+    </scroll-view>
+
+
+
+  </view>
+
+  <view wx:if='{{ispromptlayer}}' class='prompt-layer'>
+      <view class='txt'>温馨提示：取餐时间为 {{promptlayerTxT}}</view>
+      <view bindtap='bindCloseLayerTap' class='close'></view>
+  </view>
+
+</view>
+</view>
+
+<shopCart  detail='{{detail}}' shopCartDYD='{{shopCartDYD}}' isOrderConfirm='{{isOrderConfirm}}' isCartShow="{{isCartShow}}" bindMyEventRemoveShopCartTap="onMyEventRemoveShopCartTap" bindMyEventReduceGoods="onMyEventReduceGoods" bindMyEventAddGoods="onMyEventAddGoods" goodsList='{{goodsList}}' reducePrise='{{reducePrise}}' totalPrise='{{totalPrise}}' totalNum='{{totalNum}}' class='shopCart'></shopCart>  
+
+
+</view>
+
+
+<!--<view  class='ball-wrap' animation='{{animationBall1}}' style="transform:translateY({{ballY}}px)" wx:if='{{isBallShow}}'>
+<view class='ball' animation='{{animationBall2}}' style="transform:translateX({{ballX}}px)" wx:if='{{isBallShow}}' ></view>
+</view> -->
+
+
+<view class='ball-list' wx:for='{{balls}}' wx:key='{{idnex}}'>
+<view  class='aaa' style='transform:translateY({{item.ballY}}px)' wx:if='{{item.isShow}}' >
+  <view  class='bbb' style='transform:translateX({{item.ballX}}px)'></view>
+</view>
+</view>
+

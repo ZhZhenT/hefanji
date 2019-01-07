@@ -1,0 +1,5 @@
+/* pages/feedback/feedback.wxss */
+.feedback{padding: 15rpx 20rpx;}
+textarea{border: 2rpx solid #f5f5f5;width: 100%;box-sizing: border-box;padding: 15rpx;font-size: 26rpx;}
+input{border: 2rpx solid #f5f5f5;width: 100%;box-sizing: border-box;padding:0 15rpx;font-size: 26rpx;margin-top: 15rpx;height:90rpx;}
+.btn{background: #ff8339;color: #ffffff;font-size: 30rpx;font-weight: bold;text-align: center;height: 100rpx;line-height: 100rpx;width: 350rpx;border-radius: 50rpx;position: absolute;bottom: 150rpx;left: 50%;transform: translateX(-50%);}
