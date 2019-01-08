@@ -46,6 +46,31 @@
 
       </block>
 
+<view class='discount'>
+  <view class='top_text'>
+   <view class='text1'>使用优惠卷</view>
+   <view class='text2'>
+   2张可用 <view class='icon'>></view>
+   </view>
+  </view>
+  <view class='discount_list'>
+   <view class='item'>
+    <view class='prise'>
+      <view class='top_text'><text class='fh'>￥</text>10</view>
+      <view class='bot_text'>现金卷</view>
+    </view>
+    <view class='describe'>
+      新用户专享
+    </view>
+    <view class='delete'>
+      <view class='delete_btn'>删除</view>
+    </view>
+   </view>
+   <view class='item'></view>
+   <view class='item'></view>
+  </view>
+</view>
+
 <view wx:if='{{showorderno}}' class='ordernobox'>
   <view class='icon'>亲！您的购物车是空的！</view>
 </view>

@@ -73,6 +73,12 @@ Page({
       dinnerTimeCurrent: ev.currentTarget.dataset.index
     })
   },
+  // 去分享页面
+  binToShareTap (ev) {
+    wx.navigateTo({
+      url: '../share/share'
+    })
+  },
   //跳转去详情页面
   binToGoodsDetail:function(ev){
 
@@ -505,7 +511,7 @@ Page({
 
       });
 
-      utils.computeHeight(['.swiper-wrap', '.shopCart'], function (contentheight) {
+      utils.computeHeight(['.swiper-wrap', '.shopCart', '.dinner-time-wrap'], function (contentheight) {
         that.setData({
           scrollHeight: contentheight
         })

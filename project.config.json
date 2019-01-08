@@ -30,13 +30,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
 					"name": "用户扫码进入",
 					"pathName": "pages/index/index",
-					"query": "containerID=7",
+					"query": "containerID=59",
 					"scene": "1011"
 				},
 				{
@@ -47,31 +47,17 @@
 					"scene": "1011"
 				},
 				{
-					"id": 2,
+					"id": 5,
 					"name": "用户扫码进入",
-					"pathName": "pages/orderall/orderall",
+					"pathName": "pages/share/share",
 					"query": "",
 					"scene": "1011"
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "用户扫码进入",
-					"pathName": "/pages/shopping/shopping",
-					"query": "containerID=8",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "用户扫码进入",
-					"pathName": "shopping/shopping",
-					"query": "containerID=8",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "用户扫码进入",
-					"pathName": "pages/shopping/shopping",
-					"query": "containerID=8",
+					"pathName": "pages/orderdetail/orderdetail",
+					"query": "containerID=59",
 					"scene": "1011"
 				}
 			]

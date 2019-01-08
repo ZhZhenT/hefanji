@@ -27,3 +27,15 @@
  .goods .goods-num-controller .icon.add{background: url('https://www.yuexd.com/assets/images2/goods-add-icon.png') right center no-repeat;background-size: 48rpx 48rpx;}/* pages/orderdetail/orderdetail.wxss */
 
  .ordernobox .icon{width: 100%;text-align: center;background: url('https://www.yuexd.com/assets/images2/card-no.png') center 0 no-repeat; padding-top:230rpx;padding-left: 20rpx;font-size: 28rpx;color:#969696;margin-top: 250rpx;background-size: 217rpx 196rpx;}
+
+.discount{}
+.discount .top_text{display: flex;justify-content: space-between;padding:20rpx 15rpx 20rpx 15rpx;
+}
+.discount .top_text .text1{font-size: 30rpx;font-weight: bold;color: #404040}
+.discount .top_text .text2{font-size: 26rpx;color: #404040}
+.discount .top_text .text2 .icon{display: inline-block;background:#ff8339;color: white;height: 26rpx;width: 26rpx;text-align: center; line-height: 26rpx;padding-bottom: 3rpx}
+.discount .discount_list{padding:0 15rpx 0rpx 15rpx;}
+.discount .discount_list .item{height: 168rpx;background: url('http://192.168.1.100/images/discount_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
+.discount .discount_list .item .prise{position: absolute;color: white}
+.discount .discount_list .item .prise .top_text{font-size: 65rpx;font-weight: bold; display: inline-block;vertical-align: bottom}
+.discount .discount_list .item .prise .top_text .fh{font-size: 30rpx;margin-right: -15rpx}

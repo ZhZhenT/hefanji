@@ -17,8 +17,10 @@ Page({
     wx.scanCode({
       //扫码成功
       success: (res) => {
-        console.log(res.result)
-        var id =  res.result.slice(52);
+        // console.log(res.result)
+
+        var id = utils.GetQueryString(res.result, 'containerID')
+   
         wx.navigateTo({
           url: '/pages/shopping/shopping?containerID=' + id
         })

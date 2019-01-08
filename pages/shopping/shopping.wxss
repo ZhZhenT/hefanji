@@ -8,19 +8,21 @@
 .scroll-wrap {display: flex;position: relative;}
 .scroll-wrap .left{width: 150rpx;background: #f9f4f2;}
 .scroll-wrap .right{width: 600rpx;}
-.scroll-wrap .left .date{font-size: 22rpx;padding: 30rpx 0;border-bottom: 1rpx solid #ffffff;}
+.scroll-wrap .left .date{font-size: 22rpx;padding: 25rpx 0;border-bottom: 1rpx solid #ffffff;}
 
 .scroll-wrap .left .date.current{background: #ffffff;}
 
-.scroll-wrap .left .date.reserve .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date-yu.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #acacac;}
-.scroll-wrap .left .date .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date-active.png') no-repeat;background-size: 96rpx 111rpx;text-align: center;background-position: 45rpx 0;color: #acacac}
+.scroll-wrap .left .date.reserve .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date-yu-active.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #acacac;}
+.scroll-wrap .left .date .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date.png') no-repeat;background-size: 96rpx 111rpx;text-align: center;background-position: 45rpx 0;color: #acacac}
 
 .scroll-wrap .left .date.reserve.current .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date-yu-active.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #ff8339;}
 
 .scroll-wrap .left .date.current .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #ff8339;}
 
-.scroll-wrap .left .qucan{font-size: 22rpx;padding: 30rpx 0;border-bottom: 1rpx solid #ffffff;}
-.scroll-wrap .left .qucan .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date-all.png') no-repeat;background-size: 92rpx 107rpx;text-align: center;background-position: 45rpx 0;color: #acacac;}
+.scroll-wrap .left .qucan{font-size: 22rpx;padding: 25rpx 0;border-bottom: 1rpx solid #ffffff;}
+.scroll-wrap .left .qucan .text{padding-top: 75rpx;background: url('http://192.168.1.100/images/index-scroll-date-all.png') no-repeat;background-size: 92rpx 107rpx;text-align: center;background-position: 45rpx 0;color: #acacac;}
+
+.scroll-wrap .left .Share .text{background: url('http://192.168.1.100/images/share_icon.png') no-repeat;background-size: 92rpx 107rpx;background-position: 45rpx 0;}
 
 .scroll-wrap .right .goods{padding: 40rpx 15rpx 40rpx 50rpx;background: #ffffff;border-bottom: 1rpx solid #f5f5f5;display: flex;position: relative}
 .scroll-wrap .right .goods .img{position: relative;}

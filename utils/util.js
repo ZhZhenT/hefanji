@@ -303,6 +303,26 @@ function getdatefenzu(goodsList){
   return detail
 }
 
+function GetQueryString(url, paraName) {
+  　　　　var arrObj = url.split("?");
+
+  　　　　if (arrObj.length > 1) {
+    　　　　　　var arrPara = arrObj[1].split("&");
+    　　　　　　var arr;
+
+    　　　　　　for (var i = 0; i < arrPara.length; i++) {
+      　　　　　　　　arr = arrPara[i].split("=");
+
+      　　　　　　　　if (arr != null && arr[0] == paraName) {
+        　　　　　　　　　　return arr[1];
+      　　　　　　　　}
+    　　　　　　}
+    　　　　　　return "";
+  　　　　}
+  　　　　else {
+    　　　　　　return "";
+  　　　　}
+}
 module.exports = {
   formatTime: formatTime,//格式化时间
   formatFloat: formatFloat,//浮点数精度处理
@@ -316,5 +336,6 @@ module.exports = {
   request: request,//基于promise封装request请求
   initGoodsList: initGoodsList,//初始化购物车数据
   getUserToken: getUserToken,//登陆
-  getdatefenzu: getdatefenzu
+  getdatefenzu: getdatefenzu,
+  GetQueryString: GetQueryString
 }

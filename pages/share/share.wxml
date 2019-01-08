@@ -1,0 +1,18 @@
+<!--pages/share/share.wxml-->
+<view class='share'>
+ <view class='img'>
+  <image style="width: 152rpx;height:120rpx;" src="http://192.168.1.100/images/wechat_share_icon.png"></image>  
+ </view>
+  <view class='text'>
+分享到微信
+ </view>
+ <view class='text1'>
+推荐给好友，您和好友都将得到优惠券福利！
+ </view>
+  <view class='text2'>
+（限新用户，优惠券在好友绑定手机号自动发放） 
+ </view>
+
+<button open-type='share' class='btn-saoyisao'>分享</button>
+
+</view>

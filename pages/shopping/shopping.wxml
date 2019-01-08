@@ -42,6 +42,9 @@
         <view class='text'>取餐</view>
       </view>
 
+      <view bindtap='binToShareTap' class='Share qucan'>
+        <view class='text'>分享</view>
+      </view>
 
   </view>
 
@@ -49,7 +52,7 @@
 
     <view>
       <scroll-view scroll-x>
-        <view class='dinner-time-wrap'>
+        <view class='dinner-time-wrap' style='display:none'>
           <view bindtap='binddinnerTimeCurrentTap' data-index='{{index}}' class='time-list {{index==dinnerTimeCurrent?"active":""}}' wx:for='{{dinnerTimeList}}' wx:key='{{index}}'>{{item.text}}</view>
         </view>
       </scroll-view>

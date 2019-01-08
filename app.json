@@ -8,7 +8,8 @@
     "pages/orderall/orderall",
     "pages/paysuccess/paysuccess",
     "pages/usercenter/usercenter",
-    "pages/shopping/shopping"
+    "pages/shopping/shopping",
+    "pages/share/share"
   ],
   "window":{
     "backgroundTextStyle":"light",
