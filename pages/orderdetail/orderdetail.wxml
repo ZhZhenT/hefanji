@@ -47,8 +47,8 @@
       </block>
 
 <view class='discount'>
-  <view class='top_text'>
-   <view class='text1'>使用优惠卷</view>
+  <view class='top_text' bindtap='binTocouponlistTap'>
+   <view class='text1' >使用优惠卷</view>
    <view class='text2'>
    2张可用 <view class='icon'>></view>
    </view>
@@ -56,11 +56,12 @@
   <view class='discount_list'>
    <view class='item'>
     <view class='prise'>
-      <view class='top_text'><text class='fh'>￥</text>10</view>
-      <view class='bot_text'>现金卷</view>
+      <view class='prise_top_text'><text class='fh'>￥</text>10</view>
+      <view class='prise_bot_text'>现金卷</view>
     </view>
     <view class='describe'>
-      新用户专享
+      <view>新用户专享</view>
+      <view>新用户专享</view>
     </view>
     <view class='delete'>
       <view class='delete_btn'>删除</view>

@@ -3,16 +3,12 @@
 <view class='container'>
 
 <view class='swiper-wrap'>
-
   <swiper bindchange="bindSwiperChange"  circular='true' autoplay="{{0}}" interval="5000" duration="700">
-
     <block wx:for="{{swiperImgUrls}}" wx:key='{{index}}'>
       <swiper-item>
         <image src="{{item}}" class="slide-image" style='width:750rpx;height:300rpx;'/>
       </swiper-item>
     </block>
-
-
   </swiper>
 
   <view class='dian-list' wx:if='{{swiperImgUrls.length>1}}'>
@@ -32,7 +28,7 @@
 <view class='scroll-wrap'>
 
   <view class='left'>
-    <scroll-view scroll-y style="height:{{scrollLeftHeight}}px;background:url('https://www.yuexd.com/assets/images2/index-scroll-date-jiantou.png') center bottom 5px no-repeat;background-size: 14rpx 14rpx;padding-top: 15rpx;" >
+    <scroll-view scroll-y style="height:{{scrollLeftHeight}}px;background:url('http://fanmofang.17d3.com/assets/images2/index-scroll-date-jiantou.png') center bottom 5px no-repeat;background-size: 14rpx 14rpx;padding-top: 15rpx;" >
       <view bindtap='bindScrollLeftTap' data-index='{{index}}' class='date {{index==scrollViewLeftCurrent?"current":""}} {{item=="今天"?"":"reserve"}}' wx:for="{{scrollViewLeftDateList}}" wx:key='{{index}}'>
         <view class='text'>{{item}}</view>
       </view>

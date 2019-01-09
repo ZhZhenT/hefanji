@@ -16,7 +16,7 @@ Page({
     hasUserInfo: false,
 
     swiperImgUrls: [
-      'https://www.yuexd.com/assets/images2/index-banner1.jpg'
+      'http://fanmofang.17d3.com/assets/images2/index-banner1.jpg'
     ],
     swiperCurrent: 0,
     swiperAdsText: '望京',
@@ -402,7 +402,7 @@ Page({
 
 
       // 获取货柜信息
-      utils.request('https://www.yuexd.com/api/containers/' + containerID + '/info', {token:token})
+      utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/info', {token:token})
         .then(function (res) {
           //存储货柜信息
      
@@ -439,7 +439,7 @@ Page({
         })
 
       //获取当前货柜的所有菜品
-      utils.request('https://www.yuexd.com/api/containers/' + containerID, { token: token })
+      utils.request('http://fanmofang.17d3.com/api/containers/' + containerID, { token: token })
         .then(function (res) {
           console.log(res, containerID,'获取货柜菜品')
           var goodsList = res.data
@@ -524,7 +524,7 @@ Page({
 
 
     // 获取轮播图片
-    utils.request('https://www.yuexd.com/api/containers/' + containerID + '/slides')
+    utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/slides')
     .then(function(res){
       var arr = []
       res.data.forEach(function(item,index){
@@ -542,7 +542,7 @@ Page({
 
 
     // 获取轮播图片
-    utils.request('https://www.yuexd.com/api/containers/' + containerID + '/slides')
+    utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/slides')
       .then(function (res) {
         var arr = []
         res.data.forEach(function (item, index) {
@@ -560,7 +560,7 @@ Page({
 
 
     // 获取取餐时间
-    utils.request('https://www.yuexd.com/api/settings/all')
+    utils.request('http://fanmofang.17d3.com/api/settings/all')
       .then(function (res) {
         that.data.promptlayerTxT = res.data.picking_start + '~' + res.data.picking_end;
         that.setData({

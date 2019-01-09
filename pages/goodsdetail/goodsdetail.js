@@ -286,7 +286,7 @@ Page({
     var containerID = app.globalData.containerID
     var token = app.globalData.token
     //获取餐品详情
-    utils.request('https://www.yuexd.com/api/containers/' + containerID + '/' + dateid + '/' + goodsid, { token: token})
+    utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/' + dateid + '/' + goodsid, { token: token})
     .then(function(res){
       console.log(res,'获取单个餐品的详情')
       that.setData({

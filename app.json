@@ -9,7 +9,8 @@
     "pages/paysuccess/paysuccess",
     "pages/usercenter/usercenter",
     "pages/shopping/shopping",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/couponlist/couponlist"
   ],
   "window":{
     "backgroundTextStyle":"light",

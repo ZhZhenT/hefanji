@@ -76,7 +76,7 @@ Page({
 
     this.data.bindtimer = setTimeout(function () {
 
-      utils.request('https://www.yuexd.com/api/order/' + orderid + '/open/' + date + '/' + goodsid, { token: token, method: 'POST' })
+      utils.request('http://fanmofang.17d3.com/api/order/' + orderid + '/open/' + date + '/' + goodsid, { token: token, method: 'POST' })
         .then(function (res) {
           console.log(res, '开启格子返回')
 
@@ -151,7 +151,7 @@ Page({
     var that = this;
     var beginTime = new Date().getTime();
     timer = setInterval(function () {
-      var url = 'https://www.yuexd.com/api/status/picking/?slot_schema_id=' + slot_schema_ids
+      var url = 'http://fanmofang.17d3.com/api/status/picking/?slot_schema_id=' + slot_schema_ids
       wx.request({
         url: url,
         method: 'get',
@@ -219,7 +219,7 @@ Page({
    
     if (that.data.date +2000 < date){
       var token = app.globalData.token;
-      utils.request('https://www.yuexd.com/api/my/orders?page=' + that.data.currentPage, { token: token})
+      utils.request('http://fanmofang.17d3.com/api/my/orders?page=' + that.data.currentPage, { token: token})
       .then(function(res){
         console.log(res,'获取所有订单分页信息')
         if (res.data.length == 0){
@@ -299,7 +299,7 @@ Page({
     that.data.containerID = options.containerID
     var token = app.globalData.token ;
 
-    utils.request('https://www.yuexd.com/api/my/orders',{token:token})
+    utils.request('http://fanmofang.17d3.com/api/my/orders',{token:token})
     .then(function(res){
       //console.log(res.data)
       if (res.statusCode == 200){

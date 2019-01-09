@@ -13,8 +13,9 @@ App({
         wx.login({
           success: res => {
             //发送 res.code 到后台换取 openId, sessionKey, unionId
-            utils.request('https://www.yuexd.com/api/user/login/wechat', { data: { code: res.code } })
+            utils.request('http://fanmofang.17d3.com/api/user/login/wechat', { data: { code: res.code } })
               .then(function (res) {
+                console.log(res, '登陆信息')
                 that.globalData.tokenRes = res
                 resolve(res)
               }, function (err) {

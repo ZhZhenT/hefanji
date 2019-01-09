@@ -102,13 +102,13 @@ Component({
         }
         var token = app.globalData.token;
 
-        utils.request('https://www.yuexd.com/api/order/create', { method: 'POST', token: token ,data:data})
+        utils.request('http://fanmofang.17d3.com/api/order/create', { method: 'POST', token: token ,data:data})
         .then(function(res){
           if (res.data.status) {
             // 订单生成成功
             var orderID = res.data.order_id;
             console.log(res, '订单生成');
-            utils.request('https://www.yuexd.com/api/order/' + orderID + '/pay', { method: 'POST', token: token })
+            utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/pay', { method: 'POST', token: token })
               .then(function (res) {
                 console.log(res, '调起支付接口');
                 if (res.data.status){
@@ -134,7 +134,7 @@ Component({
                     },
                     'fail': function (res) {
 
-                      utils.request('https://www.yuexd.com/api/order/' + orderID + '/cancel', { method: 'POST', token: token })
+                      utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/cancel', { method: 'POST', token: token })
                         .then(function (res) {
                           console.log(res, '订单取消')
                           wx.showToast({
@@ -202,7 +202,7 @@ Component({
         })
 
         /*wx.request({
-          url: 'https://www.yuexd.com/api/order/create',
+          url: 'http://fanmofang.17d3.com/api/order/create',
           data: data,
           method: 'POST',
           header: {
@@ -250,7 +250,7 @@ Component({
           detail: detail
         }
         wx.request({
-          url: 'https://www.yuexd.com/api/order/create',
+          url: 'http://fanmofang.17d3.com/api/order/create',
           data: data,
           method: 'POST',
           header: {
@@ -286,7 +286,7 @@ Component({
           }
         })*/
         //console.log(data)
-        /*utils.request('https://www.yuexd.com/order/create', 'POST', data)
+        /*utils.request('http://fanmofang.17d3.com/order/create', 'POST', data)
         .then(function(res){
           console.log(res)
         },function(err){

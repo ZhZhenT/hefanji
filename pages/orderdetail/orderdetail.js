@@ -15,11 +15,18 @@ Page({
     reducePrise:0,
     onMyEventAddGoods: {},
     detail:null,
-    showorderno:false
+    showorderno:false,
+
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
+  binTocouponlistTap: function () {
+    wx.navigateTo({
+      url: '/pages/couponlist/couponlist'
+    })
+  },
   onMyEventRemoveShopCartTap: function (ev) {
     var that = this
     // 所有商品列表
