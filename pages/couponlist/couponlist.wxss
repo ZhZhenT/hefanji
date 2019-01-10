@@ -5,12 +5,82 @@ scroll-view{padding: 20rpx 0;box-sizing: border-box}
 .discount .top_text .text2{font-size: 26rpx;color: #404040}
 .discount .top_text .text2 .icon{display: inline-block;background:#ff8339;color: white;height: 26rpx;width: 26rpx;text-align: center; line-height: 26rpx;padding-bottom: 3rpx}
 .discount .discount_list{padding:0 15rpx 0rpx 15rpx;}
-.discount .discount_list .item{height: 168rpx;background: url('http://192.168.1.100/images/discount_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
-.discount .discount_list .item .prise{position: absolute;color: white;top: 32rpx;left:44rpx;}
+.discount .discount_list .item{height: 168rpx;background: url('http://192.168.1.101/images/discount_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
+.discount .discount_disable_list .item{height: 168rpx;background: url('http://192.168.1.101/images/discount__disable_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
+.discount .discount_list .item .prise{position: absolute;color: white;top:28rpx;left:55rpx;}
 .discount .discount_list .item .prise .prise_top_text{font-size: 65rpx;font-weight: bold; display: inline-block;vertical-align: bottom;line-height: 1}
-.discount .discount_list .item .prise .prise_top_text .fh{font-size: 30rpx;margin-right: -15rpx}
+.discount .discount_list .item .prise .prise_top_text .fh{font-size: 30rpx;}
 .discount .discount_list .item .prise .prise_bot_text{font-size: 24rpx;text-align: right;padding-right: 5rpx;}
-.discount .discount_list .item .describe{position: absolute;top: 0;bottom: 0;display: flex;left:250rpx;right:200rpx;text-align: center;align-items: center;justify-content: center;flex-direction: column;font-size: 34rpx;color: #404040}
+.discount .discount_list .item .describe{position: absolute;top: 30rpx;bottom: 70rpx;display: flex;left:280rpx;right:45rpx;justify-content: center;flex-direction: column;font-size: 30rpx;color: #404040;font-weight: bold}
+.discount .discount_list .item .bot-text-wrap{font-size: 20rpx;color:#4a4a4a;
+left:280rpx;right:45rpx;
+bottom: 15rpx;
+position: absolute;
+display: flex;
+justify-content: space-between;
+align-items: center
+}
+.discount .discount_list .item .bot-text-wrap .btn-text{
+border: 1rpx solid #dcd3ce;padding: 5rpx 18rpx;border-radius: 20rpx;
+}
+.discount .discount_list .item .select-btn{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  right:20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.discount .discount_list .item .select-btn .icon{
+  width: 28rpx;
+  height: 28rpx;
+  background: url('http://192.168.1.101/images/select-icon.png') center 0 no-repeat;
+  background-size: 28rpx 56rpx;
+}
+
+.discount .discount_list .item .select-btn.select .icon{
+  width: 28rpx;
+  height: 28rpx;
+  background: url('http://192.168.1.101/images/select-icon.png') center 0 no-repeat;
+  background-size: 28rpx 56rpx;
+  background-position-y: -28rpx;
+}
+
+.selelct-all{
+  justify-content: space-between;
+  background: #f9f4f2;
+  font-size: 26rpx;color: #4d4d4d;
+  display: flex;
+  align-items: center;
+  padding-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.selelct-all .select-btn{
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.selelct-all .select-btn .icon{
+  width: 28rpx;
+  height: 28rpx;
+  background: url('http://192.168.1.101/images/select-icon.png') center 0 no-repeat;
+  background-size: 28rpx 56rpx;
+  
+}
+
+.selelct-all .select-btn.select .icon{
+  width: 28rpx;
+  height: 28rpx;
+  background: url('http://192.168.1.101/images/select-icon.png') center 0 no-repeat;
+  background-size: 28rpx 56rpx;
+    background-position-y: -28rpx;
+}
+
 
 .discount .discount_list .item .delete{background: #ff8339;color: #ffffff;font-size: 26rpx;text-align: center;height: 58rpx;line-height: 58rpx;width: 100rpx;border-radius: 5rpx;top: 50%;transform: translateY(-50%);position: absolute;right: 33rpx;}
 
@@ -20,3 +90,7 @@ scroll-view{padding: 20rpx 0;box-sizing: border-box}
 .dinner-time-wrap .time-list.active::after{content: '';position: absolute;left: 0;right: 0;height: 6rpx;background:#ff8339;bottom: 0 }
 
 .yesbtn{height: 98rpx;line-height: 98rpx;text-align: center;color: #fefefe;font-size: 30rpx;background: #ff8339}
+
+.ordernobox .icon{width: 100%;text-align: center;background: url('http://192.168.1.101/images/yhjno.png') center 0 no-repeat; padding-top:230rpx;font-size: 28rpx;color:#969696;margin-top: 150rpx;background-size: 217rpx 196rpx;}
+
+

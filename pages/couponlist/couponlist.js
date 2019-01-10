@@ -1,5 +1,6 @@
 // pages/couponlist/couponlist.js
 const utils = require('../../utils/util.js')
+const app = getApp()
 Page({
 
   /**
@@ -11,11 +12,16 @@ Page({
       { id: 0, text: '可用优惠券', num:2 },
       { id: 1, text: '不可用优惠券',num: 3 }
     ],
-    swiperheigh: 500,
+    swiperheigh: 1200,
     sildeHeight:0,
     current: 0,
-    scrollTop: 0
+    scrollTop: 0,
+    select: true,
+    selectAll: false,
+    discount_list1: [],
+    discount_list0: []
   },
+
   bindCurrentchange (c) {
     this.setData({
       dinnerTimeCurrent: c.detail.current,
@@ -42,20 +48,68 @@ Page({
       title: this.data.dinnerTimeList[this.data.dinnerTimeCurrent].text
     })
   },
+  binSelectAlltab() {
+    let flag = !this.data.selectAll
+    this.data.discount_list1.forEach((item) => {
+      item.select = false
+    })
+    this.setData({
+      discount_list1: this.data.discount_list1,
+      selectAll: flag
+    })
+  },
+  binSelectTab (ev) {
+    let id = ev.currentTarget.dataset.id
+    this.data.discount_list1.forEach((item) => {
+      if (item.id == id) {
+        item.select = !item.select
+      }
+    })
+    this.setData({
+      discount_list1: this.data.discount_list1,
+      selectAll: false
+    })
+  },
   onLoad: function (options) {
     var that = this;
+    // var token = app.globalData.token;
+    var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzEzMjcxMCwiZXhwIjoxODYyNDkyNzEwLCJuYmYiOjE1NDcxMzI3MTAsImp0aSI6ImoxZmNOREEzUW1CdzZmUlAiLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.xHX5FEkRkCoPyDAez0iEWDE0DUIg-AMXXvxj3OEmKYI'
     this.modifyTitle()
     
     utils.computeHeight2(['.dinner-time-wrap', '.yesbtn', '#discount_list1', '#discount_list2']).then(function (results) {
       that.setData({
-        swiperheigh: Math.max(...(results).slice(1)),
+        // swiperheigh: Math.max(...(results).slice(1)),
         sildeHeight: results[0] - results[1] - results[2]
       })
     }).catch(function (e) {
 
     });
-  },
 
+    // 获取货柜信息
+    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=1', {token: token})
+      .then(function (res) {
+        console.log(res,'优惠卷 可用')
+        that.setData({
+          discount_list1: res.data.data.map((item) => {
+            item.select = false
+            return item
+          })
+        })
+      }, function (err) {
+
+      })
+
+    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=0', { token: token })
+      .then(function (res) {
+        console.log(res, '优惠卷 不可用')
+        that.setData({
+          discount_list0: res.data.data
+        })
+      }, function (err) {
+
+      })
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

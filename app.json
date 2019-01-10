@@ -10,6 +10,7 @@
     "pages/usercenter/usercenter",
     "pages/shopping/shopping",
     "pages/share/share",
+    "pages/sharelogin/sharelogin",
     "pages/couponlist/couponlist"
   ],
   "window":{

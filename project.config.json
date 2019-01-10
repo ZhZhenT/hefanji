@@ -30,13 +30,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "用户扫码进入",
 					"pathName": "pages/index/index",
-					"query": "containerID=7",
+					"query": "containerID=7&userid=4",
 					"scene": "1011"
 				},
 				{
@@ -57,6 +57,13 @@
 					"id": 3,
 					"name": "用户扫码进入",
 					"pathName": "pages/couponlist/couponlist",
+					"query": "containerID=59",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "用户扫码进入",
+					"pathName": "pages/sharelogin/sharelogin",
 					"query": "containerID=59",
 					"scene": "1011"
 				}

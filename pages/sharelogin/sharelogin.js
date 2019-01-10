@@ -1,12 +1,46 @@
-// pages/share/share.js
-const app = getApp()
-
+// pages/sharelogin/sharelogin.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    sendYZM: false,
+    yzmtext: '获取验证码'
+  },
+  bindToIndexTap () {
+    wx.navigateTo({
+      url: '/pages/index/index'
+    })
+  },
+  bindGetYZMTap () {
+
+    if (this.data.sendYZM) {
+      return   
+    }
+
+    this.setData({
+      sendYZM : true,
+      yzmtext: 60 + 's'
+    })
+    this.countDown()
+  },
+
+  countDown () {
+    let s = 59
+    let timer = setInterval(()=>{
+      this.setData({
+        yzmtext: s + 's'
+      })
+      s--;
+      if ( s == -1 ) {
+        this.setData({
+          yzmtext: '获取验证码',
+          sendYZM: false,
+        })
+        clearInterval(timer)
+      }
+    },1000)
 
   },
 
@@ -58,16 +92,11 @@ Page({
   onReachBottom: function () {
 
   },
-  binToShareTap: function () {
-    console.log('分享')
-  },
+
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
-    return {
-      path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID
-    }
   }
 })

@@ -1,0 +1,49 @@
+<view class='share_login'>
+
+<view class='give-up-wrap'>
+ <view class='give-up'>任性放弃</view> 
+</view>
+
+<view class='title'>新人专享大礼包</view>
+
+<view class='detail'>
+ <view>
+  <view class='text text1'>优惠卷</view>
+ </view>
+  <view>
+    <view  class='text text2'>饭票1张</view>
+  </view>
+</view>
+
+<view class='describe'>
+  <view class='slide-text'>
+    <view class='text'>优惠券：满额抵扣</view>
+    <view class='text'>饭票：结算时直接扣减订单中最贵的单品。 </view>
+  </view>
+  <view class='input-wrap'>
+    <view class="section">
+    <input placeholder="请输入手机号码" />
+  </view>
+   <view class="section">
+    <view class='yzm-wrap'>
+        <input placeholder="请输入验证码" />
+    <view class='yzm {{sendYZM ? "no": ""}}' bindtap='bindGetYZMTap'>
+     {{yzmtext}}
+    </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class='btn' >
+    领取礼包
+    </view>
+  </view>
+
+<view class='to-index' bindtap='bindToIndexTap'>
+  <text>返回饭魔方首页></text>
+</view>
+
+  </view>
+</view>
+
+</view>

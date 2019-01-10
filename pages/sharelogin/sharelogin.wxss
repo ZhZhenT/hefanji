@@ -1,0 +1,97 @@
+.share_login{height: 100vh;background:url('http://192.168.1.101/images/share_login_bg.jpg') center no-repeat; position: relative; background-position: 0 0;background-size: 750rpx 100vh}
+
+.give-up-wrap{
+  padding-top: 55rpx;
+  text-align: right;
+  padding-right: 60rpx;
+}
+.give-up{
+  color: #ff8339;
+  display:inline-block;
+  padding:15rpx 10rpx;font-size:22rpx;
+  border: 1rpx solid #ff8339;
+  /* right: 60rpx;top: 50rpx; */
+}
+
+.title{
+  font-size: 50rpx;color: #ffffff;font-weight: bold;margin-top: 55rpx;text-align: center
+}
+.detail{
+      margin-top: 35rpx;
+  font-size: 34rpx;
+  color: #ffffff;
+  padding: 0 0 0 250rpx
+}
+.detail .text{
+    margin-top:15rpx;
+  padding-left: 72rpx;
+  display: inline-block
+}
+.detail .text1{
+
+  background:url('http://192.168.1.101/images/share_login_juan.png') center no-repeat;
+   background-position: 0 6rpx;background-size: 51rpx 36rpx;
+}
+
+.detail .text2{
+  background:url('http://192.168.1.101/images/share_login__money.png') center no-repeat;
+   background-position: 0 6rpx;background-size: 51rpx 36rpx;
+}
+
+.describe{
+  padding: 0 60rpx;
+  margin-top: 60rpx;
+}
+
+.describe .slide-text {
+    border: 1rpx solid #ff8339;
+    color: #ff8339;
+    text-align: center;
+    font-size: 26rpx;
+    padding: 22rpx 0
+}
+.describe .slide-text ,text{
+  line-height: 1.8
+}
+.describe .input-wrap .section{
+  padding-top: 40rpx;
+}
+.describe .input-wrap input{
+  background: #ffffff;
+  font-size: 26rpx;color: #a5a5a5;
+  padding: 28rpx 0 28rpx 50rpx;
+}
+
+.describe .input-wrap .yzm-wrap{
+  display: flex;
+  justify-content: space-between
+}
+.describe .input-wrap .yzm-wrap .yzm{
+  background:  #ff8339;
+  color: #ffffff;
+  font-size: 26rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 240rpx;
+  justify-content: center
+}
+
+.describe .input-wrap .yzm-wrap .yzm.no{
+  background: #a5a5a5
+}
+
+.describe .input-wrap .btn{
+    background:  #ff8339;
+  color: #ffffff;
+  font-size: 26rpx;
+  text-align: center;
+  padding: 35rpx 0
+}
+
+.describe .to-index{
+  margin-top: 50rpx;
+  text-align: center;
+  color: #ffffff;
+  font-size: 30rpx;
+}

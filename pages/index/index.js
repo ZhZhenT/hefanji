@@ -49,12 +49,26 @@ Page({
         bgH: h
       })
     })
-
+    console.log(options)
     //获取tocken
     app.getUserToken().then(function (res) {
       var token = res.data.token;
       app.globalData.token = token;
+
+      if (options.userid) {
+        wx.navigateTo({
+          url: '/pages/sharelogin/sharelogin'
+        })
+        setTimeout(function () {
+          that.setData({
+            indexshow: true
+          })
+        }, 500)
+        return  
+      }
+
       if (options.containerID) {
+
         wx.navigateTo({
           url: '/pages/shopping/shopping?containerID=' + options.containerID
         })
