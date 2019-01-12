@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(app.globalData, '分享详情')
   },
 
   /**
@@ -67,7 +67,7 @@ Page({
   onShareAppMessage: function () {
 
     return {
-      path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID
+      path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID + '&ads=' + app.globalData.ads
     }
   }
 })

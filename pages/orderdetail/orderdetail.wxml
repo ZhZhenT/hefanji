@@ -31,7 +31,7 @@
             <!--<view class='goods-kucun'>剩余{{item.kucun}}份<view class='goods-hot'><view class='hot' wx:key='{{index}}' wx:for='{{item.hot}}'></view></view></view>-->
             <view class='goods-num-text'>数量 x{{item.selected}}</view>
           </view>
-          <view class='goods-price'>￥{{item.price}}<view wx:if='{{item.product.base_price}}' class='goods-old-price'>￥{{item.product.base_price}}</view></view>
+          <view class='goods-price'>￥{{item.price}}<view wx:if='{{item.product.base_price}}' class='goods-old-price'>￥{{item.product.base_price}}                 </view></view>
         </view>
 
         <!--<view class='goods-num-controller'>
@@ -50,26 +50,38 @@
   <view class='top_text' bindtap='binTocouponlistTap'>
    <view class='text1' >使用优惠卷</view>
    <view class='text2'>
-   2张可用 <view class='icon'>></view>
+   <text wx:if='{{discountnum}}'>{{discountnum}}张可用 </text> <view class='icon'>></view>
    </view>
   </view>
-  <view class='discount_list'>
+
+  <view class='discount_list' wx:if='{{selectjuan}}'>
    <view class='item'>
+
     <view class='prise'>
-      <view class='prise_top_text'><text class='fh'>￥</text>10</view>
-      <view class='prise_bot_text'>现金卷</view>
+
+      <view wx:if="{{selectjuan.type === 'fixed'}}" class='prise_top_text'><text class='fh'>￥</text>
+      <text>{{selectjuan.value}}</text></view>
+
+      <view
+       wx:if="{{selectjuan.type !== 'fixed'}}" 
+       class='prise_top_text'><text
+       style='transform: translateY(-20rpx) translateX(-0rpx);display:inline-block;' class='fh'>
+       ￥</text><text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text>
+       </view>
+
+      <view class='prise_bot_text' style=" {{selectjuan.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{selectjuan.type === 'fixed' ? '现金卷' : '饭票'}}</view>
     </view>
+
     <view class='describe'>
-      <view>新用户专享</view>
-      <view>新用户专享</view>
+      <view>{{selectjuan.name}}</view>
+      <view>{{selectjuan.description}}</view>
     </view>
-    <view class='delete'>
+    <view bindtap='bindDeleteTab' class='delete'>
       <view class='delete_btn'>删除</view>
     </view>
    </view>
-   <view class='item'></view>
-   <view class='item'></view>
   </view>
+
 </view>
 
 <view wx:if='{{showorderno}}' class='ordernobox'>

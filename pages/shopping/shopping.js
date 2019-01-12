@@ -414,7 +414,7 @@ Page({
           that.setData({
             swiperAdsText: res.data.address
           })
-  
+          app.globalData.ads = res.data.address
           //更新上个页面数据
           var useList = []
 

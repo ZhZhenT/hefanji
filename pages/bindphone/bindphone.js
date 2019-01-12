@@ -1,5 +1,6 @@
 const utils = require('../../utils/util.js')
 const app = getApp()
+
 Page({
 
   /**
@@ -10,19 +11,15 @@ Page({
     yzmtext: '获取验证码',
     phonenum: '',
     yzm: '',
-    type: 1,
-    ads:'',
-    containerID: '',
-    juanname: '新用户专享',
-    juanprice: '10',
-    coupons: []
+    hasphone:''
   },
-  bindToIndexTap () {
-    wx.navigateTo({
-      url: '/pages/index/index'
+  binToBackTab () {
+    wx.navigateBack({
+      delta: 1
     })
-  },
-  bindPhoneInput (e) {
+  },  
+  
+  bindPhoneInput(e) {
     this.setData({
       phonenum: e.detail.value
     })
@@ -32,7 +29,7 @@ Page({
       yzm: e.detail.value
     })
   },
-  isSendYZM () {
+  isSendYZM() {
     if (this.data.sendYZM) {
       wx.showModal({
         title: '提示',
@@ -52,7 +49,7 @@ Page({
       return true
     }
   },
-  regYZM (){
+  regYZM() {
     if (!this.data.yzm) {
       wx.showModal({
         title: '提示',
@@ -72,7 +69,7 @@ Page({
       return true
     }
   },
-  regPhone () {
+  regPhone() {
     if (!(/^1(3|4|5|7|8)\d{9}$/.test(this.data.phonenum))) {
       wx.showModal({
         title: '提示',
@@ -88,7 +85,7 @@ Page({
         }
       })
       return;
-    } else{
+    } else {
       return true
     }
   },
@@ -107,7 +104,7 @@ Page({
       }
     })
   },
-  bindGetYZMTap () {
+  bindGetYZMTap() {
 
     if (!this.regPhone()) {
       return
@@ -118,14 +115,14 @@ Page({
     }
 
     this.setData({
-      sendYZM : true,
+      sendYZM: true,
       yzmtext: 60 + 's'
     })
     this.countDown()
   },
-// 获取验证码
-  countDown () {
-    
+  // 获取验证码
+  countDown() {
+
     var token = app.globalData.token;
 
     utils.request('http://fanmofang.17d3.com/api/sms/verificationCode/send?mobile=' + this.data.phonenum, {})
@@ -136,24 +133,24 @@ Page({
       })
 
     let s = 59
-    let timer = setInterval(()=>{
+    let timer = setInterval(() => {
       this.setData({
         yzmtext: s + 's'
       })
       s--;
-      if ( s == -1 ) {
+      if (s == -1) {
         this.setData({
           yzmtext: '获取验证码',
           sendYZM: false,
         })
         clearInterval(timer)
       }
-    },1000)
+    }, 1000)
 
   },
   // 提交 
 
-  submit () {
+  submit() {
     var that = this;
     if (!this.regPhone()) {
       return
@@ -165,90 +162,38 @@ Page({
     //  verification_code: 必需，短信验证码
     utils.request('http://fanmofang.17d3.com/api/user/bindMobile?mobile=' + this.data.phonenum + '&verification_code=' + this.data.yzm, { token: app.globalData.token })
       .then(function (res) {
-         if (res.data.status) {
-           that.showAlert('恭喜您！绑定成功')
-           // console.log(res.data)
-           that.setData({
-             type: 2,
-             coupons: res.data.data.coupons,
-             juanprice: res.data.data.coupons[0].value
-           })
-           wx.setStorageSync('mobile', this.data.phonenum)
-         } else {
-           if (res.data.state_code == 1) {
-             that.showAlert(res.data.message + '')
-           }
-           if (res.data.state_code == 3) {
-             that.showAlert(res.data.message + '')
-             that.setData({
-               type: 3
-             })
-           }
-         }
+        if (res.data.status) {
+          that.showAlert('恭喜您！绑定成功')
+          wx.navigateBack({
+            delta: 1
+          })
+          wx.setStorageSync('mobile', that.data.phonenum)
+        } else {
+          if (res.data.state_code == 1) {
+            that.showAlert(res.data.message + '')
+          }
+          if (res.data.state_code == 3) {
+            that.showAlert(res.data.message + '')
+            that.setData({
+              type: 3
+            })
+          }
+        }
       }, function (err) {
 
       })
-    // if (false) {
-    //   wx.showModal({
-    //     title: '提示',
-    //     showCancel: false,
-    //     content: '绑定成功',
-    //     confirmColor: '#ff8339',
-    //     success: function (res) {
-    //       if (res.confirm) {
 
-    //       } else if (res.cancel) {
-
-    //       }
-    //     }
-    //   })
-    // } else {
-    //   wx.showModal({
-    //     title: '提示',
-    //     showCancel: false,
-    //     content: '您已经是老朋友了',
-    //     confirmColor: '#ff8339',
-    //     success: function (res) {
-    //       if (res.confirm) {
-
-    //       } else if (res.cancel) {
-
-    //       }
-    //     }
-    //   })
-    // }
-      
   },
-  binToIndexTab () {
-    // utils.request('http://fanmofang.17d3.com/api/user/unbindMobile', {  token :app.globalData.token})
-    //   .then(function (res) {
-
-    //   }, function (err) {
-
-    //   })
-    // return
-    wx.navigateTo({
-      url: '/pages/index/index'
+  updataphone () {
+    this.setData({
+      hasphone: ''
     })
   },
-  binToShopTab () {
-    wx.navigateTo({
-      url: '/pages/shopping/shopping?containerID=' + this.data.containerID
-    })
-  },
-  binCouponlistTab () {
-    wx.navigateTo({
-      url: '/pages/couponlist/couponlist'
-    })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     this.setData({
-      ads: options.ads,
-      containerID: options.containerID
+      hasphone: wx.getStorageSync('mobile')
     })
+    // app.globalData.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzI3MzE3NiwiZXhwIjoxODYyNjMzMTc2LCJuYmYiOjE1NDcyNzMxNzYsImp0aSI6IjZ5WWRBU25rOUVuZnZaaEMiLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.FPzvPzP95bM8Cc9f5WVS2EJFXmno7cE4K7sLxZggTSM'
   },
 
   /**
@@ -291,5 +236,6 @@ Page({
    */
   onReachBottom: function () {
 
-  }
+  },
+
 })

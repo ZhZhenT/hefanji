@@ -1,0 +1,68 @@
+.describe .input-wrap .section{
+  padding-top: 40rpx;
+}
+.describe {
+  padding: 25rpx 15rpx 0
+}
+.describe .input-wrap input{
+  background: #ffffff;
+  font-size: 26rpx;color: #a5a5a5;
+  padding: 20rpx 0 20rpx 50rpx;
+  border: 1rpx solid #a5a5a5
+}
+
+.describe .input-wrap .yzm-wrap{
+  display: flex;
+  justify-content: space-between
+}
+
+.describe .input-wrap .yzm-wrap input{
+  width: 400rpx;
+}
+.describe .input-wrap .yzm-wrap .yzm{
+  background:  #ff8339;
+  color: #ffffff;
+  font-size: 26rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 250rpx;
+  justify-content: center
+}
+
+.describe .input-wrap .yzm-wrap .yzm.no{
+  background: #a5a5a5
+}
+
+.describe .input-wrap .btn{
+    background:  #ff8339;
+  color: #ffffff;
+  font-size: 26rpx;
+  text-align: center;
+  padding: 30rpx 0
+}
+
+.describe .to-index{
+  margin-top: 50rpx;
+  text-align: center;
+  color: #969696;
+  font-size: 26rpx;
+}
+
+.hasphone{
+  padding: 60rpx 15rpx 0
+}
+.hasphone .phone{
+  color: #000;
+  font-size: 30rox;
+  text-align: center;
+    margin-bottom: 60rpx;
+}
+.hasphone .btn{
+  background:  #ff8339;
+  color: #ffffff;
+  font-size: 26rpx;
+  text-align: center;
+  padding: 30rpx 0;
+
+}

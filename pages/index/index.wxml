@@ -1,5 +1,5 @@
 <view class='index'  wx:hidden="{{indexshow}}" style='background-size:750rpx {{bgH+20}}px;'>
-  <view class='logo'>
+  <view bindtap='unbd' class='logo'>
     <image src='http://fanmofang.17d3.com/assets/images2/logo1.png' style="width:254rpx;height:259rpx;"></image>
   </view>
   

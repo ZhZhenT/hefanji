@@ -95,3 +95,125 @@
   color: #ffffff;
   font-size: 30rpx;
 }
+
+.towrap .top-text{
+  color: white;
+  font-size: 50rpx;
+  text-align: center;
+  padding-top: 180rpx;
+}
+.towrap .yhj-wrap {
+  margin-top: 50rpx;
+}
+.towrap .yhj-wrap .yhj-bg{
+  margin: 0 auto;
+  width: 477rpx;
+  height: 331rpx;
+  background: url(http://192.168.1.101/images/youhuijuan-bg.png);
+  background-size: 477rpx 331rpx;
+  position: relative;
+}
+
+.towrap .yhj-wrap .yhj-bg .yhj-top{
+  position: absolute;
+  color: white;
+  top: 50rpx;
+  left: 100rpx;
+}
+.towrap .yhj-wrap .yhj-bg .yhj-top .text1{
+  font-size: 40rpx;
+  font-weight: bold
+}
+.towrap .yhj-wrap .yhj-bg .yhj-top .text2{
+  font-size: 96rpx;
+  font-weight: bold;
+  margin: 0 5rpx 0 -5rpx;
+}
+
+.towrap .yhj-wrap .yhj-bg .yhj-top .text3{
+  font-size: 42rpx;
+  font-weight: bold;
+  color: #f7fa2b;
+}
+
+.towrap .yhj-wrap .yhj-bg .yhj-bot{
+  color: #ffffff;
+  font-size: 26rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 210rpx;
+  text-align: center;
+} 
+
+.towrap .yhj-wrap .ads{
+  color: #ffffff;
+  text-align: center;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+
+.towrap  .btn-wrap {
+  margin-top: 100rpx;
+ display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center
+}
+
+.towrap  .btn-wrap .btn{
+  width: 45%;
+  background: #ff8339;
+  height: 95rpx;
+  line-height: 95rpx;
+  font-size: 26rpx;
+  color: white;
+  box-sizing: border-box
+}
+
+.towrap  .btn-wrap .btn1{
+
+}
+
+.towrap  .btn-wrap .btn2{
+  background: rgba(1,1, 1, 0.4);
+  color: #ff8339;
+  border: 1rpx solid #ff8339;
+}
+.threeowrap .no-wrap {
+  padding-top:250rpx; 
+}
+.threeowrap .no-wrap .no-bg{
+  width: 563rpx;
+  height: 339rpx;
+  background: url(http://192.168.1.101/images/no-fulibg.png);
+  background-size: 563rpx 339rpx;
+  position: relative;
+  margin: 0 auto;
+  color: #4d4d4d;
+  font-size: 30rpx;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 220rpx;
+}
+
+.threeowrap .btn-wrap{
+  padding: 0 60rpx;
+  margin-top: 60rpx;
+}
+.threeowrap .btn-wrap .btn{
+   background: #ff8339;
+  height: 95rpx;
+  line-height: 95rpx;
+  font-size: 26rpx;
+  color: white;
+  box-sizing: border-box;
+  text-align: center
+}
+
+.threeowrap .ads{
+  color: #ffffff;
+  text-align: center;
+  font-size: 26rpx;
+  margin-top: 45rpx;
+}

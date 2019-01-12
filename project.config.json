@@ -30,25 +30,25 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
-					"name": "用户扫码进入",
+					"name": "containerID=7&userid=4&ads=22222",
 					"pathName": "pages/index/index",
-					"query": "containerID=7&userid=4",
+					"query": "containerID=7&userid=4&ads=22222",
 					"scene": "1011"
 				},
 				{
 					"id": 1,
-					"name": "用户扫码进入",
+					"name": "containerID=7",
 					"pathName": "pages/index/index",
-					"query": "containerID=8",
+					"query": "containerID=7",
 					"scene": "1011"
 				},
 				{
-					"id": 5,
-					"name": "用户扫码进入",
+					"id": 2,
+					"name": "pages/share/share",
 					"pathName": "pages/share/share",
 					"query": "",
 					"scene": "1011"
@@ -61,10 +61,24 @@
 					"scene": "1011"
 				},
 				{
-					"id": -1,
-					"name": "用户扫码进入",
+					"id": 4,
+					"name": "pages/sharelogin/sharelogin",
 					"pathName": "pages/sharelogin/sharelogin",
 					"query": "containerID=59",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "pages/bindphone/bindphone",
+					"pathName": "pages/bindphone/bindphone",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 6,
+					"name": "feedback",
+					"pathName": "pages/feedback/feedback",
+					"query": "",
 					"scene": "1011"
 				}
 			]

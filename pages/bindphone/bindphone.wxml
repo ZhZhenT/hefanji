@@ -1,0 +1,41 @@
+<!--pages/bindphone/bindphone.wxml-->
+<view>
+
+  <view wx:if='{{!hasphone}}' class='describe '>
+
+    <view class='input-wrap'>
+      <view class="section">
+          <input bindinput="bindPhoneInput" placeholder="请输入手机号码" />
+      </view>
+      
+      <view class="section">
+        <view class='yzm-wrap'>
+          <input bindinput="bindYZMInput" placeholder="请输入验证码" />
+          <view class='yzm {{sendYZM ? "no": ""}}' bindtap='bindGetYZMTap'>
+          {{yzmtext}}
+        </view>
+      </view>
+      </view>
+
+        <view class="section">
+    <view bindtap='submit' class='btn' >
+    绑定
+    </view>
+  </view>
+   </view>
+
+    <view class='to-index' >
+      <text bindtap='binToBackTab'>跳过>></text>
+    </view>
+    
+  </view>
+
+  <view class='hasphone' wx:if='{{hasphone}}'>
+    <view class='phone'>{{hasphone}}</view>
+    <view class='btn' bindtap='updataphone'  >
+       更换手机号
+    </view>
+  </view>
+
+
+</view>

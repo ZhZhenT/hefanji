@@ -21,6 +21,11 @@ Page({
     })
     
   },
+  bindToBindPhoneTap () {
+    wx.navigateTo({
+      url: '/pages/bindphone/bindphone'
+    }) 
+  },
   bindToFeedbackTap:function(){
     wx.navigateTo({
       url: '/pages/feedback/feedback'

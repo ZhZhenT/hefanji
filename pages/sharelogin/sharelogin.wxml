@@ -1,7 +1,8 @@
 <view class='share_login'>
 
+<view wx:if='{{type == 1}}'>
 <view class='give-up-wrap'>
- <view class='give-up'>任性放弃</view> 
+ <view class='give-up' bindtap='binToIndexTab'>任性放弃</view> 
 </view>
 
 <view class='title'>新人专享大礼包</view>
@@ -22,11 +23,11 @@
   </view>
   <view class='input-wrap'>
     <view class="section">
-    <input placeholder="请输入手机号码" />
+    <input bindinput="bindPhoneInput" placeholder="请输入手机号码" />
   </view>
    <view class="section">
     <view class='yzm-wrap'>
-        <input placeholder="请输入验证码" />
+        <input bindinput="bindYZMInput" placeholder="请输入验证码" />
     <view class='yzm {{sendYZM ? "no": ""}}' bindtap='bindGetYZMTap'>
      {{yzmtext}}
     </view>
@@ -34,16 +35,67 @@
   </view>
 
   <view class="section">
-    <view class='btn' >
+    <view bindtap='submit' class='btn' >
     领取礼包
     </view>
   </view>
 
 <view class='to-index' bindtap='bindToIndexTap'>
-  <text>返回饭魔方首页></text>
+  <text bindtap='binToIndexTab'>返回饭魔方首页></text>
 </view>
-
   </view>
 </view>
+</view>
+
+<view class='towrap' wx:if='{{type == 2}}'>
+  <view class='top-text'>
+    福利到手
+  </view>
+
+  <view class='yhj-wrap'>
+
+    <view wx:for='{{coupons}}' wx:key='index' class='yhj-bg'>
+      <view class='yhj-top'>
+        <text class='text1'>￥</text>
+        <text class='text2'>{{juanprice}}</text>
+        <text class='text3'>优惠卷</text>
+      </view>
+      <view class='yhj-bot'>
+      新用户专享
+      </view>
+    </view>
+
+    <view class='ads'>
+     来源柜机：{{ads}}
+    </view>
+    
+    <view style=' padding: 0 60rpx;'>
+      <view class='btn-wrap'>
+      <view bindtap='binToShopTab' class='btn btn1'>现在点餐</view>
+      <view bindtap='binCouponlistTab' class='btn btn2'>查看优惠卷</view>
+      </view>
+    </view>
+
+  </view>
+
+</view>
+
+<view class='threeowrap' wx:if='{{type == 3}}'>
+  <view class='no-wrap'>
+   <view class='no-bg'>
+    <view class='text'>您已经是老朋友了</view>
+    <view class='text'>给新朋友一些机会吧</view>
+   </view>
+  </view>
+      <view class='ads'>
+     来源柜机：{{ads}}
+    </view>
+  <view class='btn-wrap'>
+    <view bindtap='bindToIndexTap' class='btn'>返回饭魔方</view>
+  </view>
+
+</view>
+
+
 
 </view>

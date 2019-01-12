@@ -4,20 +4,27 @@ App({
   onLaunch: function () { // 当小程序初始化完成时，会触发 onLaunch（全局只触发一次） console.log('App onLaunch')
     var that = this;
     
-    that.getUserToken = function (){
+    that.getUserToken = function (userid){
       return new Promise(function (resolve, reject) {
-        if (that.globalData.tokenRes){
-          resolve(that.globalData.tokenRes)
-          return 
-        }
+        // if (that.globalData.tokenRes){
+        //   resolve(that.globalData.tokenRes)
+        //   return 
+        // }
+
         wx.login({
           success: res => {
             //发送 res.code 到后台换取 openId, sessionKey, unionId
-            utils.request('http://fanmofang.17d3.com/api/user/login/wechat', { data: { code: res.code } })
+            utils.request('http://fanmofang.17d3.com/api/user/login/wechat', { data:
+               {
+                code: res.code,
+                referer_user_id: userid || ''
+               }
+              })
               .then(function (res) {
                 console.log(res, '登陆信息')
                 that.globalData.tokenRes = res 
                 that.globalData.userid = res.data.user_info.id
+                wx.setStorageSync('mobile', res.data.user_info.mobile)
                 resolve(res)
               }, function (err) {
                 reject(err)

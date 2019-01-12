@@ -1,9 +1,75 @@
 <!--pages/feedback/feedback.wxml-->
-<view class='feedback'>
+
+<view>
+  <view class='dinner-time-wrap'>
+    <view bindtap='binddinnerTimeCurrentTap' data-index='{{index}}' class='time-list {{index==dinnerTimeCurrent?"active":""}}' wx:for='{{dinnerTimeList}}' wx:key='{{index}}'>{{item.text}}</view>
+  </view>
+
+  <scroll-view scroll-top="{{scrollTop}}" scroll-y style="height:{{sildeHeight}}px;">
+
+    <swiper bindchange='bindCurrentchange' current='{{current}}' style="height:{{swiperheigh}}px;">
+      <block>
+        <swiper-item>
+
+          <view class='feedback'>
+            <textarea bindinput='bindinputtext' placeholder-style='color:#a5a5a5;' placeholder='请在这里输入您的反馈内容，我们的客服人员尽快与您联系'></textarea>
+            <input bindinput='bindinputphone' type='number' placeholder-style='color:#a5a5a5;' placeholder='请在这里输入您的电话号码'></input>
+          </view>
+          <view bindtap='bindToUserCenterTap' class='btn'>
+            提交
+          </view>
+
+        </swiper-item>
+      </block>
+
+      <block>
+        <swiper-item>
+
+          <view class='fk-wrap'>
+            <view class='fk-list'>
+
+              <view class='item' wx:for='{{fklist}}' wx:key='index'>
+
+                <view class='top-info'>
+                  <view class='left'>
+                    <view>
+                      <open-data style='display:block;overflow:hidden;width:70rpx;height:70rpx;' class="userinfo-avatar" type="userAvatarUrl">
+                      </open-data>
+                    </view>
+                    <view class='username'>
+                      <open-data type="userNickName"></open-data>
+                    </view>
+                  </view>
+                  <view class='right'>
+                    2018 1111
+                  </view>
+                </view>
+
+                <view class='user-say'>heiheiheiheiheiheijheiheiheiheiheihe</view>
+
+                <view class='fankui'>
+                  客服：气候较为歌曲韩文歌曲为合格亲王豪格请问权威和感情而过期维权回家去给我机会个机器外观和各位请各位
+                </view>
+
+              </view>
+
+              <view wx-if='{{fklist.length == 0}}' style='text-align: center;color:#343434;font-size:26rpx;padding-top:30rpx;'>暂无反馈</view>
+            </view>
+
+          </view>
+
+        </swiper-item>
+      </block>
+
+    </swiper>
+  </scroll-view>
+
+</view>
+
+<!-- <view class='feedback'>
   <textarea bindinput='bindinputtext' placeholder-style='color:#a5a5a5;'  placeholder='请在这里输入您的反馈内容，我们的客服人员尽快与您联系'></textarea>
   <input bindinput='bindinputphone' type='number' placeholder-style='color:#a5a5a5;'  placeholder='请在这里输入您的电话号码'></input>
 </view>
-
   <view bindtap='bindToUserCenterTap' class='btn'>
     提交
-  </view>
+  </view> -->

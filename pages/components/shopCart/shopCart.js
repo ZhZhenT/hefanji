@@ -56,10 +56,13 @@ Component({
   ready: function(){
 
   },
+
   methods: {
+
     //去结账 生成订单 去订单详情页
     binToSubmitTap:function(){
       var that = this;  
+
       if (this.data.totalNum == 0){
         wx.showModal({
           title: '提示',
@@ -76,230 +79,40 @@ Component({
         })
         return
       }
+    
       if (this.data.isOrderConfirm) {
 
-        var detail = []
-        app.globalData.goodsList.forEach(function (item) {
-          var obj = {}
-          var arr = []
-          item.products.forEach(function (val) {
-            if (val.selected != 0) {
-              arr.push({ 'id': val.product.id, 'num': val.selected })
-            }
-          })
-          obj.order_date = item.date
-          obj.products = arr
-
-          if (arr.length != 0) {
-            detail.push(obj)
-          }
-
-        })
-
-        var data = {
-          container_id: app.globalData.containerID,
-          detail: detail
-        }
-        var token = app.globalData.token;
-
-        utils.request('http://fanmofang.17d3.com/api/order/create', { method: 'POST', token: token ,data:data})
-        .then(function(res){
-          if (res.data.status) {
-            // 订单生成成功
-            var orderID = res.data.order_id;
-            console.log(res, '订单生成');
-            utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/pay', { method: 'POST', token: token })
-              .then(function (res) {
-                console.log(res, '调起支付接口');
-                if (res.data.status){
-                  wx.requestPayment({
-                    'timeStamp': res.data.data._timestamp + '',
-                    'nonceStr': res.data.data.nonce_str,
-                    'package': 'prepay_id=' + res.data.data.prepay_id,
-                    'signType': 'MD5',
-                    'paySign': res.data.data._sign,
-                    'success': function (res) {
-                      // 支付成功后的 跳转
-                      that.setData({
-                        isCartShow: false
-                      })
-                      var myEventDetail = {noshow:true}
-
-                      that.triggerEvent('MyEventRemoveShopCartTap', myEventDetail)
-
-                      wx.redirectTo({
-                        url: '../paysuccess/paysuccess?orderID=' + orderID,
-                      })
-
-                    },
-                    'fail': function (res) {
-
-                      utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/cancel', { method: 'POST', token: token })
-                        .then(function (res) {
-                          console.log(res, '订单取消')
-                          wx.showToast({
-                            title: '订单取消',
-                            icon: "none",
-                            duration: 1500
-                          })
-                        }, function (err) {
-
-                        })
-                    },
-                    'complete': function (res) {
-                      //console.log('complete');
-                    }
-                  });
-                }else{
-                  wx.showModal({
-                    title: '提示',
-                    showCancel: false,
-                    content: res.data.message,
-                    confirmColor: '#ff8339',
-                    success: function (res) {
-                      if (res.confirm) {
-
-                      } else if (res.cancel) {
-
-                      }
-                    }
-                  })
-                }
-
-              }, function (err) {
-
-              })
-
-       
-
-
-          } else {
-            wx.showModal({
-              title: '提示',
-              showCancel: false,
-              content: res.data.message,
-              confirmColor: '#ff8339',
-              success: function (res) {
-
-                if (res.confirm) {
-
-                  wx.reLaunch({
-                    url: '/pages/index/index?containerID=' + app.globalData.containerID
-                  })
-
-                } else if (res.cancel) {
-
-                  wx.reLaunch({
-                    url: '/pages/index/index?containerID=' + app.globalData.containerID
-                  })
-                  
-                }
+        if ((/^1(3|4|5|7|8)\d{9}$/.test(wx.getStorageSync('mobile')))) {
+          console.log('已经绑定手机号 直接拉起支付接口')
+          that.pay()
+        } else {
+          console.log('您尚未绑定手机号 绑定手机号可以享受更完整的售后服务')
+          wx.showModal({
+            title: '提示',
+            content: '您尚未绑定手机号 绑定手机号可以享受更完整的售后服务',
+            confirmColor: '#ff8339',
+            cancelText: '跳过',
+            confirmText: '现在绑定',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '../bindphone/bindphone',
+                });  
+              } else if (res.cancel) {
+                that.pay()
               }
-            })
-          }
-        },function(err){
-
-        })
-
-        /*wx.request({
-          url: 'http://fanmofang.17d3.com/api/order/create',
-          data: data,
-          method: 'POST',
-          header: {
-            'Authorization': 'Bearer ' + token,
-            'content-type': 'application/json'
-          },
-          success: function (res) {
-
-
-
-
-          },
-          fail: function () {
-            // fail
-          },
-          complete: function () {
-            // complete
-          }
-        })*/
-        /*wx.navigateTo({
-          url: '../paysuccess/paysuccess',
-        })*/   
-      }else{
-
-        /*var detail = []
-        app.globalData.goodsList.forEach(function(item){
-          var obj = {}
-          var arr = []
-          item.products.forEach(function(val){
-            if (val.selected != 0){
-              arr.push({ 'id': val.product.id, 'num': val.selected})
             }
           })
-          obj.order_date = item.date
-          obj.products = arr
-          
-          if(arr.length != 0){
-            detail.push(obj)
-          }
-         
-        })
+        }  
 
-        var data = {
-          container_id: app.globalData.containerID,
-          detail: detail
-        }
-        wx.request({
-          url: 'http://fanmofang.17d3.com/api/order/create',
-          data: data,
-          method: 'POST',
-          header: {
-            'content-type': 'application/json'
-          },
-          success: function (res) {
-
-            if (res.data.status) {
-              console.log(res)
-            } else {
-              wx.showModal({
-                title: '提示',
-                showCancel: false,
-                content: res.data.message,
-                confirmColor: '#ff8339',
-                success: function (res) {
-                  if (res.confirm) {
-
-                  } else if (res.cancel) {
-
-                  }
-                }
-              })
-            }
-
-
-          },
-          fail: function () {
-            // fail
-          },
-          complete: function () {
-            // complete
-          }
-        })*/
-        //console.log(data)
-        /*utils.request('http://fanmofang.17d3.com/order/create', 'POST', data)
-        .then(function(res){
-          console.log(res)
-        },function(err){
-
-        })*/
-
-
-
+      }else{
+        
         wx.navigateTo({
           url: '../orderdetail/orderdetail',
         });
         var orderconfirm = true;// 订单确认;  
         app.globalData.orderconfirm = orderconfirm
+
 
 
       }
@@ -361,5 +174,131 @@ Component({
       }//提供给事件监听函数 商品id
       this.triggerEvent('MyEventReduceGoods', myEventDetail)
     },
+    pay() {
+      var detail = []
+      var that = this
+      app.globalData.goodsList.forEach(function (item) {
+        var obj = {}
+        var arr = []
+        item.products.forEach(function (val) {
+          if (val.selected != 0) {
+            arr.push({ 'id': val.product.id, 'num': val.selected })
+          }
+        })
+        obj.order_date = item.date
+        obj.products = arr
+
+        if (arr.length != 0) {
+          detail.push(obj)
+        }
+
+      })
+
+      var data = {
+        container_id: app.globalData.containerID,
+        detail: detail,
+        user_coupon_id: app.globalData.selectID || ''
+      }
+      var token = app.globalData.token;
+      console.log(data, '订单详情')
+      utils.request('http://fanmofang.17d3.com/api/order/create', { method: 'POST', token: token, data: data })
+        .then(function (res) {
+          if (res.data.status) {
+            // 订单生成成功
+            var orderID = res.data.order_id;
+            console.log(res, '订单生成');
+            utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/pay', { method: 'POST', token: token })
+              .then(function (res) {
+                console.log(res, '调起支付接口');
+                if (res.data.status) {
+                  wx.requestPayment({
+                    'timeStamp': res.data.data._timestamp + '',
+                    'nonceStr': res.data.data.nonce_str,
+                    'package': 'prepay_id=' + res.data.data.prepay_id,
+                    'signType': 'MD5',
+                    'paySign': res.data.data._sign,
+                    'success': function (res) {
+                      // 支付成功后的 跳转
+                      that.setData({
+                        isCartShow: false
+                      })
+                      var myEventDetail = { noshow: true }
+
+                      that.triggerEvent('MyEventRemoveShopCartTap', myEventDetail)
+
+                      wx.redirectTo({
+                        url: '../paysuccess/paysuccess?orderID=' + orderID,
+                      })
+
+                    },
+                    'fail': function (res) {
+
+                      utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/cancel', { method: 'POST', token: token })
+                        .then(function (res) {
+                          console.log(res, '订单取消')
+                          wx.showToast({
+                            title: '订单取消',
+                            icon: "none",
+                            duration: 1500
+                          })
+                        }, function (err) {
+
+                        })
+                    },
+                    'complete': function (res) {
+                      //console.log('complete');
+                    }
+                  });
+                } else {
+                  wx.showModal({
+                    title: '提示',
+                    showCancel: false,
+                    content: res.data.message,
+                    confirmColor: '#ff8339',
+                    success: function (res) {
+                      if (res.confirm) {
+
+                      } else if (res.cancel) {
+
+                      }
+                    }
+                  })
+                }
+
+              }, function (err) {
+
+              })
+
+
+
+
+          } else {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: res.data.message,
+              confirmColor: '#ff8339',
+              success: function (res) {
+
+                if (res.confirm) {
+
+                  wx.reLaunch({
+                    url: '/pages/index/index?containerID=' + app.globalData.containerID
+                  })
+
+                } else if (res.cancel) {
+
+                  wx.reLaunch({
+                    url: '/pages/index/index?containerID=' + app.globalData.containerID
+                  })
+
+                }
+              }
+            })
+          }
+        }, function (err) {
+
+        })
+    }
   }
 })

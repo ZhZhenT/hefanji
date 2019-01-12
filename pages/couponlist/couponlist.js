@@ -52,7 +52,7 @@ Page({
     let flag = !this.data.selectAll
     this.data.discount_list1.forEach((item) => {
       item.select = false
-    })
+    })   
     this.setData({
       discount_list1: this.data.discount_list1,
       selectAll: flag
@@ -63,6 +63,8 @@ Page({
     this.data.discount_list1.forEach((item) => {
       if (item.id == id) {
         item.select = !item.select
+      } else {
+        item.select = false
       }
     })
     this.setData({
@@ -70,20 +72,44 @@ Page({
       selectAll: false
     })
   },
+  // 点击确认去上个页面 
+  bindToBackTab () {
+    let juan = this.data.discount_list1.find((item) => {
+      if (item.select) { 
+        app.globalData.selectID = item.id
+        return item
+      }
+    })
+    
+    //更新上个页面数据
+    var pages = getCurrentPages();
+    pages.forEach(function (item, index) {
+      if (index < pages.length) {
+        item.setData({
+          selectjuan : juan || ''
+        })
+      }
+    })
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   onLoad: function (options) {
     var that = this;
-    // var token = app.globalData.token;
-    var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzEzMjcxMCwiZXhwIjoxODYyNDkyNzEwLCJuYmYiOjE1NDcxMzI3MTAsImp0aSI6ImoxZmNOREEzUW1CdzZmUlAiLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.xHX5FEkRkCoPyDAez0iEWDE0DUIg-AMXXvxj3OEmKYI'
+    var token = app.globalData.token
     this.modifyTitle()
-    
+
+
+
     utils.computeHeight2(['.dinner-time-wrap', '.yesbtn', '#discount_list1', '#discount_list2']).then(function (results) {
       that.setData({
-        // swiperheigh: Math.max(...(results).slice(1)),
+        swiperheigh: results[0] - results[1] - results[2],
         sildeHeight: results[0] - results[1] - results[2]
       })
     }).catch(function (e) {
 
     });
+
 
     // 获取货柜信息
     utils.request('http://fanmofang.17d3.com/api/my/coupons?type=1', {token: token})
@@ -92,9 +118,13 @@ Page({
         that.setData({
           discount_list1: res.data.data.map((item) => {
             item.select = false
+            if (options.selectjuan == item.id) {
+              item.select = true
+            }
             return item
           })
         })
+
       }, function (err) {
 
       })
@@ -104,7 +134,18 @@ Page({
         console.log(res, '优惠卷 不可用')
         that.setData({
           discount_list0: res.data.data
+        },function(){
+           setTimeout(function(){
+             utils.computeHeight2(['#discount_list1']).then(function (results) {
+               that.setData({
+                 swiperheigh: Math.max(...(results).slice(1), that.data.swiperheigh),
+               })
+             }).catch(function (e) {
+
+             });
+           },30) 
         })
+        
       }, function (err) {
 
       })

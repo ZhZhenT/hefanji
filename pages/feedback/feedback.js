@@ -8,8 +8,42 @@ Page({
    */
   data: {
     phoneText:"",
-    contentText:""
+    contentText:"",
+    dinnerTimeCurrent: 1,
+    dinnerTimeList: [
+      { id: 0, text: '提交反馈', num: 2 },
+      { id: 1, text: '我的反馈', num: 3 }
+    ],
+    swiperheigh: 1200,
+    sildeHeight: 600,
+    current: 1,
+    scrollTop: 0,
+    fklist: []
   },
+  // 切换menu
+  modifyTitle() {
+    wx.setNavigationBarTitle({
+      title: this.data.dinnerTimeList[this.data.dinnerTimeCurrent].text
+    })
+  },
+  bindCurrentchange(c) {
+    this.setData({
+      dinnerTimeCurrent: c.detail.current,
+      current: c.detail.current,
+      scrollTop: 0
+    })
+    this.modifyTitle()
+  },
+  binddinnerTimeCurrentTap(ev) {
+    if (this.data.dinnerTimeCurrent == ev.currentTarget.dataset.index) {
+      return;
+    }
+    this.setData({
+      dinnerTimeCurrent: ev.currentTarget.dataset.index,
+      current: ev.currentTarget.dataset.index
+    })
+    this.modifyTitle()
+  }, 
   bindinputtext:function(ev){
     this.setData({
       contentText: ev.detail.value
@@ -77,7 +111,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
+    this.modifyTitle()
+    utils.computeHeight2(['.dinner-time-wrap', '.fk-wrap']).then(function (results) {
+      console.log(results)
+      that.setData({
+        // swiperheigh: Math.max(...(results).slice(1)),
+        sildeHeight: results[0] - results[1] ,
+        swiperheigh: Math.max(...(results)) - results[1] + 30
+      })
+    }).catch(function (e) {
+
+    });
   },
 
   /**

@@ -7,7 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
     goodsList: [],
     goodsid: 0,
     totalNum: 0,
@@ -16,15 +15,20 @@ Page({
     onMyEventAddGoods: {},
     detail:null,
     showorderno:false,
-
-    
+    selectjuan: '',
+    discountnum: 0
   },
   /**
    * 生命周期函数--监听页面加载
    */
   binTocouponlistTap: function () {
+    let selectID = ''
+    if (this.data.selectjuan) {
+      selectID = this.data.selectjuan.id
+    }
+    app.globalData.selectID = selectID
     wx.navigateTo({
-      url: '/pages/couponlist/couponlist'
+      url: '/pages/couponlist/couponlist?selectjuan=' + selectID
     })
   },
   onMyEventRemoveShopCartTap: function (ev) {
@@ -259,11 +263,18 @@ Page({
       goodsList: goodsList
     })
   },
-  
+  // 删除优惠卷
+  bindDeleteTab: function (ev) {
+    console.log(this.data.selectjuan)
+    this.setData({
+      selectjuan: false
+    })
+    app.globalData.selectID = ''
+  }, 
   onLoad: function (options) {
 
     var that = this;
-
+    var token = app.globalData.token
     
     var detail =  utils.getdatefenzu(app.globalData.goodsList);
 
@@ -275,6 +286,17 @@ Page({
       reducePrise: app.globalData.reducePrise,
       detail: detail
     })
+
+    // 获取货柜信息
+    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=1', { token: token })
+      .then(function (res) {
+        console.log(res, '优惠卷 可用')
+        that.setData({
+          discountnum: res.data.data.length
+        })
+      }, function (err) {
+
+      })
 
   },
 

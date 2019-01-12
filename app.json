@@ -11,7 +11,8 @@
     "pages/shopping/shopping",
     "pages/share/share",
     "pages/sharelogin/sharelogin",
-    "pages/couponlist/couponlist"
+    "pages/couponlist/couponlist",
+    "pages/bindphone/bindphone"
   ],
   "window":{
     "backgroundTextStyle":"light",

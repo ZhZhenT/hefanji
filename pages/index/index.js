@@ -28,8 +28,16 @@ Page({
       }
     })
   },
-  //去购物页面
+  unbd () {
+    wx.setStorageSync('mobile', '')
+    utils.request('http://fanmofang.17d3.com/api/user/unbindMobile', {  token :app.globalData.token})
+      .then(function (res) {
 
+      }, function (err) {
+
+      })
+  },
+  //去购物页面
   bindToShoppingTap:function(ev){
 
     var id = ev.currentTarget.dataset.containerid;
@@ -51,13 +59,13 @@ Page({
     })
     console.log(options)
     //获取tocken
-    app.getUserToken().then(function (res) {
+    app.getUserToken(options.userid).then(function (res) {
       var token = res.data.token;
       app.globalData.token = token;
 
       if (options.userid) {
         wx.navigateTo({
-          url: '/pages/sharelogin/sharelogin'
+          url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads
         })
         setTimeout(function () {
           that.setData({
