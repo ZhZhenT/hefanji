@@ -309,7 +309,7 @@ Page({
   //去取餐
   binToOrderallTap: function () {
     wx.navigateTo({
-      url: '/pages/orderall/orderall?containerID=' + app.globalData.containerID + '&hidden=true'
+      url: '/pages/orderlist/orderlist?containerID=' + app.globalData.containerID + '&hidden=true'
     })
   },
   //小球与购物车动画

@@ -1,0 +1,7 @@
+var utils = {}
+
+utils.tofix = function (val, num) {
+  return val.toFixed(num || 0)
+}
+
+module.exports = utils

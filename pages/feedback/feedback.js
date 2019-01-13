@@ -7,12 +7,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phoneText:"",
-    contentText:"",
+    phoneText: "",
+    contentText: "",
     dinnerTimeCurrent: 1,
-    dinnerTimeList: [
-      { id: 0, text: '提交反馈', num: 2 },
-      { id: 1, text: '我的反馈', num: 3 }
+    dinnerTimeList: [{
+        id: 0,
+        text: '提交反馈',
+        num: 2
+      },
+      {
+        id: 1,
+        text: '我的反馈',
+        num: 3
+      }
     ],
     swiperheigh: 1200,
     sildeHeight: 600,
@@ -43,27 +50,27 @@ Page({
       current: ev.currentTarget.dataset.index
     })
     this.modifyTitle()
-  }, 
-  bindinputtext:function(ev){
+  },
+  bindinputtext: function(ev) {
     this.setData({
       contentText: ev.detail.value
     })
   },
-  bindinputphone:function(ev){
+  bindinputphone: function(ev) {
     this.setData({
       phoneText: ev.detail.value
     })
   },
-  bindToUserCenterTap:function(){
+  bindToUserCenterTap: function() {
     //提交成功回到 用户中心页面
     var that = this;
     var reg = /^\s*$/g;
     var regphone = /^1[3-9][0-9]{9}$/
-    if (reg.test(that.data.contentText)){
+    if (reg.test(that.data.contentText)) {
       wx.showModal({
         title: '请填写反馈意见',
-        showCancel:false,
-        confirmColor:'#ff8339',
+        showCancel: false,
+        confirmColor: '#ff8339',
         content: '',
       })
       return
@@ -73,36 +80,36 @@ Page({
       wx.showModal({
         title: '请填正确写联系方式',
         showCancel: false,
-        confirmColor:'#ff8339',
+        confirmColor: '#ff8339',
         content: '',
       })
       return
     }
     var token = app.globalData.token;
-    utils.request('http://fanmofang.17d3.com/api/feedback/create',{
-      "method": 'POST',
-      "token": token,
-      "data":{
-        "content": that.data.contentText,
-        "phone": that.data.phoneText,
-      }
-    })
-    .then(function(res){
-      //console.log(res)
-      wx.showToast({
-        title: '意见反馈成功',
-        icon: 'success',
-        duration: 1000,
+    utils.request('http://fanmofang.17d3.com/api/feedback/create', {
+        "method": 'POST',
+        "token": token,
+        "data": {
+          "content": that.data.contentText,
+          "phone": that.data.phoneText,
+        }
       })
-
-      setTimeout(function () {
-        wx.redirectTo({
-          url: '/pages/usercenter/usercenter'
+      .then(function(res) {
+        //console.log(res)
+        wx.showToast({
+          title: '意见反馈成功',
+          icon: 'success',
+          duration: 1000,
         })
-      }, 1000)
-    },function(err){
 
-    })
+        setTimeout(function() {
+          wx.redirectTo({
+            url: '/pages/usercenter/usercenter'
+          })
+        }, 1000)
+      }, function(err) {
+
+      })
 
 
 
@@ -110,17 +117,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this
     this.modifyTitle()
-    utils.computeHeight2(['.dinner-time-wrap', '.fk-wrap']).then(function (results) {
+    utils.computeHeight2(['.dinner-time-wrap', '.fk-wrap']).then(function(results) {
       console.log(results)
       that.setData({
         // swiperheigh: Math.max(...(results).slice(1)),
-        sildeHeight: results[0] - results[1] ,
+        sildeHeight: results[0] - results[1],
         swiperheigh: Math.max(...(results)) - results[1] + 30
       })
-    }).catch(function (e) {
+    }).catch(function(e) {
 
     });
   },
@@ -128,43 +135,43 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
 })

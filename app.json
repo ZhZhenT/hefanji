@@ -12,7 +12,9 @@
     "pages/share/share",
     "pages/sharelogin/sharelogin",
     "pages/couponlist/couponlist",
-    "pages/bindphone/bindphone"
+    "pages/bindphone/bindphone",
+    "pages/orderlist/orderlist",
+    "pages/ordernewdetail/ordernewdetail"
   ],
   "window":{
     "backgroundTextStyle":"light",
