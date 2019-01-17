@@ -17,10 +17,10 @@
  .goods .center .goods-details .goods-kucun .goods-hot{display: flex}
  .goods .center .goods-details .goods-kucun .goods-hot .hot{width: 30rpx;height: 30rpx;background: url('http://fanmofang.17d3.com/assets/images2/goods-lajiao.png') center no-repeat;background-size: 26rpx 27rpx;}
   .goods .center .goods-details .goods-num-text{font-size: 20rpx;color: #969696;margin-top: 5rpx;}
-  .goods .center .goods-state{font-size: 20rpx;display: inline-block;padding: 0rpx 5rpx 2rpx;}
+  .goods .center .goods-state{font-size: 20rpx;display: inline-block;padding: 0rpx 5rpx 2rpx;margin-top: 25rpx;}
   .goods .center .goods-state.weiqu{color: #fd8c48;border: 1rpx solid #fd8c48;}
     .goods .center .goods-state.yiqu{color: #3D9FF9;border: 1rpx solid #3D9FF9;}
- .goods .center .goods-price{font-size: 30rpx;color: #ff8339;display: flex;margin-top: 10rpx;margin-top: 5rpx;font-weight: bold}
+ .goods .center .goods-price{font-size: 30rpx;color: #ff8339;display: flex;margin-top: 20rpx;font-weight: bold}
  .goods .center .goods-price .goods-old-price{font-size: 22rpx;color: #969696;padding-top: 6rpx;text-decoration:line-through;font-weight: 400}
  .goods .goods-num-controller{flex-grow:1;display: flex;color: #4d4d4d;font-size: 26rpx;align-items: flex-end;justify-content: flex-end;position: absolute;right: 15rpx;bottom:35rpx;}
  .goods .goods-num-controller .icon{width: 60rpx;height: 60rpx;}
@@ -29,6 +29,7 @@
  .goods .goods-num-controller .icon.add{background: url('http://fanmofang.17d3.com/assets/images2/goods-add-icon.png') right center no-repeat;background-size: 48rpx 48rpx;}/* pages/orderdetail/orderdetail.wxss */
 
  .goods .btn{background: #ff8339;color: #ffffff;font-size: 22rpx;font-weight: bold;text-align: center;height: 60rpx;line-height: 60rpx;width: 160rpx;margin: 0 auto;border-radius: 10rpx;position: absolute;right: 0;bottom: 0}
+  .goods .btn2{background: #48A3F6;color: #ffffff;font-size: 22rpx;font-weight: bold;text-align: center;height: 60rpx;line-height: 60rpx;width: 160rpx;margin: 0 auto;border-radius: 10rpx;position: absolute;right: 180rpx;bottom: 0}
  .goods .btn.no{background:#969696}
 
  .progress{height: 10rpx;background: #ff5f00;position: fixed;width: 0;top:0;left: 0;z-index: 100}
@@ -47,3 +48,58 @@
  .loading{position: absolute;left: 0;right: 0;height: 80rpx;text-align: center;line-height: 80rpx;font-size:30rpx;color: #969696 }
 
  .ordernobox .icon{width: 100%;text-align: center;background: url('http://fanmofang.17d3.com/assets/images2/order-no-icon.png') center 0 no-repeat; padding-top:230rpx;font-size: 28rpx;color:#969696;margin-top: 150rpx;background-size: 217rpx 196rpx;}
+
+ .order-info-bot{
+   padding: 15rpx;
+ }
+  .order-info-bot .item{
+    padding: 15rpx 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 26rpx;
+    color: #4d4d4d;
+  }
+  .order-info-bot .item .col969696{
+    color: #969696;
+  }
+ .order-info-bot .item .text-line{
+   text-decoration:line-through
+ }
+    .order-info-bot{
+      border-bottom: 1rpx solid #f5f5f5;
+    }
+
+    .order-info-pay{
+      padding: 15rpx 15rpx;
+    }
+
+    .order-info-pay .item{
+    padding: 5rpx 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 26rpx;
+    color: #4d4d4d;
+  }
+    .order-info-pay .item .colff8f4c{
+      color: #ff8f4c;
+    }
+
+    .btn-saoyisao{
+      background: #ff8339;
+      color: #ffffff;
+      font-size: 30rpx;
+      font-weight: bold;
+      text-align: center;
+      height: 100rpx;
+      line-height: 100rpx;
+      width: 350rpx;
+      border-radius: 50rpx;
+      margin: 0 auto;
+      margin-top: 50rpx;
+      }
+      .order-re{
+        font-size: 26rpx;
+        color: #ff8f4c;
+        text-align: center;
+        margin: 30rpx 0;
+      }

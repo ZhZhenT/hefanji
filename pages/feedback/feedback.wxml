@@ -41,14 +41,14 @@
                     </view>
                   </view>
                   <view class='right'>
-                    2018 1111
+                    {{item.created_at}}
                   </view>
                 </view>
 
-                <view class='user-say'>heiheiheiheiheiheijheiheiheiheiheihe</view>
+                <view class='user-say'>{{item.content}}</view>
 
-                <view class='fankui'>
-                  客服：气候较为歌曲韩文歌曲为合格亲王豪格请问权威和感情而过期维权回家去给我机会个机器外观和各位请各位
+                <view wx-if='{{!(item.reply==null)}}' class='fankui'>
+                  客服：{{item.reply}}
                 </view>
 
               </view>

@@ -14,7 +14,7 @@ Page({
     ads:'',
     containerID: '',
     juanname: '新用户专享',
-    juanprice: '10',
+    juanprice: '',
     coupons: []
   },
   bindToIndexTap () {
@@ -173,7 +173,7 @@ Page({
              coupons: res.data.data.coupons,
              juanprice: res.data.data.coupons[0].value
            })
-           wx.setStorageSync('mobile', this.data.phonenum)
+           wx.setStorageSync('mobile', that.data.phonenum)
          } else {
            if (res.data.state_code == 1) {
              that.showAlert(res.data.message + '')

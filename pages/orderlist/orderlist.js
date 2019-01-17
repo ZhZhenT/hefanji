@@ -212,6 +212,7 @@ Page({
     });
   },
   bindLoadScrollTolower: function (ev) {
+
     var that = this;
     if (that.data.showorderno) {
       return
@@ -306,7 +307,7 @@ Page({
 
     var that = this
     that.data.containerID = options.containerID
-    app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
+    // app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
     var token = app.globalData.token;
 
     utils.request('http://fanmofang.17d3.com/api/my/orders', { token: token })

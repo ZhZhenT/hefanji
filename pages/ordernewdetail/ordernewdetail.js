@@ -203,6 +203,7 @@ Page({
     });
   },
   bindLoadScrollTolower: function (ev) {
+    return
     var that = this;
     if (that.data.showorderno) {
       return
@@ -290,6 +291,14 @@ Page({
      
     }, 300);*/
   },
+  binCallTap: function () {
+    //拨打客服电话 
+    wx.makePhoneCall({
+      confirmColor: '#ff8339',
+      phoneNumber: '18210990920'
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -297,7 +306,7 @@ Page({
 
     var that = this
     that.data.containerID = options.containerID
-    app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
+    // app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
     var token = app.globalData.token;
 
     utils.request('http://fanmofang.17d3.com/api/order/' + options.orderid +'/detail', { token: token })
@@ -365,7 +374,7 @@ Page({
 
       })
 
-    utils.request('http://fanmofang.17d3.com/api/my/orders', { token: token })
+     /*utils.request('http://fanmofang.17d3.com/api/my/orders', { token: token })
       .then(function (res) {
         //console.log(res.data)
         if (res.statusCode == 200) {
@@ -436,7 +445,7 @@ Page({
         }
       }, function (err) {
 
-      })
+      })*/
 
    
    
@@ -460,7 +469,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

@@ -71,7 +71,8 @@
   font-size: 26rpx;
   color: #4d4d4d;
   padding: 20rpx 15rpx;
-  position: relative
+  position: relative;
+  align-items: center;
 }
 .order-line{
   height: 20rpx;
@@ -80,3 +81,15 @@
 .order-zf-state .money{
   color: #ff8339
 }
+
+.order-zf-state .btn{
+  background: #ff8339;
+  color: white;
+  height: 52rpx;
+  width: 130rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 8rpx;
+}
+.order-zf-state .colff8339{color:#ff8339 }
+.order-zf-state .col8f8f8f{color: #8f8f8f}

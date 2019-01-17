@@ -28,7 +28,11 @@
 
       <view class='order-zf-state'>
         <view>实际支付：<text class='money'>￥{{items.amount}}</text> </view>
-        <view data-orderID='{{items.id}}' bindtap='bindToOrderNewDetail'>state</view>
+        <view class='btn' 
+         data-orderID='{{items.id}}'
+         bindtap='bindToOrderNewDetail'>去取餐</view>
+         <view class='colff8339'>准备中</view>  
+         <view class='col8f8f8f'>已完成</view>  
       </view>
 
       <view class='order-line'>

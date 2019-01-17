@@ -9,7 +9,7 @@ Page({
   data: {
     phoneText: "",
     contentText: "",
-    dinnerTimeCurrent: 1,
+    dinnerTimeCurrent: 0,
     dinnerTimeList: [{
         id: 0,
         text: '提交反馈',
@@ -23,7 +23,7 @@ Page({
     ],
     swiperheigh: 1200,
     sildeHeight: 600,
-    current: 1,
+    current: 0,
     scrollTop: 0,
     fklist: []
   },
@@ -102,11 +102,11 @@ Page({
           duration: 1000,
         })
 
-        setTimeout(function() {
-          wx.redirectTo({
-            url: '/pages/usercenter/usercenter'
-          })
-        }, 1000)
+        // setTimeout(function() {
+        //   wx.redirectTo({
+        //     url: '/pages/usercenter/usercenter'
+        //   })
+        // }, 1000)
       }, function(err) {
 
       })
@@ -119,17 +119,31 @@ Page({
    */
   onLoad: function(options) {
     var that = this
+    var token = app.globalData.token;
     this.modifyTitle()
     utils.computeHeight2(['.dinner-time-wrap', '.fk-wrap']).then(function(results) {
       console.log(results)
       that.setData({
         // swiperheigh: Math.max(...(results).slice(1)),
         sildeHeight: results[0] - results[1],
-        swiperheigh: Math.max(...(results)) - results[1] + 30
+        swiperheigh: Math.max(...(results)) - results[1]
       })
     }).catch(function(e) {
 
     });
+
+    // /my/feedback
+    utils.request('http://fanmofang.17d3.com/api/my/feedback', {
+        "token": token
+      })
+      .then(function(res) {
+        console.log(res, '反馈详情')
+        that.setData({
+          fklist: res.data.data
+        })
+      }, function(err) {
+
+      })
   },
 
   /**

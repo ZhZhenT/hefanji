@@ -1,37 +1,39 @@
 <wxs module='util' src='../../utils/viewUtil.wxs'></wxs>
-  <scroll-view scroll-y style="height:{{contentheight}}px; position:reative;"  lower-threshold='50' bindscrolltolower = 'bindLoadScrollTolower'>
+<scroll-view scroll-y style="height:{{contentheight}}px; position:reative;" lower-threshold='50' bindscrolltolower='bindLoadScrollTolower'>
 
 
 
 
-  <view class='progress {{progressShow?"show":""}}' ></view>
+  <view class='progress {{progressShow?"show":""}}'></view>
 
-<block wx:if='{{items.isshow}}'  wx:key='{{index}}' wx:for='{{ordergoodslist1}}' wx:for-item="items">
-    <view class='top'><text  class='ads'>{{items.container.address}}</text></view>
-    <block  wx:for='{{items.detail_by_date}}' wx:key='{{index}}'>
+  <block wx:if='{{items.isshow}}' wx:key='{{index}}' wx:for='{{ordergoodslist1}}' wx:for-item="items">
+    <view class='top'>
+      <text class='ads'>{{items.container.address}}</text>
+    </view>
+    <block wx:for='{{items.detail_by_date}}' wx:key='{{index}}'>
 
-        <view data-containerID='{{items.container.id}}' class='date'>
+      <view data-containerID='{{items.container.id}}' class='date'>
 
-          <text class='icon'>取餐日期：{{item.date}} <text wx:if='{{item.datetext}}' class='{{item.datetext == "今天"?"jintian":"yuding"}}'>（{{item.datetext}}）</text></text>
-          
-        </view>
+        <text class='icon'>取餐日期：{{item.date}} <text wx:if='{{item.datetext}}' class='{{item.datetext == "今天"?"jintian":"yuding"}}'>（{{item.datetext}}）</text></text>
 
-        <view  wx:key='{{index}}' class='goods' wx:for='{{item.products}}' wx:for-item="val">
+      </view>
 
-        <view data-goodsId='{{val.product.id}}'  class='img' >
-           <image src='{{val.product.feature_image}}' style='width:154rpx;height:166rpx;display:block'></image>
+      <view wx:key='{{index}}' class='goods' wx:for='{{item.products}}' wx:for-item="val">
 
-           <!--<view wx:if='{{item.discount||item.selling}}' class='{{item.selling?"zhekou":item.discount?"good-hot":""}}'>{{item.topText}}</view>-->
-            <!--<view wx:if='{{item.is_hot_sale}}' class='good-hot'>热销</view>
+        <view data-goodsId='{{val.product.id}}' class='img'>
+          <image src='{{val.product.feature_image}}' style='width:154rpx;height:166rpx;display:block'></image>
+
+          <!--<view wx:if='{{item.discount||item.selling}}' class='{{item.selling?"zhekou":item.discount?"good-hot":""}}'>{{item.topText}}</view>-->
+          <!--<view wx:if='{{item.is_hot_sale}}' class='good-hot'>热销</view>
             <view wx:if='{{item.zhekou && item.zhekou != 10}}' class='zhekou'>{{item.zhekou}}折</view>-->
 
         </view>
-        <view data-goodsId='{{val.product.id}}'   class='center'>
-          <view  class='goods-details'>
+        <view data-goodsId='{{val.product.id}}' class='center'>
+          <view class='goods-details'>
             <view class='goods-name'>
-             <text class='renqi' wx:if='{{item.is_hot_sale}}'>人气</text>
-             <text class='tuijian' wx:if='{{item.is_friend_like}}'>推荐</text>
-            {{val.product.name}}</view>
+              <text class='renqi' wx:if='{{item.is_hot_sale}}'>人气</text>
+              <text class='tuijian' wx:if='{{item.is_friend_like}}'>推荐</text> {{val.product.name}}
+            </view>
 
             <!-- <view class='goods-num-text'>数量 x{{val.num}}</view> -->
           </view>
@@ -39,46 +41,82 @@
           <view class='goods-state {{val.is_pick_button_visible?"weiqu":"yiqu"}}' wx:if='{{val.is_pick_button_visible}}'>{{val.delivery_status_message}}</view>
           <view class='goods-state {{val.is_pick_button_visible?"weiqu":"yiqu"}}' wx:else> {{val.delivery_status_message}} </view>
 
-          <view class='goods-price'>￥{{val.total_price}}<view wx:if='{{val.product.base_price && val.total_price!= (val.product.base_price)*val.num }}' class='goods-old-price'>￥{{ util.tofix(val.product.base_price*val.num, 2)}}</view> </view>
+          <view class='goods-price'>￥{{val.product.price}}
+            <view wx:if='{{val.product.base_price && val.product.price!= (val.product.base_price)*val.num }}' class='goods-old-price'>￥{{ util.tofix(val.product.base_price*val.num, 2)}}</view>
+          </view>
 
           <view style='position: absolute;font-size:12px;color:#999999;right:0;top:70rpx;'>
-            格子: {{ val.slot_display_numberstxt}}
-          </view>  
-          <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}'  bindtouchend='bindOpenlongTap' bindtouchstart='bindOpenTap' wx:if='{{val.is_pick_button_visible}}' class='btn' >开启格子</view>
-          <view style='background: transparent;color:#666666;text:align:right;'  wx:elif='{{val.delivery_status == "picked_up"}}' class='btn no' >已取餐</view>
-          <view style='background: transparent;color:#666666;text-align:right;'  wx:elif='{{!item.datetext}}' class='btn no' >已过期</view>
+            格子: {{ val.slot_display_number}}
+          </view>
+
+
+          <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' class='btn2'>单品退货</view>
+
+          <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' bindtouchend='bindOpenlongTap' bindtouchstart='bindOpenTap' wx:if='{{val.is_pick_button_visible}}' class='btn'>开启格子</view>
+          <view style='background: transparent;color:#666666;text:align:right;' wx:elif='{{val.delivery_status == "picked_up"}}' class='btn no'>已取餐</view>
+          <view wx:elif='{{!item.datetext}}' class='btn no'>已过期</view>
           <view data-tishi='{{val.pick_button_invisible_reason}}' bindtouchstart='bindNoOpenTap' class='btn no' wx:elif='{{val.delivery_status !="picked_up"}}'>开启格子</view>
 
         </view>
       </view>
+    </block>
+
+    <view class='order-info-box'>
+      <view class='order-info'>
+        <view class='left'>
+          <view>订单编号：{{items.id}}</view>
+          <view>下单时间：{{items.created_at}}</view>
+          <view>温馨提示：每日取餐时间为 {{promptlayerTxT}}</view>
+        </view>
+        <!-- <view class='right'>
+          <view class='goods-price'>￥{{items.amount}}
+            <view wx:if='{{items.oldprice && items.amount!=items.oldprice}}' class='goods-old-price'>￥{{items.oldprice}}</view>
+          </view>
+          <view class='txt'>已经支付</view>
+        </view> -->
+      </view>
+    </view>
+
+    <view class='order-info-bot'>
+      <view class='item'>
+        <view>原价：</view>
+        <view>￥121</view>
+      </view>
+      <view class='item'>
+        <view>优惠：
+          <text class='col969696'>(新人专享满20元减10元)</text>
+        </view>
+        <view class='col969696 text-line'>￥212</view>
+      </view>
+    </view>
+
+    <view class='order-info-pay'>
+      <view class='item'>
+        <view>实际支付：</view>
+        <view class='colff8f4c'>￥{{items.amount}}</view>
+      </view>
+    </view>
+
+    <view bindtap='binCallTap' class='btn-saoyisao'>
+      联系客服
+    </view>
+
+    <view class='order-re'>
+      申请取消订单>
+    </view>
+
   </block>
 
-  <view class='order-info-box'>
-    <view class='order-info'>
-    <view class='left'>
-      <view>订单编号：{{items.id}}</view>
-      <view>下单时间：{{items.created_at}}</view>
-      <view>温馨提示：每日取餐时间为 {{promptlayerTxT}}</view>
-    </view>
-    <view class='right'>
-       <view class='goods-price'>￥{{items.amount}} <view wx:if='{{items.oldprice && items.amount!=items.oldprice}}' class='goods-old-price'>￥{{items.oldprice}}</view> </view>
-       <view class='txt'>已经支付</view>
-    </view>
-  </view>
+
+  <view wx:if='{{showloading}}' class='loading'>{{loadMoreData}}</view>
+
+
+  <view wx:if='{{showorderno}}' class='ordernobox'>
+    <view class='icon'>亲！您还没有任何订单哦！</view>
   </view>
 
- </block>
 
-
- <view wx:if='{{showloading}}' class='loading'>{{loadMoreData}}</view>
-
-
-<view wx:if='{{showorderno}}' class='ordernobox'>
-  <view class='icon'>亲！您还没有任何订单哦！</view>
-</view>
-
-
- </scroll-view>
+</scroll-view>
 
 <!-- <tabBarCustom show='{{show}}' class='botmenu' current="1"  style="position: absolute;bottom: 0;left:0;right:0;"></tabBarCustom> -->
 <view class='botmenu'></view>

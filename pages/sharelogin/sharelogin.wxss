@@ -2,7 +2,7 @@
 
 .give-up-wrap{
   padding-top: 55rpx;
-  text-align: right;
+  text-align: right;  
   padding-right: 60rpx;
 }
 .give-up{
@@ -100,16 +100,24 @@
   color: white;
   font-size: 50rpx;
   text-align: center;
-  padding-top: 180rpx;
+  padding-top: 80rpx;
 }
 .towrap .yhj-wrap {
-  margin-top: 50rpx;
+  margin-top: 30rpx;
 }
 .towrap .yhj-wrap .yhj-bg{
   margin: 0 auto;
   width: 477rpx;
   height: 331rpx;
   background: url(http://192.168.1.101/images/youhuijuan-bg.png);
+  background-size: 477rpx 331rpx;
+  position: relative;
+}
+.towrap .yhj-wrap .yhj-bg2{
+  margin: 0 auto;
+  width: 477rpx;
+  height: 331rpx;
+  background: url(http://192.168.1.101/images/youhuijuan-bg2.png);
   background-size: 477rpx 331rpx;
   position: relative;
 }
@@ -217,3 +225,4 @@
   font-size: 26rpx;
   margin-top: 45rpx;
 }
+.prise_top_text{font-size: 65rpx;font-weight: bold; display: inline-block;vertical-align: bottom;line-height: 1}
