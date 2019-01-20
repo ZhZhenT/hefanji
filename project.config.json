@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 9,
 			"list": [
 				{
 					"id": 0,
@@ -99,7 +99,7 @@
 					"id": 9,
 					"name": "新支付成功",
 					"pathName": "pages/paynewsuccess/paynewsuccess",
-					"query": "orderID=100010944",
+					"query": "orderID=100010946",
 					"scene": "1011"
 				},
 				{

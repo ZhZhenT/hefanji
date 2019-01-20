@@ -28,13 +28,13 @@
           </view>
         </view>
 
+
+
+      </block>
         <view class='new-goods-info'>
           <view>共{{items.ordernum}}件商品</view>
           <view>总计：<text class='money'>￥{{items.amount}}</text></view>
         </view>
-
-      </block>
-
     </block>
 <view class='btn-wrap'>
 <view bindtap='bindToIndexTap' class='btn'>

@@ -35,7 +35,7 @@
 .discount .top_text .text2{font-size: 26rpx;color: #404040}
 .discount .top_text .text2 .icon{display: inline-block;background:#ff8339;color: white;height: 26rpx;width: 26rpx;text-align: center; line-height: 26rpx;padding-bottom: 3rpx}
 .discount .discount_list{padding:0 15rpx 0rpx 15rpx;}
-.discount .discount_list .item{height: 168rpx;background: url('http://fanmofang.17d3.com/images/discount_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
+.discount .discount_list .item{height: 168rpx;background: url('http://fanmofang.17d3.com/assets/images2/discount_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
 .discount .discount_list .item .prise{position: absolute;color: white;top: 32rpx;left:44rpx;}
 .discount .discount_list .item .prise .prise_top_text{font-size: 65rpx;font-weight: bold; display: inline-block;vertical-align: bottom;line-height: 1}
 .discount .discount_list .item .prise .prise_top_text .fh{font-size: 30rpx;margin-right: -15rpx}
