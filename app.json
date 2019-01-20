@@ -1,6 +1,5 @@
 {
-  "pages":[
-
+  "pages": [
     "pages/index/index",
     "pages/feedback/feedback",
     "pages/goodsdetail/goodsdetail",
@@ -14,12 +13,14 @@
     "pages/couponlist/couponlist",
     "pages/bindphone/bindphone",
     "pages/orderlist/orderlist",
-    "pages/ordernewdetail/ordernewdetail"
+    "pages/ordernewdetail/ordernewdetail",
+    "pages/paynewsuccess/paynewsuccess",
+    "pages/thlist/thlist"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ff8339",
     "navigationBarTitleText": "饭魔方",
-    "navigationBarTextStyle":"#fff"
+    "navigationBarTextStyle": "#fff"
   }
 }

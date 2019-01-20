@@ -8,6 +8,11 @@ Page({
   data: {
     userInfo: {},
   },
+  binthlistTap () {
+    wx.navigateTo({
+      url: '/pages/thlist/thlist'
+    }) 
+  },
   binToOrderallTap:function(){
     wx.navigateTo({
       url: '/pages/orderall/orderall'

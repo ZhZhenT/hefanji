@@ -24,7 +24,7 @@ Component({
     binToDingdan: function () {
 
       wx.redirectTo({
-        url: '/pages/orderall/orderall'
+        url: '/pages/orderlist/orderlist'
 
       })
     },

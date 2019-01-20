@@ -1,0 +1,69 @@
+<view class='pay-success'>
+
+  <scroll-view scroll-y style="height:{{contentheight}}px;">
+
+    <view class='top'>
+      <image style='width:125rpx;height:125rpx;' src='http://fanmofang.17d3.com/assets/images2/pay-success-icon.png'></image>
+      <view class='txt'>支付成功!</view>
+      <!-- <text class='ads'>{{swiperAdsText}}</text>
+      <view class='progress {{progressShow?"show":""}}'></view> -->
+    </view>
+
+    <block wx:key='{{index}}' wx:for='{{ordergoodslist1}}' wx:for-item="items">
+
+      <block wx:for='{{items.detail_by_date}}' wx:key='{{index}}'>
+
+        <view data-containerID='{{items.container.id}}' class='date'>
+
+          <text class='icon'>取餐日期：{{item.date}} <text wx:if='{{item.datetext}}' class='{{item.datetext == "今天"?"jintian":"yuding"}}'>（{{item.datetext}}）</text></text>
+
+        </view>
+
+        <view class='new-goods-wrap'>
+          <view wx:key='{{index}}' class='goods ' wx:for='{{item.products}}' wx:for-item="val">
+            <view data-goodsId='{{val.product.id}}' class='img'>
+              <image src='{{val.product.feature_image}}' style='width:95rpx;height:95rpx;display:block'>
+              </image>
+            </view>
+          </view>
+        </view>
+
+        <view class='new-goods-info'>
+          <view>共{{items.ordernum}}件商品</view>
+          <view>总计：<text class='money'>￥{{items.amount}}</text></view>
+        </view>
+
+      </block>
+
+    </block>
+<view class='btn-wrap'>
+<view bindtap='bindToIndexTap' class='btn'>
+返回首页
+</view>
+<view bindtap='bindorderIDTap' data-orderID='{{orderID}}' class='btn btn2'>
+查看订单/取餐
+</view>
+</view>
+  </scroll-view>
+
+
+  <view class='order-info-box'>
+    <!-- <view class='order-info'>
+      <view class='left'>
+        <view>订单编号：{{ordergoodslist1[0].id}}</view>
+        <view>下单时间：{{ordergoodslist1[0].created_at}}</view>
+        <view>温馨提示：每日取餐时间为 {{promptlayerTxT}}</view>
+      </view>
+      <view class='right'>
+        <view class='goods-price'>￥{{orderprise}}
+          <view wx:if='{{orderoldprise && orderprise!=orderoldprise}}' class='goods-old-price'>￥{{orderoldprise}}</view>
+        </view>
+        <view class='txt'>已经支付</view>
+      </view>
+    </view> -->
+
+
+  </view>
+
+
+</view>

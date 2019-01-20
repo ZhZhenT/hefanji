@@ -32,10 +32,10 @@ Page({
 
   //去订单详情页
 
-  bindToOrderNewDetail (ev) {
+  bindToOrderNewDetail(ev) {
     wx.navigateTo({
       url: '../ordernewdetail/ordernewdetail?orderid=' + ev.currentTarget.dataset.orderid
-    }) 
+    })
   },
 
   bindOpenlongTap: function () {
@@ -310,15 +310,12 @@ Page({
     //app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
     var token = app.globalData.token;
 
-    utils.request('http://fanmofang.17d3.com/api/my/orders', { token: token })
+    utils.request('http://fanmofang.17d3.com/api/my/refunds', { token: token })
       .then(function (res) {
         //console.log(res.data)
         if (res.statusCode == 200) {
-          console.log(res.data, '获取所有订单')
+          console.log(res.data, '获取退货订单')
 
-          //初始化日期 与优惠前总价格
-
-          //没有数据
           if (res.data.length == 0) {
             that.data.showorderno = true;
           } else {
@@ -339,7 +336,8 @@ Page({
           res.data.forEach(function (item) {
             item.oldprice = 0;
             item.isshow = true;
-
+            item.money = 0
+            item.num = 0
             if (that.data.containerID) {
               if (item.container.id != that.data.containerID) {
                 item.isshow = false;
@@ -347,24 +345,26 @@ Page({
 
             }
 
-
-
-            item.detail.forEach(function (item2) {
-              item2.datetext = ''
-              var nowDate = new Date()
-
-              if (utils.formatTime(nowDate) == item2.date) {
-                item2.datetext = '今天'
-              } else if (item2.date < utils.formatTime(nowDate)) {
-                item2.datetext = ''
-              } else {
-                item2.datetext = '预定'
-              }
-              item2.products.forEach(function (item3) {
-                item.oldprice = (item.oldprice * 100 + item3.product.base_price * 100 * item3.num) / 100;
-                item3.slot_display_numberstxt = item3.slot_display_numbers.join()
-              })
+            item.products.forEach(function (item2) {
+              item.money += item2.price
             })
+            item.num = item.products.length
+            // item.detail.forEach(function (item2) {
+            //   item2.datetext = ''
+            //   var nowDate = new Date()
+
+            //   if (utils.formatTime(nowDate) == item2.date) {
+            //     item2.datetext = '今天'
+            //   } else if (item2.date < utils.formatTime(nowDate)) {
+            //     item2.datetext = ''
+            //   } else {
+            //     item2.datetext = '预定'
+            //   }
+            //   item2.products.forEach(function (item3) {
+            //     item.oldprice = (item.oldprice * 100 + item3.product.base_price * 100 * item3.num) / 100;
+            //     item3.slot_display_numberstxt = item3.slot_display_numbers.join()
+            //   })
+            // })
 
           })
 

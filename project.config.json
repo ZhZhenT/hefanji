@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -92,7 +92,21 @@
 					"id": 8,
 					"name": "订单100010942",
 					"pathName": "pages/ordernewdetail/ordernewdetail",
-					"query": "orderid=100010941",
+					"query": "orderid=100010944",
+					"scene": "1011"
+				},
+				{
+					"id": 9,
+					"name": "新支付成功",
+					"pathName": "pages/paynewsuccess/paynewsuccess",
+					"query": "orderID=100010944",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "退货列表",
+					"pathName": "pages/thlist/thlist",
+					"query": "",
 					"scene": "1011"
 				}
 			]

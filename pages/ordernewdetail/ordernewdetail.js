@@ -29,7 +29,96 @@ Page({
     showorderno: false,
     promptlayerTxT: ''
   },
-  bindOpenlongTap: function () {
+  // 退订单
+  bindorderIDTap(ev) {
+    var orderid = ev.target.dataset.orderid //订单号
+    var money = ev.target.dataset.money //取餐时间
+    var token = app.globalData.token
+
+    wx.showModal({
+      title: '订单退货',
+      content: '确认申请订单退货 ' + '订单：' + orderid + ' 金额：' + money,
+      confirmColor: '#ff8339',
+      success: function (res) {
+        if (res.confirm) {
+          utils.request('http://fanmofang.17d3.com/api/order/' + orderid + '/refund?type=order', {
+            token: token,
+            method: 'POST'
+          })
+            .then(function (res) {
+              console.log(res, '订单退货')
+              if (res.statusCode == '200') {
+                wx.showModal({
+                  title: '提示',
+                  showCancel: false,
+                  content: res.data.message,
+                  confirmColor: '#ff8339',
+                  success: function (res) {
+                    if (res.confirm) {
+
+                    } else if (res.cancel) {
+
+                    }
+                  }
+                })
+              }
+            })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
+
+
+  },
+  // 退货单品
+  bindTHTab(ev) {
+    var orderid = ev.target.dataset.orderid //订单号
+    var date = ev.target.dataset.date //取餐时间
+    var money = ev.target.dataset.money //取餐时间
+    var name = ev.target.dataset.name //取餐时间
+    var goodsid = ev.target.dataset.goodsid //商品ID
+    var ssid = ev.target.dataset.ssid //商品ID
+    var token = app.globalData.token
+
+    console.log(ev)
+    wx.showModal({
+      title: '单品退货确认',
+      content: '确认申请退货退货 ' + date + ' 午餐 ' + name + ' 退款金额：￥' + money,
+      confirmColor: '#ff8339',
+      success: function(res) {
+        if (res.confirm) {
+          utils.request('http://fanmofang.17d3.com/api/order/' + orderid + '/refund?type=single_product&slot_schema_id=' + ssid, {
+              token: token,
+              method: 'POST'
+            })
+            .then(function(res) {
+              console.log(res, '单品退货')
+              if (res.statusCode == '200') {
+                wx.showModal({
+                  title: '提示',
+                  showCancel: false,
+                  content: res.data.message,
+                  confirmColor: '#ff8339',
+                  success: function(res) {
+                    if (res.confirm) {
+
+                    } else if (res.cancel) {
+
+                    }
+                  }
+                })
+              }
+            })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
+
+
+  },
+  bindOpenlongTap: function() {
     var that = this;
     this.data.bindendtime = new Date().getTime();
 
@@ -40,7 +129,7 @@ Page({
         showCancel: false,
         content: '请长按解锁',
         confirmColor: '#ff8339',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
 
           } else if (res.cancel) {
@@ -59,7 +148,7 @@ Page({
 
     clearTimeout(this.data.bindtimer);
   },
-  bindOpenTap: function (ev) {
+  bindOpenTap: function(ev) {
     var that = this;
     this.data.bindstarttime = new Date().getTime();
     this.data.bindendtime = 0;
@@ -69,43 +158,48 @@ Page({
       progressShow: true
     })
 
-    var orderid = ev.target.dataset.orderid//订单号
-    var date = ev.target.dataset.date//取餐时间
-    var goodsid = ev.target.dataset.goodsid//商品ID
+    var orderid = ev.target.dataset.orderid //订单号
+    var date = ev.target.dataset.date //取餐时间
+    var goodsid = ev.target.dataset.goodsid //商品ID
+    var ssid = ev.target.dataset.ssid //商品ID
     var token = app.globalData.token
 
-    this.data.bindtimer = setTimeout(function () {
+    this.data.bindtimer = setTimeout(function() {
 
-      utils.request('http://fanmofang.17d3.com/api/order/' + orderid + '/open/' + date + '/' + goodsid, { token: token, method: 'POST' })
-        .then(function (res) {
+      utils.request('http://fanmofang.17d3.com/api/slot_schema/' + ssid + '/pickup', {
+          token: token,
+          method: 'POST'
+        })
+        .then(function(res) {
           console.log(res, '开启格子返回')
 
           if (res.statusCode == '200') {
-            var a = that.data.ordergoodslist1.find(function (item) {
+            var a = that.data.ordergoodslist1.find(function(item) {
               return item.id == orderid
             })
-            var b = a.detail.find(function (item) {
+            var b = a.detail_by_date.find(function(item) {
               return item.date == date
             })
-            var c = b.products.find(function (item) {
-              return item.product.id == goodsid
+            var c = b.products.find(function(item) {
+              return item.slot_schema_id == ssid
             })
 
             c.delivery_status = 'picking'
             c.delivery_status_message = '取餐处理中'
             c.is_pick_button_visible = false
-
-            var slot_schema_ids = res.data.slot_schema_ids.join();
-            var timer = null;
+            that.setData({
+              ordergoodslist1: that.data.ordergoodslist1
+            });
+            var slot_schema_ids = res.data.data.slot_schema_id
             /* 开启一个轮询 查询取餐状态 */
-            that.searchStatus(slot_schema_ids, timer, token, c)
-
+            that.searchStatus(slot_schema_ids, token, c)
+            //that.searchStatus1(c)
             wx.showModal({
               title: '提示',
               showCancel: false,
-              content: '解锁成功,请到' + res.data.slot_display_numbers.join() + '号格子取餐',
+              content: '解锁成功,请到' + res.data.data.slot_display_number + '号格子取餐',
               confirmColor: '#ff8339',
-              success: function (res) {
+              success: function(res) {
                 if (res.confirm) {
 
                 } else if (res.cancel) {
@@ -124,7 +218,7 @@ Page({
               showCancel: false,
               content: '开启失败,请联系客服',
               confirmColor: '#ff8339',
-              success: function (res) {
+              success: function(res) {
                 if (res.confirm) {
 
                 } else if (res.cancel) {
@@ -138,7 +232,7 @@ Page({
             });
           }
 
-        }, function (err) {
+        }, function(err) {
 
         })
 
@@ -147,11 +241,12 @@ Page({
     }, 1500)
 
   },
-  searchStatus: function (slot_schema_ids, timer, token, c) {
+  searchStatus: function(slot_schema_ids, token, c) {
     var that = this;
     var beginTime = new Date().getTime();
-    timer = setInterval(function () {
-      var url = 'http://fanmofang.17d3.com/api/status/picking/?slot_schema_id=' + slot_schema_ids
+    clearInterval(c.timer)
+    c.timer = setInterval(function() {
+      var url = 'http://fanmofang.17d3.com/api/slot_schema/' + slot_schema_ids + '/status'
       wx.request({
         url: url,
         method: 'get',
@@ -160,32 +255,59 @@ Page({
           'Authorization': 'Bearer ' + token,
           'content-type': 'application/json'
         },
-        success: function (res) {
+        success: function(res) {
           console.log(res, '用户取餐查询')
-          var isFlag = res.data.find(function (item) {
-            return item.delivery_status != 'picked_up'
-          });
-          if (!isFlag) {
-            console.log('已取餐')
-            c.delivery_status = 'picked_up'
-            c.delivery_status_message = '已取餐'
-            clearInterval(timer)
-            that.setData({
-              ordergoodslist1: that.data.ordergoodslist1
-            });
-          } else {
-            console.log('未取餐')
+          // var isFlag = res.data.find(function (item) {
+          //   return item.delivery_status != 'picked_up'
+          // });
+          // if (!isFlag) {
+          //   console.log('已取餐')
+          //   c.delivery_status = 'picked_up'
+          //   c.delivery_status_message = '已取餐'
+          //   clearInterval(c.timer)
+          //   that.setData({
+          //     ordergoodslist1: that.data.ordergoodslist1
+          //   });
+          // } else {
+          //   console.log('未取餐')
+          // }
+          c.delivery_status = res.data.data.delivery_status
+          c.delivery_status_message = res.data.data.delivery_status_message
+          c.is_pick_button_visible = res.data.data.is_pick_button_visible
+          // clearInterval(c.timer)
+          if (res.data.data.delivery_status == 'picked_up') {
+            clearInterval(c.timer)
           }
-
+          that.setData({
+            ordergoodslist1: that.data.ordergoodslist1
+          });
         },
-        fail: function (err) {
+        fail: function(err) {
           //
         }
       })
 
     }, 5000)
   },
-  bindNoOpenTap: function (ev) {
+  searchStatus1: function(c) {
+    var that = this;
+    var beginTime = new Date().getTime();
+    clearInterval(c.timer1)
+    c.time = c.time ? c.time : 59
+    c.timer1 = setInterval(function() {
+      that.setData({
+        progressShow: false,
+        ordergoodslist1: that.data.ordergoodslist1
+      });
+      console.log(c.time)
+      if (c.time == 0) {
+        clearInterval(c.timer1)
+      } else {
+        c.time--
+      }
+    }, 1000)
+  },
+  bindNoOpenTap: function(ev) {
     var that = this;
     var txt = ev.target.dataset.tishi
     wx.showModal({
@@ -193,7 +315,7 @@ Page({
       showCancel: false,
       content: txt,
       confirmColor: '#ff8339',
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
 
         } else if (res.cancel) {
@@ -202,7 +324,7 @@ Page({
       }
     });
   },
-  bindLoadScrollTolower: function (ev) {
+  bindLoadScrollTolower: function(ev) {
     return
     var that = this;
     if (that.data.showorderno) {
@@ -220,13 +342,15 @@ Page({
 
     if (that.data.date + 2000 < date) {
       var token = app.globalData.token;
-      utils.request('http://fanmofang.17d3.com/api/my/orders?page=' + that.data.currentPage, { token: token })
-        .then(function (res) {
+      utils.request('http://fanmofang.17d3.com/api/my/orders?page=' + that.data.currentPage, {
+          token: token
+        })
+        .then(function(res) {
           console.log(res, '获取所有订单分页信息')
           if (res.data.length == 0) {
             that.data.allPages = true
           }
-          res.data.forEach(function (item) {
+          res.data.forEach(function(item) {
             item.oldprice = 0;
             item.isshow = true;
             if (that.data.containerID) {
@@ -234,7 +358,7 @@ Page({
                 item.isshow = false;
               }
             }
-            item.detail.forEach(function (item2) {
+            item.detail.forEach(function(item2) {
               item2.datetext = ''
               var nowDate = new Date();
               console.log(item2)
@@ -245,7 +369,7 @@ Page({
               } else {
                 item2.datetext = '预定'
               }
-              item2.products.forEach(function (item3) {
+              item2.products.forEach(function(item3) {
                 item.oldprice += parseFloat(Number(item3.product.base_price * 100 * item3.num / 100)).toFixed(2)
                 item3.slot_display_numberstxt = item3.slot_display_numbers.join()
               })
@@ -254,13 +378,13 @@ Page({
             that.data.ordergoodslist1.push(item)
           })
           that.data.currentPage++
-          setTimeout(function () {
-            that.setData({
-              showloading: false,
-              ordergoodslist1: that.data.ordergoodslist1
-            })
-          }, 2000)
-        }, function () {
+            setTimeout(function() {
+              that.setData({
+                showloading: false,
+                ordergoodslist1: that.data.ordergoodslist1
+              })
+            }, 2000)
+        }, function() {
 
         })
       console.log('加载更多...')
@@ -291,7 +415,7 @@ Page({
      
     }, 300);*/
   },
-  binCallTap: function () {
+  binCallTap: function() {
     //拨打客服电话 
     wx.makePhoneCall({
       confirmColor: '#ff8339',
@@ -302,20 +426,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
     var that = this
     that.data.containerID = options.containerID
-    // app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
+    //app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
     var token = app.globalData.token;
 
-    utils.request('http://fanmofang.17d3.com/api/order/' + options.orderid +'/detail', { token: token })
-      .then(function (res) {
+
+    utils.request('http://fanmofang.17d3.com/api/order/' + options.orderid + '/detail', {
+        token: token
+      })
+      .then(function(res) {
         console.log(res.data, '单个订单 详情')
         if (res.data.length == 0) {
           that.data.showorderno = true;
         } else {
-          var item = res.data  
+          var item = res.data
           if (that.data.containerID) {
             if (item.container.id == that.data.containerID) {
 
@@ -324,41 +451,40 @@ Page({
               }
             }
           }
-          // res.data.forEach(function (item) {
 
-          // })
         }
-        // console.log(that.data.showorderno, '是否显示默认背景图')
-        var item = res.data  
-    
-          item.oldprice = 0;
-          item.isshow = true;
 
-          if (that.data.containerID) {
-            if (item.container.id != that.data.containerID) {
-              item.isshow = false;
-            }
+        var item = res.data
 
+        item.oldprice = 0;
+        item.isshow = true;
+
+        if (that.data.containerID) {
+          if (item.container.id != that.data.containerID) {
+            item.isshow = false;
           }
 
+        }
 
 
-          item.detail_by_date.forEach(function (item2) {
+
+        item.detail_by_date.forEach(function(item2) {
+          item2.datetext = ''
+          var nowDate = new Date()
+
+          if (utils.formatTime(nowDate) == item2.date) {
+            item2.datetext = '今天'
+          } else if (item2.date < utils.formatTime(nowDate)) {
             item2.datetext = ''
-            var nowDate = new Date()
+          } else {
+            item2.datetext = '预定'
+          }
+          item2.products.forEach(function(item3) {
 
-            if (utils.formatTime(nowDate) == item2.date) {
-              item2.datetext = '今天'
-            } else if (item2.date < utils.formatTime(nowDate)) {
-              item2.datetext = ''
-            } else {
-              item2.datetext = '预定'
-            }
-            item2.products.forEach(function (item3) {
-              // item.oldprice = (item.oldprice * 100 + item3.product.base_price * 100 * item3.num) / 100;
-              // item3.slot_display_numberstxt = item3.slot_display_numbers.join()
-            })
+            item.oldprice += item3.product.base_price
+            // item3.slot_display_numberstxt = item3.slot_display_numbers.join()
           })
+        })
 
 
 
@@ -370,86 +496,86 @@ Page({
           promptlayerTxT: app.globalData.promptlayerTxT ? app.globalData.promptlayerTxT : ''
         })
 
-      }, function (err) {
+      }, function(err) {
 
       })
 
-     /*utils.request('http://fanmofang.17d3.com/api/my/orders', { token: token })
-      .then(function (res) {
-        //console.log(res.data)
-        if (res.statusCode == 200) {
-          console.log(res.data, '获取所有订单')
+    /*utils.request('http://fanmofang.17d3.com/api/my/orders', { token: token })
+     .then(function (res) {
+       //console.log(res.data)
+       if (res.statusCode == 200) {
+         console.log(res.data, '获取所有订单')
 
-          //初始化日期 与优惠前总价格
+         //初始化日期 与优惠前总价格
 
-          //没有数据
-          return
-          if (res.data.length == 0) {
-            that.data.showorderno = true;
-          } else {
-            res.data.forEach(function (item) {
-              if (that.data.containerID) {
-                if (item.container.id == that.data.containerID) {
+         //没有数据
+         return
+         if (res.data.length == 0) {
+           that.data.showorderno = true;
+         } else {
+           res.data.forEach(function (item) {
+             if (that.data.containerID) {
+               if (item.container.id == that.data.containerID) {
 
-                  if (item.detail.length === 0) {
-                    that.data.showorderno = true;
-                  }
-                }
-              }
-            })
-          }
+                 if (item.detail.length === 0) {
+                   that.data.showorderno = true;
+                 }
+               }
+             }
+           })
+         }
 
-          // console.log(that.data.showorderno, '是否显示默认背景图')
+         // console.log(that.data.showorderno, '是否显示默认背景图')
 
-          res.data.forEach(function (item) {
-            item.oldprice = 0;
-            item.isshow = true;
+         res.data.forEach(function (item) {
+           item.oldprice = 0;
+           item.isshow = true;
 
-            if (that.data.containerID) {
-              if (item.container.id != that.data.containerID) {
-                item.isshow = false;
-              }
+           if (that.data.containerID) {
+             if (item.container.id != that.data.containerID) {
+               item.isshow = false;
+             }
 
-            }
-
-
-
-            item.detail.forEach(function (item2) {
-              item2.datetext = ''
-              var nowDate = new Date()
-
-              if (utils.formatTime(nowDate) == item2.date) {
-                item2.datetext = '今天'
-              } else if (item2.date < utils.formatTime(nowDate)) {
-                item2.datetext = ''
-              } else {
-                item2.datetext = '预定'
-              }
-              item2.products.forEach(function (item3) {
-                item.oldprice = (item.oldprice * 100 + item3.product.base_price * 100 * item3.num) / 100;
-                item3.slot_display_numberstxt = item3.slot_display_numbers.join()
-              })
-            })
-
-          })
+           }
 
 
 
-          that.setData({
-            ordergoodslist1: res.data,
-            showorderno: that.data.showorderno,
-            promptlayerTxT: app.globalData.promptlayerTxT ? app.globalData.promptlayerTxT : ''
-          })
+           item.detail.forEach(function (item2) {
+             item2.datetext = ''
+             var nowDate = new Date()
+
+             if (utils.formatTime(nowDate) == item2.date) {
+               item2.datetext = '今天'
+             } else if (item2.date < utils.formatTime(nowDate)) {
+               item2.datetext = ''
+             } else {
+               item2.datetext = '预定'
+             }
+             item2.products.forEach(function (item3) {
+               item.oldprice = (item.oldprice * 100 + item3.product.base_price * 100 * item3.num) / 100;
+               item3.slot_display_numberstxt = item3.slot_display_numbers.join()
+             })
+           })
+
+         })
 
 
-        }
-      }, function (err) {
 
-      })*/
+         that.setData({
+           ordergoodslist1: res.data,
+           showorderno: that.data.showorderno,
+           promptlayerTxT: app.globalData.promptlayerTxT ? app.globalData.promptlayerTxT : ''
+         })
 
-   
-   
-   
+
+       }
+     }, function (err) {
+
+     })*/
+
+
+
+
     if (options.hidden) {
       that.setData({
         show: false
@@ -457,7 +583,7 @@ Page({
     }
 
     // 页面适配 计算页面剩余高度  
-    utils.computeHeight(['.botmenu'], function (contentheight) {
+    utils.computeHeight(['.botmenu'], function(contentheight) {
       that.setData({
         contentheight: contentheight
       })
@@ -468,42 +594,42 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 

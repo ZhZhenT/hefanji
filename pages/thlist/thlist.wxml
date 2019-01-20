@@ -6,30 +6,30 @@
   <view class='progress {{progressShow?"show":""}}'></view>
 
   <block wx:if='{{items.isshow}}' wx:key='{{index}}' wx:for='{{ordergoodslist1}}' wx:for-item="items">
-    <view class='top'>
+    <!-- <view class='top'>
       <text class='ads'>{{items.container.address}}</text>
-    </view>
-    <block wx:for='{{items.detail}}' wx:key='{{index}}'>
+    </view> -->
 
-      <view class='order-id-date'>
-        <view>订单编号：{{items.id}}</view>
-        <view>下单时间：{{items.created_at}}</view>
+
+      <view class='order-id-date' style='font-size:24rpx;'>
+        <view>退单编号：{{items.refund_no}}</view>
+        <view style='color:#ff8339'>{{items.status_message}}</view>
       </view>
 
       <view class='new-goods-wrap'>
-        <view wx:key='{{index}}' class='goods ' wx:for='{{item.products}}' wx:for-item="val">
-          <view data-goodsId='{{val.product.id}}' class='img'>
-            <image src='{{val.product.feature_image}}' style='width:95rpx;height:95rpx;display:block'>
+        <view wx:key='{{index}}' class='goods ' wx:for='{{items.products}}' wx:for-item="val">
+          <view data-goodsId='{{val.id}}' class='img'>
+            <image src='{{val.feature_image}}' style='width:95rpx;height:95rpx;display:block'>
             </image>
           </view>
         </view>
       </view>
 
-      <view class='order-zf-state'>
-        <view>实际支付：
-          <text class='money'>￥{{items.amount}}</text> </view>
-        <view wx:if='{{!items.is_ended}}' class='btn' data-orderID='{{items.id}}' bindtap='bindToOrderNewDetail'>去取餐</view>
-        <view wx:if='{{items.is_ended}}' data-orderID='{{items.id}}' bindtap='bindToOrderNewDetail' class='btn col8f8f8f'>已结束</view>
+      <view class='order-zf-state' style='justify-content: flex-end'>
+        <view>
+          共{{items.num}}款商品
+          合计：<text >￥{{items.money}}</text>
+        </view>
       </view>
 
       <view class='order-line'>
@@ -72,7 +72,7 @@
 
         </view>
       </view> -->
-    </block>
+
 
     <!-- <view class='order-info-box'>
       <view class='order-info'>
@@ -103,4 +103,4 @@
 
 </scroll-view>
 
-<tabBarCustom show='{{show}}' class='botmenu' current="1" style="position: absolute;bottom: 0;left:0;right:0;"></tabBarCustom>
+<view  class='botmenu' ></view>

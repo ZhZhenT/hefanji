@@ -42,7 +42,7 @@
           <view class='goods-state {{val.is_pick_button_visible?"weiqu":"yiqu"}}' wx:else> {{val.delivery_status_message}} </view>
 
           <view class='goods-price'>￥{{val.product.price}}
-            <view wx:if='{{val.product.base_price && val.product.price!= (val.product.base_price)*val.num }}' class='goods-old-price'>￥{{ util.tofix(val.product.base_price*val.num, 2)}}</view>
+            <view wx:if='{{val.product.base_price && val.product.price!= (val.product.base_price)*val.num }}' class='goods-old-price'>￥{{util.tofix(val.product.base_price*val.num, 2)}}</view>
           </view>
 
           <view style='position: absolute;font-size:12px;color:#999999;right:0;top:70rpx;'>
@@ -50,10 +50,13 @@
           </view>
 
 
-          <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' class='btn2'>单品退货</view>
+          <view data-name='{{val.product.name}}' data-money='{{val.product.price}}' data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}'   data-ssid='{{val.slot_schema_id}}'  class='btn2' bindtap='bindTHTab'>
+          {{val.refund_status ? val.refund_status == "refund_success"? '退款成功' :'退款中' :'单品退货'}}
+          </view>
 
-          <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' bindtouchend='bindOpenlongTap' bindtouchstart='bindOpenTap' wx:if='{{val.is_pick_button_visible}}' class='btn'>开启格子</view>
-          <view style='background: transparent;color:#666666;text:align:right;' wx:elif='{{val.delivery_status == "picked_up"}}' class='btn no'>已取餐</view>
+          <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' 
+          data-ssid='{{val.slot_schema_id}}' bindtouchend='bindOpenlongTap' bindtouchstart='bindOpenTap' wx:if='{{ val.is_pick_button_visible}}' class='btn'>{{val.time? '再次开启' + '(' + val.time +')':'开启格子'}}</view>
+          <view style='background: transparent;color:#666666;  text-align: right' wx:elif='{{val.delivery_status == "picked_up"}}' class='btn no'>已取餐</view>
           <view wx:elif='{{!item.datetext}}' class='btn no'>已过期</view>
           <view data-tishi='{{val.pick_button_invisible_reason}}' bindtouchstart='bindNoOpenTap' class='btn no' wx:elif='{{val.delivery_status !="picked_up"}}'>开启格子</view>
 
@@ -80,20 +83,21 @@
     <view class='order-info-bot'>
       <view class='item'>
         <view>原价：</view>
-        <view>￥121</view>
+        <view>{{util.tofix(items.oldprice, 2)}}</view>
       </view>
       <view class='item'>
         <view>优惠：
           <text class='col969696'>(新人专享满20元减10元)</text>
-        </view>
-        <view class='col969696 text-line'>￥212</view>
+        </view>  
+         <!-- util.tofix(, 2) -->
+        <view class='col969696 text-line'>￥{{util.tofix(items.oldprice - items.amount, 2)}}</view>
       </view>
     </view>
 
     <view class='order-info-pay'>
       <view class='item'>
         <view>实际支付：</view>
-        <view class='colff8f4c'>￥{{items.amount}}</view>
+        <view class='colff8f4c'>￥{{util.tofix(items.amount, 2)}}</view>
       </view>
     </view>
 
@@ -101,7 +105,7 @@
       联系客服
     </view>
 
-    <view class='order-re'>
+    <view data-money='{{util.tofix(items.amount, 2)}}' data-orderID='{{items.id}}' bindtap='bindorderIDTap' class='order-re'>
       申请取消订单>
     </view>
 

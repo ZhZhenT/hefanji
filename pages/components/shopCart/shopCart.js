@@ -227,7 +227,7 @@ Component({
                       that.triggerEvent('MyEventRemoveShopCartTap', myEventDetail)
 
                       wx.redirectTo({
-                        url: '../paysuccess/paysuccess?orderID=' + orderID,
+                        url: '../paynewsuccess/paynewsuccess?orderID=' + orderID,
                       })
 
                     },
