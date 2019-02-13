@@ -15,8 +15,13 @@ Page({
   },
   binToOrderallTap:function(){
     wx.navigateTo({
-      url: '/pages/orderall/orderall'
+      url: '/pages/orderlist/orderlist'
     }) 
+  },
+  binTocouponlistTap: function () {
+    wx.navigateTo({
+      url: '/pages/couponlist/couponlist?see=1'
+    })
   },
   binCallTap:function(){
     //拨打客服电话 

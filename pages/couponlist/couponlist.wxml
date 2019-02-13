@@ -23,14 +23,14 @@
 
    <view  id='discount_list1' class='discount_list'>
 
-   <view class='selelct-all' wx:if='{{select}}'>
+   <view  class='selelct-all' wx:if='{{select && !see}}'>
     <text>不使用优惠卷</text>
     <view bindtap='binSelectAlltab' class='select-btn {{selectAll ? "select" : "" }}'  wx:if='{{select}}'>
       <view class='icon'></view>
     </view>
    </view>
 
-   <view wx:for='{{discount_list1}}'  wx:key='index' class='item'>
+   <view  data-id = '{{item.id}}'  bindtap='binSelectTab'  wx:for='{{discount_list1}}'  wx:key='index' class='item'>
     <view class='prise'>
 
       <view wx:if="{{item.type === 'fixed'}}" class='prise_top_text'><text class='fh'>￥</text>
@@ -54,9 +54,13 @@
       <view wx:if='{{!select}}' class='btn-text'>满{{item.min_amount}}元可用</view>
     </view>
 
-    <view data-id = '{{item.id}}'  bindtap='binSelectTab' class='select-btn {{item.select ? "select" : "" }}'  wx:if='{{select}}'>
+    <view  class='select-btn {{item.select ? "select" : "" }}'  wx:if='{{select && !see}}'>
       <view class='icon'></view>
     </view>
+
+    <!-- <view wx:if='{{see}}'>
+      <view class='icon'>11111</view>
+    </view> -->
 
    </view>
    <!-- <view class='item'>

@@ -230,7 +230,7 @@ Page({
     wx.navigateTo({
       url: '/pages/index/index'
     })
-  },
+  }, 
   binToShopTab () {
     wx.navigateTo({
       url: '/pages/shopping/shopping?containerID=' + this.data.containerID

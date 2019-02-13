@@ -19,7 +19,8 @@ Page({
     select: true,
     selectAll: false,
     discount_list1: [],
-    discount_list0: []
+    discount_list0: [],
+    see: false
   },
 
   bindCurrentchange (c) {
@@ -59,6 +60,9 @@ Page({
     })
   },
   binSelectTab (ev) {
+    if (this.data.see) {
+      return
+    }
     let id = ev.currentTarget.dataset.id
     this.data.discount_list1.forEach((item) => {
       if (item.id == id) {
@@ -99,6 +103,12 @@ Page({
     var token = app.globalData.token
     this.modifyTitle()
 
+    
+    if (options.see) {
+      that.setData({
+        see: true
+      })
+    }
 
 
     utils.computeHeight2(['.dinner-time-wrap', '.yesbtn', '#discount_list1', '#discount_list2']).then(function (results) {

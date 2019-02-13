@@ -25,7 +25,6 @@ Component({
 
       wx.redirectTo({
         url: '/pages/orderlist/orderlist'
-
       })
     },
     binToUserCenter: function () {
