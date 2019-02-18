@@ -249,6 +249,12 @@ Page({
       ads: options.ads,
       containerID: options.containerID
     })
+
+    if (wx.getStorageSync('mobile')) {
+      this.setData({
+        type : 3
+      })
+    }
   },
 
   /**

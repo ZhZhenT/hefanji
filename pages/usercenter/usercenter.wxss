@@ -7,6 +7,12 @@
 .use-list .item .txt.phone{background:url('http://fanmofang.17d3.com/assets/images2/usercenter-phone-icon.png') 30rpx center no-repeat; background-size: 40rpx 38rpx;}
 .use-list .item .txt.yijian{background:url('http://fanmofang.17d3.com/assets/images2/usercenter-yijian-icon.png') 30rpx center no-repeat; background-size: 40rpx 38rpx;}
 
+.use-list .item .txt.thorder{background:url('http://fanmofang.17d3.com/assets/images2/usercenter-thorder-icon.png') 30rpx center no-repeat; background-size: 40rpx 38rpx;}
+
+.use-list .item .txt.bindphone{background:url('http://fanmofang.17d3.com/assets/images2/usercenter-bindphone-icon.png') 30rpx center no-repeat; background-size: 40rpx 38rpx;}
+
+.use-list .item .txt.mycoupon{background:url('http://fanmofang.17d3.com/assets/images2/usercenter-mycoupon-icon.png') 30rpx center no-repeat; background-size: 40rpx 38rpx;}
+
 .userinfo{text-align: center;padding-top: 50rpx;}
 .userinfo .username{font-size: 30rpx;color:#4d4d4d;margin-top: 15rpx; }
 

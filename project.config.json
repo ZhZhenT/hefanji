@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 12,
 			"list": [
 				{
 					"id": 0,
@@ -107,6 +107,19 @@
 					"name": "退货列表",
 					"pathName": "pages/thlist/thlist",
 					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "111",
+					"pathName": "pages/sharelogin/sharelogin",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "userid=7",
+					"pathName": "pages/index/index",
+					"query": "userid=7",
 					"scene": "1011"
 				}
 			]

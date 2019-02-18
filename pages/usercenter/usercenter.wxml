@@ -10,11 +10,11 @@
 
   <view class='use-list'>
   <view bindtap='binToOrderallTap' class='item'> <view class='txt order'>我的订单</view> </view>
-    <view bindtap='binthlistTap' class='item'> <view class='txt order'>退货记录</view> </view>
+    <view bindtap='binthlistTap' class='item'> <view class='txt thorder'>退货记录</view> </view>
     <view bindtap='binCallTap' class='item'> <view class='txt phone'>客服热线</view> </view>
     <view bindtap='bindToFeedbackTap' class='item'> <view class='txt yijian'>意见反馈</view> </view>
-    <view bindtap='bindToBindPhoneTap' class='item'> <view class='txt phone'>绑定手机号</view> </view>
-    <view bindtap='binTocouponlistTap' class='item'> <view class='txt'>我的优惠卷</view> </view>
+    <view bindtap='bindToBindPhoneTap' class='item'> <view class='txt bindphone'>绑定手机号</view> </view>
+    <view bindtap='binTocouponlistTap' class='item'> <view class='txt mycoupon'>我的优惠卷</view> </view>
   </view>
 
   <view class='banquan'>
