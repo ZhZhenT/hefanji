@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 11,
 			"list": [
 				{
 					"id": 0,
@@ -44,7 +44,7 @@
 					"name": "containerID=7",
 					"pathName": "pages/index/index",
 					"query": "containerID=7",
-					"scene": "1011"
+					"scene": 1011
 				},
 				{
 					"id": 2,
@@ -108,6 +108,13 @@
 					"pathName": "pages/thlist/thlist",
 					"query": "",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "分享",
+					"pathName": "pages/index/index",
+					"query": "userid=1",
+					"scene": null
 				}
 			]
 		}
