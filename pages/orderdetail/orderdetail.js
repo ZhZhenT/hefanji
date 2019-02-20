@@ -28,7 +28,7 @@ Page({
     }
     app.globalData.selectID = selectID
     wx.navigateTo({
-      url: '/pages/couponlist/couponlist?selectjuan=' + selectID
+      url: '/pages/couponlist/couponlist?selectjuan=' + selectID + '&totalPrise=' + app.globalData.totalPrise
     })
   },
   onMyEventRemoveShopCartTap: function (ev) {
@@ -288,7 +288,7 @@ Page({
     })
 
     // 获取货柜信息
-    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=1', { token: token })
+    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=1' + '&cart_amount=' + app.globalData.totalPrise, { token: token })
       .then(function (res) {
         console.log(res, '优惠卷 可用')
         that.setData({

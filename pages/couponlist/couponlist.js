@@ -103,11 +103,15 @@ Page({
     var token = app.globalData.token
     this.modifyTitle()
 
+    var totalPrise = options.totalPrise
+
+    
     
     if (options.see) {
       that.setData({
         see: true
       })
+      totalPrise = ''
     }
 
 
@@ -122,7 +126,7 @@ Page({
 
 
     // 获取货柜信息
-    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=1', {token: token})
+    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=1' + '&cart_amount=' + totalPrise, {token: token})
       .then(function (res) {
         console.log(res,'优惠卷 可用')
         that.setData({
@@ -139,14 +143,14 @@ Page({
 
       })
 
-    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=0', { token: token })
+    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=0' + '&cart_amount=' + totalPrise, { token: token })
       .then(function (res) {
         console.log(res, '优惠卷 不可用')
         that.setData({
           discount_list0: res.data.data
         },function(){
            setTimeout(function(){
-             utils.computeHeight2(['#discount_list1']).then(function (results) {
+             utils.computeHeight2(['#discount_list1', '#discount_list2']).then(function (results) {
                that.setData({
                  swiperheigh: Math.max(...(results).slice(1), that.data.swiperheigh),
                })
