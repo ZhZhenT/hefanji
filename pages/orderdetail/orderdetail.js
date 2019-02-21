@@ -16,7 +16,8 @@ Page({
     detail:null,
     showorderno:false,
     selectjuan: '',
-    discountnum: 0
+    discountnum: 0,
+    juanprise: 0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -60,7 +61,7 @@ Page({
     app.globalData.totalNum = res.totalNum;
     app.globalData.totalPrise = res.totalPrise;
     app.globalData.reducePrise = res.reducePrise;
-
+    that.bindDeleteTab()
     //更新上个页面数据
     var pages = getCurrentPages();
 
@@ -84,9 +85,9 @@ Page({
     var goodsid = ev.detail.goodsid
     // 商品时间
     var dateid = ev.detail.dateid
-
+    var containerid = app.globalData.containerID
     // 计算当前商品数量
-    goodsList = utils.reducegoods(goodsList, goodsid, dateid);
+    goodsList = utils.reducegoods(goodsList, goodsid, dateid, containerid);
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
 
@@ -111,7 +112,7 @@ Page({
     app.globalData.totalNum = res.totalNum;
     app.globalData.totalPrise = res.totalPrise;
     app.globalData.reducePrise = res.reducePrise;
-
+    that.bindDeleteTab()
     //更新上个页面数据
     var pages = getCurrentPages();
     
@@ -127,7 +128,7 @@ Page({
         }
     })
 
-
+    
 
   },
   onMyEventAddGoods: function (ev) {
@@ -160,6 +161,7 @@ Page({
     var dateid = ev.detail.dateid
     // 计算当前商品数量
     goodsList = utils.addgoods(goodsList, goodsid, dateid);
+    
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
 
@@ -174,7 +176,7 @@ Page({
     app.globalData.totalNum = res.totalNum;
     app.globalData.totalPrise = res.totalPrise;
     app.globalData.reducePrise = res.reducePrise;
-
+    that.bindDeleteTab()
     //更新上个页面数据
     var pages = getCurrentPages();
 
@@ -214,7 +216,7 @@ Page({
     app.globalData.totalNum = res.totalNum;
     app.globalData.totalPrise = res.totalPrise;
     app.globalData.reducePrise = res.reducePrise;
-
+    that.bindDeleteTab()
     //更新上个页面数据
     var pages = getCurrentPages();
 
@@ -241,7 +243,7 @@ Page({
     goodsList = utils.addgoods(goodsList, goodsid, dateid);
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
-
+  
     that.setData({
       totalNum: res.totalNum,
       totalPrise: res.totalPrise,
@@ -253,6 +255,9 @@ Page({
     app.globalData.totalNum = res.totalNum;
     app.globalData.totalPrise = res.totalPrise;
     app.globalData.reducePrise = res.reducePrise;
+
+    that.bindDeleteTab()
+
     //更新上个页面数据
     var pages = getCurrentPages();
 
@@ -267,7 +272,8 @@ Page({
   bindDeleteTab: function (ev) {
     console.log(this.data.selectjuan)
     this.setData({
-      selectjuan: false
+      selectjuan: false,
+      juanprise: 0,
     })
     app.globalData.selectID = ''
   }, 

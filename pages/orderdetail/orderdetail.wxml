@@ -1,4 +1,4 @@
-<!--pages/goodsdetail/goodsdetail.wxml-->
+<wxs module='util' src='../../utils/viewUtil.wxs'></wxs>
 <view class='goodsdetail'>
 
 
@@ -87,5 +87,5 @@
   <view class='icon'>亲！您的购物车是空的！</view>
 </view>
 
-<shopCart  detail='{{detail}}' isCartShow="{{isCartShow}}" bindMyEventRemoveShopCartTap="onMyEventRemoveShopCartTap" bindMyEventReduceGoods="onMyEventReduceGoods"  bindMyEventAddGoods="onMyEventAddGoods" goodsList='{{goodsList}}' totalPrise='{{totalPrise}}' totalNum='{{totalNum}}' reducePrise='{{reducePrise}}' class='shopCart'></shopCart>  
+<shopCart  detail='{{detail}}' isCartShow="{{isCartShow}}" bindMyEventRemoveShopCartTap="onMyEventRemoveShopCartTap" bindMyEventReduceGoods="onMyEventReduceGoods"  bindMyEventAddGoods="onMyEventAddGoods" goodsList='{{goodsList}}' totalPrise='{{totalPrise}}' totalNum='{{totalNum}}' juanprise='{{juanprise}}' reducePrise='{{reducePrise}}' class='shopCart'></shopCart>  
 </view>

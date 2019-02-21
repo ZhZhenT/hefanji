@@ -17,6 +17,10 @@ Component({
       value: 0,
       type: String, 
     },
+    juanprise: {
+      value: 0,
+      type: String,
+    },
     goodsList:{
       value:{},
       type: Object,

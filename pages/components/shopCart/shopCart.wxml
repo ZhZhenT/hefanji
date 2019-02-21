@@ -1,11 +1,11 @@
-<!-- 这是自定义组件的内部WXML结构 -->
+<wxs module='util' src='../../../utils/viewUtil.wxs'></wxs>
 <view class='shopCart'>
   <view bindtap='bindShowShopCartTap' class='left'>
     <view class='icon {{shopCartDYD?"dyd":""}}'>
       <view wx:if="{{totalNum}}" class='total-num'>{{totalNum}}</view>
     </view>
     <view class='total-price'>
-      <view>总计￥{{totalPrise}}</view>
+      <view>总计￥{{util.tofix(totalPrise - juanprise,2)}}</view>
       <view  wx:if='{{reducePrise}}' class='youhui'>已优惠￥{{reducePrise}}</view>
     </view>
    

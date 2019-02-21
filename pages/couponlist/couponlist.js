@@ -67,6 +67,26 @@ Page({
     this.data.discount_list1.forEach((item) => {
       if (item.id == id) {
         item.select = !item.select
+        var juan = item
+        var juanprise = 0
+
+        if (juan.type !== 'fixed') {
+          juanprise = utils.findMax(app.globalData.goodsList)
+        } else if (juan.type == 'fixed') {
+          juanprise = juan.value
+        }
+
+        //更新上个页面数据
+        var pages = getCurrentPages();
+        pages.forEach(function (item, index) {
+          if (index < pages.length) {
+            item.setData({
+              selectjuan: juan || '',
+              juanprise: juanprise
+            })
+          }
+        })
+
       } else {
         item.select = false
       }
@@ -84,16 +104,25 @@ Page({
         return item
       }
     })
+    var juanprise = 0
     
+    if (juan.type !== 'fixed') {
+      juanprise = utils.findMax(app.globalData.goodsList)
+    } else if (juan.type == 'fixed') {
+      juanprise = juan.value
+    }
+
     //更新上个页面数据
     var pages = getCurrentPages();
     pages.forEach(function (item, index) {
       if (index < pages.length) {
         item.setData({
-          selectjuan : juan || ''
+          selectjuan : juan || '',
+          juanprise: juanprise
         })
       }
     })
+
     wx.navigateBack({
       delta: 1
     })
@@ -103,9 +132,7 @@ Page({
     var token = app.globalData.token
     this.modifyTitle()
 
-    var totalPrise = options.totalPrise
-
-    
+    var totalPrise = options.totalPrise || ''
     
     if (options.see) {
       that.setData({

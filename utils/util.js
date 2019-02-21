@@ -76,7 +76,6 @@ function reducegoods(goodsList, goodsid, date, containerid) {
       }
       showCard[containerid][date][goodsid] = item.selected;
       wx.setStorageSync('showCard', showCard)
-
       return
     }
   })
@@ -177,16 +176,16 @@ function computeNumPrise(goodsList) {
   goodsList.forEach(function (item) {
 
   
-    if (item.date == formatTime(new Date())){
+    if (item.date == formatTime(new Date())) {
       item.datetext1 = '今天'
     }else{
       item.datetext1 = '预定'
     }
     item['products'].forEach(function (item) {
 
-      if (!item.is_hot_sale){
+      if (!item.is_hot_sale) {
         item.zhekou =  parseFloat(item.price / item.product.base_price * 10).toFixed(1);
-      }else{
+      } else {
         item.zhekou = 0
       }
 
@@ -194,12 +193,38 @@ function computeNumPrise(goodsList) {
  
       res.totalPrise = parseFloat((res.totalPrise * 100 + Number(item.price) * Number(item.selected) * 100) / 100).toFixed(2);
       res.reducePrise = parseFloat((res.reducePrise * 100 + Number(item.product.base_price) * Number(item.selected) * 100) / 100).toFixed(2);
-
+    
     })
   })
 
   res.reducePrise = parseFloat((res.reducePrise * 100 - res.totalPrise * 100) / 100).toFixed(2);
   
+  return res
+}
+
+function findMax (goodsList) {
+  var res = 0
+  goodsList.forEach(function (item) {
+    if (item.date == formatTime(new Date())) {
+      item.datetext1 = '今天'
+    } else {
+      item.datetext1 = '预定'
+    }
+    item['products'].forEach(function (item) {
+
+      if (item.selected > 0) {
+        if (res) {
+          res = Math.max(item.price,res)
+        } else {
+          res = item.price
+        }
+      }
+
+    })
+  })
+
+  
+
   return res
 }
 
@@ -337,5 +362,6 @@ module.exports = {
   initGoodsList: initGoodsList,//初始化购物车数据
   getUserToken: getUserToken,//登陆
   getdatefenzu: getdatefenzu,
-  GetQueryString: GetQueryString
+  GetQueryString: GetQueryString,
+  findMax: findMax
 }
