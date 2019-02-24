@@ -50,8 +50,9 @@
           </view>
 
 
-          <view data-name='{{val.product.name}}' data-money='{{val.product.price}}' data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}'   data-ssid='{{val.slot_schema_id}}'  class='btn2' bindtap='bindTHTab'>
-          {{val.refund_status ? val.refund_status == "refund_success"? '退款成功' :'退款中' :'单品退货'}}
+          <view data-name='{{val.product.name}}' data-money='{{val.product.price}}' data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' data-refund_status='{{val.refund_status}}'  data-ssid='{{val.slot_schema_id}}'  class='btn2' bindtap='bindTHTab'>
+          
+          {{val.refund_status ? val.refund_status == "refund_success"? '退款成功' :'退款中' :'单品退货'}} 
           </view>
 
           <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' 

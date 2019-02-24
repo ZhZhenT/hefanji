@@ -7,14 +7,14 @@
 
     <view class='title'>新人专享大礼包</view>
 
-    <view class='detail'>
+    <!-- <view class='detail'>
       <view>
         <view class='text text1'>优惠卷</view>
       </view>
       <view>
         <view class='text text2'>饭票1张</view>
       </view>
-    </view>
+    </view> -->
 
     <view class='describe'>
       <view class='slide-text'>
@@ -49,7 +49,7 @@
 
   <view class='towrap' wx:if='{{type == 2}}'>
     <view class='top-text'>
-      福利到手
+      {{message}}
     </view>
 
     <view class='yhj-wrap'>
@@ -66,13 +66,14 @@
         </view>
       </view>
 
-      <view class='ads'>
+      <view wx:if='{{ads && ads != "undefined"}}' class='ads'>
         来源柜机：{{ads}}
       </view>
 
       <view style=' padding: 0 60rpx;'>
         <view class='btn-wrap'>
-          <view bindtap='binToShopTab' class='btn btn1'>现在点餐</view>
+           <view wx:if='{{!ads}}' bindtap='bindToIndexTap' class='btn btn1'>去首页</view>
+          <view wx:if='{{ads}}' bindtap='binToShopTab' class='btn btn1'>现在点餐</view>
           <view bindtap='binCouponlistTab' class='btn btn2'>查看优惠卷</view>
         </view>
       </view>
@@ -88,7 +89,7 @@
         <view class='text'>给新朋友一些机会吧</view>
       </view>
     </view>
-    <view class='ads'>
+    <view wx:if='{{ads}}' class='ads'>
       来源柜机：{{ads}}
     </view>
     <view class='btn-wrap'>

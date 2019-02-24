@@ -65,9 +65,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
     return {
-      path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID + '&ads=' + app.globalData.ads
+      path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID + '&ads=' + app.globalData.ads + '&shareCode=share' // system
     }
   }
 })

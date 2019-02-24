@@ -63,16 +63,27 @@ Page({
       var token = res.data.token;
       app.globalData.token = token;
 
-      if (options.userid) {
-        wx.navigateTo({
-          url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads
-        })
+      if (options.shareCode) {
+
+        if (options.shareCode === 'share') {
+          wx.navigateTo({
+            url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&shareCode=' + options.shareCode
+          })
+        } else if (options.shareCode === 'system') {
+          wx.navigateTo({
+            url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&shareCode=' + options.shareCode
+          })
+        }  
+
+
         setTimeout(function () {
           that.setData({
             indexshow: true
           })
         }, 500)
+
         return  
+
       }
 
       if (options.containerID) {

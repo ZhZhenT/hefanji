@@ -30,13 +30,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "containerID=7&userid=4&ads=22222",
 					"pathName": "pages/index/index",
-					"query": "containerID=7&userid=4&ads=22222",
+					"query": "shareCode=system",
 					"scene": "1011"
 				},
 				{
@@ -64,7 +64,7 @@
 					"id": 4,
 					"name": "pages/sharelogin/sharelogin",
 					"pathName": "pages/sharelogin/sharelogin",
-					"query": "containerID=59",
+					"query": "shareCode=system",
 					"scene": "1011"
 				},
 				{
