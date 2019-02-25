@@ -71,6 +71,7 @@ Page({
 
 
   },
+
   // 退货单品
   bindTHTab(ev) {
     var orderid = ev.target.dataset.orderid //订单号
@@ -80,8 +81,12 @@ Page({
     var goodsid = ev.target.dataset.goodsid //商品ID
     var ssid = ev.target.dataset.ssid //商品ID
     var token = app.globalData.token
-
-    console.log(ev)
+    var refund_status = ev.target.dataset.refund_status
+    if (refund_status == 'refund_success') {
+      return
+    } else if (!!refund_status){
+      return
+    }
     wx.showModal({
       title: '单品退货确认',
       content: '确认申请退货退货 ' + date + ' 午餐 ' + name + ' 退款金额：￥' + money,

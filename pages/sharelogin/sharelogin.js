@@ -15,7 +15,8 @@ Page({
     containerID: '',
     juanname: '新用户专享',
     juanprice: '',
-    coupons: []
+    coupons: [],
+    message: '福利到手'
   },
   bindToIndexTap () {
     wx.navigateTo({
@@ -245,16 +246,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     this.setData({
       ads: options.ads,
       containerID: options.containerID
     })
 
-    if (wx.getStorageSync('mobile')) {
-      this.setData({
-        type : 3
+    if (options.shareCode === 'system') {
+        this.setData({
+          type:2
+        })
+      utils.request('http://fanmofang.17d3.com/api/promotions/P_F8JZIM2QX2RUSUC0', { token: app.globalData.token })
+      .then((res) => {
+        if (res.data.message == '活动已结束') {
+          this.setData({
+            message: '活动已结束'
+          })
+        }
+        console.log(res, 'heihei')
       })
+    } else {
+
+      if (wx.getStorageSync('mobile')) {
+        this.setData({
+          type: 3
+        })
+      }
+
+      
+
     }
+
+
+
   },
 
   /**
