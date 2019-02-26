@@ -198,6 +198,7 @@ Page({
             var slot_schema_ids = res.data.data.slot_schema_id
             /* 开启一个轮询 查询取餐状态 */
             that.searchStatus(slot_schema_ids, token, c)
+            that.searchStatus3(slot_schema_ids, token, c)
             //that.searchStatus1(c)
             wx.showModal({
               title: '提示',
@@ -272,7 +273,7 @@ Page({
           that.setData({
             ordergoodslist1: that.data.ordergoodslist1
           });
-          console.log(c, res.data.data)
+          // console.log(c, res.data.data)
         },
         fail: function(err) {
           //
@@ -280,6 +281,36 @@ Page({
       })
 
     }, 5000)
+  },
+  searchStatus3: function (slot_schema_ids, token, c) {
+    var that = this
+    var url = 'http://fanmofang.17d3.com/api/slot_schema/' + slot_schema_ids + '/status'
+    wx.request({
+      url: url,
+      method: 'get',
+      data: {},
+      header: {
+        'Authorization': 'Bearer ' + token,
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res, '用户取餐查询')
+        c.delivery_status = res.data.data.delivery_status
+        c.delivery_status_message = res.data.data.delivery_status_message
+        c.is_pick_button_visible = res.data.data.is_pick_button_visible
+        // clearInterval(c.timer)
+        if (res.data.data.delivery_status == 'picked_up') {
+          clearInterval(c.timer)
+        }
+        that.setData({
+          ordergoodslist1: that.data.ordergoodslist1
+        });
+        // console.log(c, res.data.data)
+      },
+      fail: function (err) {
+        //
+      }
+    })
   },
   searchStatus1: function(c) {
     var that = this;
@@ -423,10 +454,10 @@ Page({
 
     var that = this
     that.data.containerID = options.containerID
-    app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFubW9mYW5nLjE3ZDMuY29tXC9hcGlcL3VzZXJcL2xvZ2luXC93ZWNoYXQiLCJpYXQiOjE1NTExNjI4MjEsImV4cCI6MTg2NjUyMjgyMSwibmJmIjoxNTUxMTYyODIxLCJqdGkiOiI4d0J3Wk9PMUlKcXNMUHNrIiwic3ViIjo0LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.uk3Hsw1R6qrMSLk1ueLelAtfiScz6pJTAuYdAtYekbY"
+    //app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFubW9mYW5nLjE3ZDMuY29tXC9hcGlcL3VzZXJcL2xvZ2luXC93ZWNoYXQiLCJpYXQiOjE1NTExNjI4MjEsImV4cCI6MTg2NjUyMjgyMSwibmJmIjoxNTUxMTYyODIxLCJqdGkiOiI4d0J3Wk9PMUlKcXNMUHNrIiwic3ViIjo0LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.uk3Hsw1R6qrMSLk1ueLelAtfiScz6pJTAuYdAtYekbY"
     var token = app.globalData.token;
 
-    options.orderid = 100010987
+    //options.orderid = 100010987
     utils.request('http://fanmofang.17d3.com/api/order/' + options.orderid + '/detail', {
         token: token
       })
