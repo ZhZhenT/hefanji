@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 13,
 			"list": [
 				{
 					"id": 0,
@@ -121,6 +121,13 @@
 					"pathName": "pages/index/index",
 					"query": "userid=7",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "取餐",
+					"pathName": "pages/ordernewdetail/ordernewdetail",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

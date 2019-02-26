@@ -164,7 +164,7 @@ Page({
     }
     // mobile: 必需，11位国内手机号，不支持国际
     //  verification_code: 必需，短信验证码
-    utils.request('http://fanmofang.17d3.com/api/user/bindMobile?mobile=' + this.data.phonenum + '&verification_code=' + this.data.yzm, { token: app.globalData.token })
+    utils.request('http://fanmofang.17d3.com/api/user/bindMobile?mobile=' + this.data.phonenum + '&verification_code=' + this.data.yzm + '&get_coupons=1', { token: app.globalData.token })
       .then(function (res) {
          if (res.data.status) {
            that.showAlert('恭喜您！绑定成功')
@@ -258,6 +258,7 @@ Page({
         })
       utils.request('http://fanmofang.17d3.com/api/promotions/P_F8JZIM2QX2RUSUC0', { token: app.globalData.token })
       .then((res) => {
+        console.log(res, 'system')
         if (res.data.message == '活动已结束') {
           this.setData({
             message: '活动已结束'

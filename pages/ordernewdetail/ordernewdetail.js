@@ -189,9 +189,9 @@ Page({
               return item.slot_schema_id == ssid
             })
 
-            c.delivery_status = 'picking'
-            c.delivery_status_message = '取餐处理中'
-            c.is_pick_button_visible = false
+            // c.delivery_status = 'picking'
+            // c.delivery_status_message = '取餐处理中'
+            // c.is_pick_button_visible = false
             that.setData({
               ordergoodslist1: that.data.ordergoodslist1
             });
@@ -262,20 +262,6 @@ Page({
         },
         success: function(res) {
           console.log(res, '用户取餐查询')
-          // var isFlag = res.data.find(function (item) {
-          //   return item.delivery_status != 'picked_up'
-          // });
-          // if (!isFlag) {
-          //   console.log('已取餐')
-          //   c.delivery_status = 'picked_up'
-          //   c.delivery_status_message = '已取餐'
-          //   clearInterval(c.timer)
-          //   that.setData({
-          //     ordergoodslist1: that.data.ordergoodslist1
-          //   });
-          // } else {
-          //   console.log('未取餐')
-          // }
           c.delivery_status = res.data.data.delivery_status
           c.delivery_status_message = res.data.data.delivery_status_message
           c.is_pick_button_visible = res.data.data.is_pick_button_visible
@@ -286,6 +272,7 @@ Page({
           that.setData({
             ordergoodslist1: that.data.ordergoodslist1
           });
+          console.log(c, res.data.data)
         },
         fail: function(err) {
           //
@@ -315,6 +302,7 @@ Page({
   bindNoOpenTap: function(ev) {
     var that = this;
     var txt = ev.target.dataset.tishi
+    console.log(ev)
     wx.showModal({
       title: '提示',
       showCancel: false,
@@ -435,10 +423,10 @@ Page({
 
     var that = this
     that.data.containerID = options.containerID
-    //app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
+    app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFubW9mYW5nLjE3ZDMuY29tXC9hcGlcL3VzZXJcL2xvZ2luXC93ZWNoYXQiLCJpYXQiOjE1NTExNjI4MjEsImV4cCI6MTg2NjUyMjgyMSwibmJmIjoxNTUxMTYyODIxLCJqdGkiOiI4d0J3Wk9PMUlKcXNMUHNrIiwic3ViIjo0LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.uk3Hsw1R6qrMSLk1ueLelAtfiScz6pJTAuYdAtYekbY"
     var token = app.globalData.token;
 
-
+    options.orderid = 100010987
     utils.request('http://fanmofang.17d3.com/api/order/' + options.orderid + '/detail', {
         token: token
       })
