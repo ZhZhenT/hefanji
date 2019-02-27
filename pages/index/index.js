@@ -63,15 +63,15 @@ Page({
       var token = res.data.token;
       app.globalData.token = token;
 
-      if (options.shareCode) {
+      if (options.code) {
 
-        if (options.shareCode === 'share') {
+        if (options.code === 'register') {
           wx.navigateTo({
-            url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&shareCode=' + options.shareCode
+            url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&code=' + options.code
           })
-        } else if (options.shareCode === 'system') {
+        } else {
           wx.navigateTo({
-            url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&shareCode=' + options.shareCode
+            url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&code=' + options.code
           })
         }  
 

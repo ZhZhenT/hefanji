@@ -106,6 +106,13 @@ Page({
     })
     var juanprise = 0
     
+    if (!juan) {
+      wx.navigateBack({
+        delta: 1
+      })
+      return
+    }
+
     if (juan.type !== 'fixed') {
       juanprise = utils.findMax(app.globalData.goodsList)
     } else if (juan.type == 'fixed') {

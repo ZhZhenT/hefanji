@@ -87,7 +87,7 @@ Component({
       if (this.data.isOrderConfirm) {
 
         if ((/^1(3|4|5|7|8)\d{9}$/.test(wx.getStorageSync('mobile')))) {
-          console.log('已经绑定手机号 直接拉起支付接口')
+          // console.log('已经绑定手机号 直接拉起支付接口')
           that.pay()
         } else {
           console.log('您尚未绑定手机号 绑定手机号可以享受更完整的售后服务')
@@ -215,6 +215,7 @@ Component({
               .then(function (res) {
                 console.log(res, '调起支付接口');
                 if (res.data.status) {
+
                   wx.requestPayment({
                     'timeStamp': res.data.data._timestamp + '',
                     'nonceStr': res.data.data.nonce_str,
@@ -253,6 +254,7 @@ Component({
                       //console.log('complete');
                     }
                   });
+
                 } else {
                   wx.showModal({
                     title: '提示',

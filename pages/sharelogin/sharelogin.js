@@ -251,20 +251,24 @@ Page({
       ads: options.ads,
       containerID: options.containerID
     })
-
-    if (options.shareCode === 'system') {
+    app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFubW9mYW5nLjE3ZDMuY29tXC9hcGlcL3VzZXJcL2xvZ2luXC93ZWNoYXQiLCJpYXQiOjE1NTEyNjQzNTUsImV4cCI6MTg2NjYyNDM1NSwibmJmIjoxNTUxMjY0MzU1LCJqdGkiOiI5Yk5JM0Vpc3dlc1I0RWRHIiwic3ViIjo0LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.yprQrdW50YM5NgOZ_BjZIXQ8XLs7163YpMRg-MyIaGc"
+    if (options.code !== 'register') {
         this.setData({
           type:2
         })
-      utils.request('http://fanmofang.17d3.com/api/promotions/P_F8JZIM2QX2RUSUC0', { token: app.globalData.token })
+      utils.request('http://fanmofang.17d3.com/api/promotions/' + options.code, { token: app.globalData.token })
       .then((res) => {
         console.log(res, 'system')
         if (res.data.message == '活动已结束') {
           this.setData({
             message: '活动已结束'
           })
+        } else {
+          this.setData({
+            coupons: res.data.data.got_coupons
+          })
         }
-        console.log(res, 'heihei')
+       
       })
     } else {
 
@@ -272,6 +276,21 @@ Page({
         this.setData({
           type: 3
         })
+      } else {
+        utils.request('http://fanmofang.17d3.com/api/promotions/' + options.code, { token: app.globalData.token })
+          .then((res) => {
+            console.log(res, 'system')
+            if (res.data.message == '活动已结束') {
+              this.setData({
+                message: '活动已结束'
+              })
+            } else {
+              this.setData({
+                coupons: res.data.data.got_coupons
+              })
+            }
+
+          })
       }
 
       

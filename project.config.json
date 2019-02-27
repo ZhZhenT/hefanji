@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -64,7 +64,7 @@
 					"id": 4,
 					"name": "pages/sharelogin/sharelogin",
 					"pathName": "pages/sharelogin/sharelogin",
-					"query": "shareCode=system",
+					"query": "code=P_F8JZIM2QX2RUSUC0",
 					"scene": "1011"
 				},
 				{

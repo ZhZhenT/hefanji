@@ -66,7 +66,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID + '&ads=' + app.globalData.ads + '&shareCode=share' // system
+      path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID + '&ads=' + app.globalData.ads + '&code=register' // system
     }
   }
 })
