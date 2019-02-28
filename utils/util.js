@@ -272,10 +272,20 @@ function request(url,options = {}){
       },
       success: function (res) {
         wx.hideLoading()
+        
         resolve(res);
       },
       fail:function(err){
         wx.hideLoading()
+
+        if (err.errMsg == 'request:fail timeout') {
+          wx.showToast({
+            title: '请求超时,请检查网络设置',
+            icon: 'none',
+            duration: 1500
+          })
+        }
+
         reject({
           code:'404',
           message:'服务器请求错误',

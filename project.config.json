@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
@@ -44,7 +44,7 @@
 					"name": "containerID=7",
 					"pathName": "pages/index/index",
 					"query": "containerID=7",
-					"scene": "1011"
+					"scene": 1011
 				},
 				{
 					"id": 2,

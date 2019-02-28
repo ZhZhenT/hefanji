@@ -19,7 +19,7 @@ Page({
       'http://fanmofang.17d3.com/assets/images2/index-banner1.jpg'
     ],
     swiperCurrent: 0,
-    swiperAdsText: '望京',
+    swiperAdsText: '',
     scrollViewLeftDateList: [],
     scrollViewLeftCurrent: 0,
     scrollHeight: 0,
@@ -442,7 +442,8 @@ Page({
       utils.request('http://fanmofang.17d3.com/api/containers/' + containerID, { token: token })
         .then(function (res) {
           console.log(res, containerID,'获取货柜菜品')
-          var goodsList = res.data
+          var goodsList = res.data instanceof Array  ? res.data : [];
+           
           goodsList = utils.initGoodsList(goodsList, shopCard2)
           var res = utils.computeNumPrise(goodsList)
           //初始化左边日期

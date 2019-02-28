@@ -22,5 +22,8 @@
     "navigationBarBackgroundColor": "#ff8339",
     "navigationBarTitleText": "饭魔方",
     "navigationBarTextStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 15000
   }
 }
