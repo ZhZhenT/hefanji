@@ -24,7 +24,7 @@
    <view  id='discount_list1' class='discount_list'>
 
    <view  class='selelct-all' wx:if='{{select && !see}}'>
-    <text>不使用优惠卷</text>
+    <text style='padding-left:5px'>不使用优惠卷</text>
     <view bindtap='binSelectAlltab' class='select-btn {{selectAll ? "select" : "" }}'  wx:if='{{select}}'>
       <view class='icon'></view>
     </view>

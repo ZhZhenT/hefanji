@@ -105,7 +105,7 @@
   </view>
 
   <view wx:if='{{ispromptlayer}}' class='prompt-layer'>
-      <view class='txt'>温馨提示：取餐时间为 {{promptlayerTxT}}</view>
+      <view class='txt'>温馨提示：取餐截止时间为 {{promptlayerTxT}}</view>
       <view bindtap='bindCloseLayerTap' class='close'></view>
   </view>
 

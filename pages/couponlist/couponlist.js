@@ -58,6 +58,15 @@ Page({
       discount_list1: this.data.discount_list1,
       selectAll: flag
     })
+    var pages = getCurrentPages();
+    pages.forEach(function (item, index) {
+      if (index < pages.length) {
+        item.setData({
+          selectjuan: '',
+          juanprise: 0
+        })
+      }
+    })
   },
   binSelectTab (ev) {
     if (this.data.see) {

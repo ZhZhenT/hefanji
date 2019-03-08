@@ -405,7 +405,13 @@ Page({
       utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/info', {token:token})
         .then(function (res) {
           //存储货柜信息
-     
+          if (res.data.meal_settings.lunch) {
+            that.data.promptlayerTxT = res.data.meal_settings.lunch.order_end_time;
+            that.setData({
+              promptlayerTxT: that.data.promptlayerTxT
+            })
+            app.globalData.promptlayerTxT = that.data.promptlayerTxT
+          }
           if (res.data.id ){
             containerObj[res.data.id] = res.data.address + new Date().getTime()
             wx.setStorageSync('containerObj1', containerObj)
@@ -561,16 +567,17 @@ Page({
 
 
     // 获取取餐时间
-    utils.request('http://fanmofang.17d3.com/api/settings/all')
-      .then(function (res) {
-        that.data.promptlayerTxT = res.data.picking_start + '~' + res.data.picking_end;
-        that.setData({
-          promptlayerTxT: that.data.promptlayerTxT
-        })
-        app.globalData.promptlayerTxT = that.data.promptlayerTxT
-      }, function (err) {
+    // utils.request('http://fanmofang.17d3.com/api/settings/all')
+    //   .then(function (res) {
+    //     that.data.promptlayerTxT = res.data.picking_start + '~' + res.data.picking_end;
+    //     that.setData({
+    //       promptlayerTxT: that.data.promptlayerTxT
+    //     })
+    //     app.globalData.promptlayerTxT = that.data.promptlayerTxT
+    //     console.log(res, '取餐时间')
+    //   }, function (err) {
 
-      })
+    //   })
 
 
 

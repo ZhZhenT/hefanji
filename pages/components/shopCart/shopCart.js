@@ -207,9 +207,37 @@ Component({
       console.log(data, '订单详情')
       utils.request('http://fanmofang.17d3.com/api/order/create', { method: 'POST', token: token, data: data })
         .then(function (res) {
+          var orderID = res.data.order_id;
+
+          if (res.data.order_status === 'success') {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: '支付成功',
+              confirmColor: '#ff8339',
+              success: function (res) {
+                if (res.confirm) {
+                  that.setData({
+                    isCartShow: false
+                  })
+                  var myEventDetail = { noshow: true }
+
+                  that.triggerEvent('MyEventRemoveShopCartTap', myEventDetail)
+
+                  wx.redirectTo({
+                    url: '../paynewsuccess/paynewsuccess?orderID=' + orderID,
+                  })
+                } else if (res.cancel) {
+
+                }
+              }
+            })
+            return
+          }  
+
           if (res.data.status) {
             // 订单生成成功
-            var orderID = res.data.order_id;
+            
             console.log(res, '订单生成');
             utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/pay', { method: 'POST', token: token })
               .then(function (res) {
