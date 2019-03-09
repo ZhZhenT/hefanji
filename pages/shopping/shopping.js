@@ -56,22 +56,24 @@ Page({
     scrollTop:0,
     detail:[],
     
-    dinnerTimeCurrent: 0,
+    dinnerTimeCurrent: 1,
     dinnerTimeList: [
-      { id: 0, text: '早餐'},
-      { id: 1, text: '中餐' },
-      { id: 2, text: '下午茶'},
-      { id: 3, text: '晚餐'},
+
     ]
 
   },
   binddinnerTimeCurrentTap (ev) {
     if (this.data.dinnerTimeCurrent == ev.currentTarget.dataset.index) {
       return;
-    }
-    this.setData({
-      dinnerTimeCurrent: ev.currentTarget.dataset.index
+    } this.setData({
+      
     })
+
+    this.setData({
+      dinnerTimeCurrent: ev.currentTarget.dataset.index,
+      scrollTop: 0
+    })
+    this.getContainers(ev.currentTarget.dataset.id)
   },
   // 去分享页面
   binToShareTap (ev) {
@@ -375,6 +377,67 @@ Page({
   initDate: function () {
     return new Date;
   },
+  //get 餐品
+  getContainers: function (time) {
+
+    var that = this
+    var token = app.globalData.token
+    var containerID = app.globalData.containerID
+    var shopCard = wx.getStorageSync('showCard') || {}
+    var shopCard2 = shopCard[containerID] || {}
+    var time = time || 'lunch'
+    utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/3/?meal=' + time, { token: token })
+      .then(function (res) {
+        console.log(res, containerID, '获取货柜菜品')
+        var goodsList = res.data instanceof Array ? res.data : [];
+
+        goodsList = utils.initGoodsList(goodsList, shopCard2)
+        var res = utils.computeNumPrise(goodsList)
+        //初始化左边日期
+        var dataLsit = []
+        var addDate = ''
+        var len = goodsList.length
+        len = len > 3 ? 3 : len
+        goodsList.forEach(function (item, index) {
+          var nowDate = new Date()
+          if (utils.formatTime(nowDate) == item.date) {
+            addDate = '今天'
+          } else if (utils.formatTime(nowDate, 1) == item.date) {
+            addDate = '明天'
+          } else {
+            addDate = item.date.slice(5)
+          }
+          dataLsit.push(addDate)
+        })
+        that.setData({
+          scrollViewLeftDateList: dataLsit
+        })
+        utils.computeHeight(['.left .qucan'], function (contentheight) {
+          that.setData({
+            scrollLeftHeight: contentheight * len
+          })
+        }, true);
+
+        var detail = utils.getdatefenzu(goodsList);
+
+        that.setData({
+          totalNum: res.totalNum,
+          totalPrise: res.totalPrise,
+          reducePrise: res.reducePrise,
+          goodsList: goodsList,
+          detail: detail
+        })
+
+        app.globalData.goodsList = goodsList;
+        app.globalData.totalNum = res.totalNum;
+        app.globalData.totalPrise = res.totalPrise;
+        app.globalData.reducePrise = res.reducePrise;
+
+
+      }, function (err) {
+
+      })
+  },
   onLoad: function (options) {
 
     var that = this;
@@ -405,6 +468,7 @@ Page({
       utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/info', {token:token})
         .then(function (res) {
           //存储货柜信息
+          console.log(res, '货柜信息')
           if (res.data.meal_settings.lunch) {
             that.data.promptlayerTxT = res.data.meal_settings.lunch.order_end_time;
             that.setData({
@@ -416,7 +480,27 @@ Page({
             containerObj[res.data.id] = res.data.address + new Date().getTime()
             wx.setStorageSync('containerObj1', containerObj)
           }
-
+          if (res.data.meal_settings) {
+            that.data.dinnerTimeList = Object.keys(res.data.meal_settings).map((item) => {
+              let text = ''
+              if (item === 'breakfast') {
+                text = '早餐'
+              } else if (item === 'lunch') {
+                text = '午餐'
+              } else if (item === 'afternoon') {
+                text = '下午茶'
+              } else if (item === 'dinner') {
+                text = '晚餐'
+              }
+              return {
+                id: item,
+                text: text
+              }
+            })
+            that.setData({
+              dinnerTimeList: that.data.dinnerTimeList
+            })
+          }
           that.setData({
             swiperAdsText: res.data.address
           })
@@ -445,57 +529,8 @@ Page({
         })
 
       //获取当前货柜的所有菜品
-      utils.request('http://fanmofang.17d3.com/api/containers/' + containerID, { token: token })
-        .then(function (res) {
-          console.log(res, containerID,'获取货柜菜品')
-          var goodsList = res.data instanceof Array  ? res.data : [];
-           
-          goodsList = utils.initGoodsList(goodsList, shopCard2)
-          var res = utils.computeNumPrise(goodsList)
-          //初始化左边日期
-          var dataLsit = []
-          var addDate = ''
-          var len = goodsList.length
-          len = len > 3 ? 3 : len
-          goodsList.forEach(function (item, index) {
-            var nowDate = new Date()
-            if (utils.formatTime(nowDate) == item.date) {
-              addDate = '今天'
-            } else if (utils.formatTime(nowDate, 1) == item.date) {
-              addDate = '明天'
-            } else {
-              addDate = item.date.slice(5)
-            }
-            dataLsit.push(addDate)
-          })
-          that.setData({
-            scrollViewLeftDateList: dataLsit
-          })
-          utils.computeHeight(['.left .qucan'], function (contentheight) {
-            that.setData({
-              scrollLeftHeight: contentheight * len
-            })
-          }, true);
-
-          var detail = utils.getdatefenzu(goodsList);
-  
-          that.setData({
-            totalNum: res.totalNum,
-            totalPrise: res.totalPrise,
-            reducePrise: res.reducePrise,
-            goodsList: goodsList,
-            detail: detail
-          })
       
-          app.globalData.goodsList = goodsList;
-          app.globalData.totalNum = res.totalNum;
-          app.globalData.totalPrise = res.totalPrise;
-          app.globalData.reducePrise = res.reducePrise;
-
-
-        }, function (err) {
-
-        })
+      that.getContainers()
 
       wx.getSystemInfo({
         success: function (res) {
@@ -564,22 +599,6 @@ Page({
       }, function (err) {
 
       })
-
-
-    // 获取取餐时间
-    // utils.request('http://fanmofang.17d3.com/api/settings/all')
-    //   .then(function (res) {
-    //     that.data.promptlayerTxT = res.data.picking_start + '~' + res.data.picking_end;
-    //     that.setData({
-    //       promptlayerTxT: that.data.promptlayerTxT
-    //     })
-    //     app.globalData.promptlayerTxT = that.data.promptlayerTxT
-    //     console.log(res, '取餐时间')
-    //   }, function (err) {
-
-    //   })
-
-
 
   },
 

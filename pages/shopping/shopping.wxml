@@ -46,10 +46,10 @@
 
   <view class='right'>
 
-    <view>
+    <view wx:show='{{dinnerTimeList.length}}' >
       <scroll-view scroll-x>
-        <view class='dinner-time-wrap' style='display:none'>
-          <view bindtap='binddinnerTimeCurrentTap' data-index='{{index}}' class='time-list {{index==dinnerTimeCurrent?"active":""}}' wx:for='{{dinnerTimeList}}' wx:key='{{index}}'>{{item.text}}</view>
+        <view class='dinner-time-wrap' >
+          <view bindtap='binddinnerTimeCurrentTap' data-id='{{item.id}}' data-index='{{index}}' class='time-list {{index==dinnerTimeCurrent?"active":""}}' wx:for='{{dinnerTimeList}}' wx:key='{{index}}'>{{item.text}}</view>
         </view>
       </scroll-view>
     </view>
