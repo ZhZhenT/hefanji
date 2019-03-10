@@ -25,22 +25,36 @@ function addgoods(goodsList, goodsid, date, containerid, can){
      item.selected++;
 
      var showCard = wx.getStorageSync('showCard') || {};
+
      var container = {}
+
      if (showCard[containerid]){
        container = showCard[containerid]
      }else{
        showCard[containerid] = {}
      } 
+
      var datelist = {}
      if (container[date]){
        datelist = container[datelist]
      }else{
        showCard[containerid][date] = {}
-     } 
-     showCard[containerid][date][goodsid] = item.selected;
+     }
+
+     var o = {}
+
+      if (showCard[containerid][date][can]) {
+        o = showCard[containerid][date][can]
+      } else {
+        showCard[containerid][date][can] = {}
+      }
+
+     
+     showCard[containerid][date][can][goodsid] = item.selected;
+     
      wx.setStorageSync('showCard', showCard)
      
-     //console.log(containerid, date, goodsid, item.selected)
+     // console.log(containerid, date, goodsid, item.selected)
      
      return
     }
@@ -49,7 +63,7 @@ function addgoods(goodsList, goodsid, date, containerid, can){
   return goodsList
 }
 
-function reducegoods(goodsList, goodsid, date, containerid) {
+function reducegoods(goodsList, goodsid, date, containerid, can) {
   var nowindex = 0
   goodsList.forEach(function (item, index) {
     if (item.date == date) {
@@ -57,7 +71,7 @@ function reducegoods(goodsList, goodsid, date, containerid) {
       return
     }
   });
-  goodsList[nowindex].products.forEach(function (item) {
+  goodsList[nowindex].products[can].forEach(function (item) {
     if (item.product.id == goodsid) {
       item.selected--;
 
@@ -74,7 +88,17 @@ function reducegoods(goodsList, goodsid, date, containerid) {
       } else {
         showCard[containerid][date] = {}
       }
-      showCard[containerid][date][goodsid] = item.selected;
+      var o = {}
+
+      if (showCard[containerid][date][can]) {
+        o = showCard[containerid][date][can]
+      } else {
+        showCard[containerid][date][can] = {}
+      }
+
+
+      showCard[containerid][date][can][goodsid] = item.selected;
+
       wx.setStorageSync('showCard', showCard)
       return
     }
@@ -91,10 +115,19 @@ function removeallgoods(goodsList, containerid){
   }
 
   wx.setStorageSync('showCard', showCard)
+
+  
   goodsList.forEach(function (item) {
-    item['products'].forEach(function (item) {
+    
+    /*item['products'].forEach(function (item) {
       item.selected = 0;
-    })
+    })*/
+    for (var i in item['products']) {
+      item['products'][i].forEach(function (item) {
+        item.selected = 0;
+      })
+    }
+
   })
   
   return goodsList
@@ -223,7 +256,22 @@ function findMax (goodsList) {
     } else {
       item.datetext1 = '预定'
     }
-    item['products'].forEach(function (item) {
+
+    for (var i in item['products']) {
+
+      item['products'][i].forEach(function (item) {
+        if (item.selected > 0) {
+          if (res) {
+            res = Math.max(item.price, res)
+          } else {
+            res = item.price
+          }
+        }
+      })
+
+    }
+
+    /*item['products'].forEach(function (item) {
 
       if (item.selected > 0) {
         if (res) {
@@ -233,7 +281,7 @@ function findMax (goodsList) {
         }
       }
 
-    })
+    })*/
   })
 
   
@@ -242,7 +290,7 @@ function findMax (goodsList) {
 }
 
 function initGoodsList(goodsList, shopCard2){
-  console.log(goodsList)
+  // console.log(goodsList)
   goodsList.forEach(function (item) {
 
     var goodsnumlist = {}
@@ -251,14 +299,36 @@ function initGoodsList(goodsList, shopCard2){
       goodsnumlist = shopCard2[item.date]
     }
     
+    
 
     for (var i in item['products']) {
-
+  
       item['products'][i].forEach(function (item) {
-        if (goodsnumlist[item.product.id]) {
+        item.selected = 0
+        item.can = i + ''
+        let text = ''
+        if (item.can === 'breakfast') {
+          text = '早餐'
+        } else if (item.can === 'lunch') {
+          text = '午餐'
+        } else if (item.can === 'afternoon') {
+          text = '下午茶'
+        } else if (item.can === 'dinner') {
+          text = '晚餐'
+        }
+        item.cantxt = text
+        if (goodsnumlist[i]) {
+          if (goodsnumlist[i][item.product.id]) {
+            console.log(goodsnumlist, 'xxxx')
+            item.selected = goodsnumlist[i][item.product.id]
+            item.selected = item.selected > item.available ? item.available : item.selected
+          }
+        }
+
+        /*if (goodsnumlist[item.product.id]) {
           item.selected = goodsnumlist[item.product.id]
           item.selected = item.selected > item.available ? item.available : item.selected
-        }
+        }*/
       })
 
     }
@@ -347,9 +417,9 @@ function getdatefenzu(goodsList){
     var arr = []
 
     for (var i in item['products']) {
-      
+  
       item['products'][i].forEach(function (val) {
-        console.log(val,'val')
+        
         if (val.selected != 0) {
           arr.push({ 'id': val.product.id, 'num': val.selected })
         }
@@ -370,7 +440,7 @@ function getdatefenzu(goodsList){
     }
 
   })
-  console.log(detail,'detaildetail')
+ 
   return detail
 }
 

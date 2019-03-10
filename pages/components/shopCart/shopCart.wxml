@@ -31,8 +31,21 @@
 
           <text wx:if='{{dates.order_date == items.date}}' class='icon'> 取餐日期：{{items.date}} <text class='{{items.datetext1 == "今天"?"jintian":"yuding"}}'>({{items.datetext1}})</text></text>
         </view>
+        
+      <view wx:for='{{items.products}}' wx:key='{{index}}' wx:for-item="items1" >
 
-      <view wx:if='{{item.selected}}' wx:for='{{items.products}}' wx:key='{{index}}'  class='goods'>
+<view wx:if='{{item.selected}}' wx:for='{{items1}}' wx:key='{{index}}'  class='goods'>
+        <view class='goods-name'> <text class='cantext'>{{item.cantxt}}</text> {{item.product.name}} </view>
+        <view class='goods-cardtotalprice'>￥{{item.price*item.selected}}</view>
+        <view class='goods-num-controller'>
+          <view data-dateid='{{items.date}}' data-goodsId='{{item.product.id}}' data-can='{{item.can}}'  bindtap='_bindReduceTap' class='reduce icon'></view>
+          <view  class='num'>{{item.selected}}</view>
+          <view data-available='{{item.available}}' data-total='{{item.selected}}' data-can='{{item.can}}' data-dateid='{{items.date}}' data-goodsId='{{item.product.id}}' bindtap='_bindAddTap' class='add icon'></view>
+        </view>
+</view>
+      </view>
+
+      <!-- <view wx:if='{{item.selected}}' wx:for='{{items.products}}' wx:key='{{index}}'  class='goods'>
         <view class='goods-name'>{{item.product.name}} </view>
         <view class='goods-cardtotalprice'>￥{{item.price*item.selected}}</view>
         <view class='goods-num-controller'>
@@ -40,7 +53,9 @@
           <view  class='num'>{{item.selected}}</view>
           <view data-available='{{item.available}}' data-total='{{item.selected}}' data-dateid='{{items.date}}' data-goodsId='{{item.product.id}}' bindtap='_bindAddTap' class='add icon'></view>
         </view>
-      </view>
+      </view> -->
+
+
     </block>
 
     </view>

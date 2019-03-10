@@ -56,7 +56,7 @@
     <scroll-view scroll-top="{{scrollTop}}" scroll-y style="height:{{scrollHeight}}px;box-sizing: border-box;" >
         <view  wx:key='{{index}}' wx:for='{{goodsList[scrollViewLeftCurrent].products[dinnerTimeList[dinnerTimeCurrent].id]}}' class='goods'>
 
-        <view data-dateid='{{goodsList[scrollViewLeftCurrent].date}}'  data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail' class='img'>
+        <view data-dateid='{{goodsList[scrollViewLeftCurrent].date}}' data-can='{{item.can}}'  data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail' class='img'>
            <image src='{{item.product.feature_image}}' style='width:154rpx;height:166rpx;display:block'></image>
            <!-- 打折 zhekou  热销 good-hot -->
           <!-- <view wx:if='{{item.discount||item.selling}}' class='{{item.selling?"zhekou":item.discount?"good-hot":""}}'>{{item.topText}}</view> -->
@@ -67,6 +67,7 @@
         </view>
         <view 
         data-dateid='{{goodsList[scrollViewLeftCurrent].date}}'  
+        data-can='{{item.can}}'
         data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail'  
         class='center'>
           <view  class='goods-details'>
@@ -88,7 +89,7 @@
           <view class='goods-price'>￥{{item.price}} <view wx:if='{{item.product.base_price && item.price!=item.product.base_price}}' class='goods-old-price'>￥{{item.product.base_price}} </view></view>
         </view>
         <view wx:if='{{item.available}}' class='goods-num-controller'>
-          <view data-dateid='{{goodsList[scrollViewLeftCurrent].date}}' data-goodsId='{{item.product.id}}' wx:if='{{item.selected}}' bindtap='bindReduceTap' class='reduce icon'></view>
+          <view data-dateid='{{goodsList[scrollViewLeftCurrent].date}}' data-goodsId='{{item.product.id}}' wx:if='{{item.selected}}' data-can='{{dinnerTimeList[dinnerTimeCurrent].id}}' bindtap='bindReduceTap' class='reduce icon'></view>
           <view wx:if='{{item.selected}}' class='num'>{{item.selected}}</view>
           <view data-available='{{item.available}}' data-total='{{item.selected}}'  data-dateid='{{goodsList[scrollViewLeftCurrent].date}}' data-can='{{dinnerTimeList[dinnerTimeCurrent].id}}' data-goodsId='{{item.product.id}}' bindtap='bindAddTap' class='add icon'></view>
         </view>

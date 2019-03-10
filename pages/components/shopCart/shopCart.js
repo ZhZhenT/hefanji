@@ -164,6 +164,7 @@ Component({
     _bindAddTap: function(ev){
       var myEventDetail = {
         goodsid: ev.currentTarget.dataset.goodsid,
+        can: ev.currentTarget.dataset.can,
         dateid: ev.currentTarget.dataset.dateid,
         available :ev.currentTarget.dataset.available,
         total :ev.currentTarget.dataset.total
@@ -174,6 +175,7 @@ Component({
     _bindReduceTap: function (ev) {
       var myEventDetail = {
         goodsid: ev.currentTarget.dataset.goodsid,
+          can: ev.currentTarget.dataset.can,
         dateid: ev.currentTarget.dataset.dateid
       }//提供给事件监听函数 商品id
       this.triggerEvent('MyEventReduceGoods', myEventDetail)

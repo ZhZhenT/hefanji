@@ -56,3 +56,9 @@
         -webkit-transform: translate(0,5px) scale(0.95);
     }
 }
+
+.cantext{
+font-size: 16rpx;display: inline-block;padding: 0rpx 5rpx 0rpx;
+color: #3D9FF9;border: 1rpx solid #3D9FF9;
+transform: translateY(-3rpx)
+}

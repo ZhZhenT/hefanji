@@ -73,7 +73,7 @@ Page({
       dinnerTimeCurrent: ev.currentTarget.dataset.index,
       scrollTop: 0
     })
-    this.getContainers(ev.currentTarget.dataset.id)
+    // this.getContainers(ev.currentTarget.dataset.id)
   },
   // 去分享页面
   binToShareTap (ev) {
@@ -86,9 +86,9 @@ Page({
 
     var goodsid = ev.currentTarget.dataset.goodsid;
     var dateid = ev.currentTarget.dataset.dateid;
-
+    var can = ev.currentTarget.dataset.can;
     wx.navigateTo({
-      url: '../goodsdetail/goodsdetail?goodsid=' + goodsid + '&dateid=' + dateid,
+      url: '../goodsdetail/goodsdetail?goodsid=' + goodsid + '&dateid=' + dateid + '&can=' + can,
     })
 
   },
@@ -164,10 +164,11 @@ Page({
     var goodsid = ev.detail.goodsid
     // 商品时间
     var dateid = ev.detail.dateid
+    var can = ev.detail.can
     //货柜ID
     var containerid = app.globalData.containerID
     // 计算当前商品数量
-    goodsList = utils. addgoods(goodsList, goodsid, dateid, containerid);
+    goodsList = utils.addgoods(goodsList, goodsid, dateid, containerid,can);
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
     var detail = utils.getdatefenzu(goodsList);
@@ -195,10 +196,11 @@ Page({
     var goodsid = ev.detail.goodsid
     // 商品时间
     var dateid = ev.detail.dateid
+    var can = ev.detail.can
     //货柜ID
     var containerid = app.globalData.containerID
     // 计算当前商品数量
-    goodsList = utils.reducegoods(goodsList, goodsid, dateid, containerid);
+    goodsList = utils.reducegoods(goodsList, goodsid, dateid, containerid,can);
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
     var detail = utils.getdatefenzu(goodsList);
@@ -231,9 +233,9 @@ Page({
     var dateid = ev.currentTarget.dataset.dateid
     //货柜ID
     var containerid = app.globalData.containerID
-   
+    var can = ev.currentTarget.dataset.can
     // 计算当前商品数量
-    goodsList = utils.reducegoods(goodsList, goodsid, dateid, containerid);
+    goodsList = utils.reducegoods(goodsList, goodsid, dateid, containerid, can);
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
     var detail = utils.getdatefenzu(goodsList);
@@ -419,7 +421,7 @@ Page({
             scrollLeftHeight: contentheight * len
           })
         }, true);
-
+        
         var detail = utils.getdatefenzu(goodsList);
 
         that.setData({

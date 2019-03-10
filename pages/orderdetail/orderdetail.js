@@ -85,9 +85,10 @@ Page({
     var goodsid = ev.detail.goodsid
     // 商品时间
     var dateid = ev.detail.dateid
+    var can = ev.detail.can
     var containerid = app.globalData.containerID
     // 计算当前商品数量
-    goodsList = utils.reducegoods(goodsList, goodsid, dateid, containerid);
+    goodsList = utils.reducegoods(goodsList, goodsid, dateid, containerid,can);
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
 
@@ -159,8 +160,10 @@ Page({
     var goodsid = ev.detail.goodsid
     // 商品时间
     var dateid = ev.detail.dateid
+    var containerid = app.globalData.containerID
+    var can = ev.detail.can
     // 计算当前商品数量
-    goodsList = utils.addgoods(goodsList, goodsid, dateid);
+    goodsList = utils.addgoods(goodsList, goodsid, dateid,containerid,can);
     
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
@@ -200,8 +203,9 @@ Page({
     var goodsid = ev.currentTarget.dataset.goodsid
     // 餐品时间
     var dateid = ev.currentTarget.dataset.dateid
+    var can = ev.currentTarget.dataset.can
     // 计算当前商品数量
-    goodsList = utils.reducegoods(goodsList, goodsid, dateid);
+    goodsList = utils.reducegoods(goodsList, goodsid, dateid,can);
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
 
@@ -239,8 +243,9 @@ Page({
     var goodsid = ev.currentTarget.dataset.goodsid
     // 餐品时间
     var dateid = ev.currentTarget.dataset.dateid
+    var can = ev.currentTarget.dataset.can
     // 计算当前商品数量
-    goodsList = utils.addgoods(goodsList, goodsid, dateid);
+    goodsList = utils.addgoods(goodsList, goodsid, dateid,can);
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
   

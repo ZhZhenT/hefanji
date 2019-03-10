@@ -1,13 +1,13 @@
 <!--pages/goodsdetail/goodsdetail.wxml-->
 <view class='goodsdetail'>
 
-      <view wx:if='{{goodsid == item.product.id}}' wx:key='{{index}}' wx:for='{{goodsList[dateid].products}}' class='date'>
+      <view wx:if='{{goodsid == item.product.id}}' wx:key='{{index}}' wx:for='{{goodsList[dateid].products[can]}}' class='date'>
   <text class='icon'>取餐日期：{{goodsList[dateid].date}} <text class='{{dateid == 0?"jintian":"yuding"}}'>（{{goodsList[dateid].datetext1 == "今天"?"今天":"预定"}}）</text></text>
       </view>
 
       
 
-      <view wx:if='{{goodsid == item.product.id}}' wx:key='{{index}}' wx:for='{{goodsList[dateid].products}}' class='goods'>
+      <view wx:if='{{goodsid == item.product.id}}' wx:key='{{index}}' wx:for='{{goodsList[dateid].products[can]}}' class='goods'>
         <view data-goodsId='{{item.product.id}}'  class='img'>
            <image src='{{item.product.feature_image}}' style='width:154rpx;height:166rpx;display:block'></image>
 
@@ -25,16 +25,19 @@
               <text class='tuijian' wx:if='{{item.is_friend_like}}'>推荐</text> {{item.product.name}}<text wx:if='{{0}}'>{{item.product.description}}</text></view>
             <view class='goods-kucun'>
             <text wx:if='{{item.available}}'>剩余{{item.available}}份</text>
+            
             <text wx:else> 已售罄</text>
-
             <view class='goods-hot'><view class='hot' wx:key='{{index}}' wx:for='{{item.product.spicy_rating}}'></view></view></view>
+            <view class='goods-kucun'>
+              <text>{{item.cantxt}}</text>
+            </view>
           </view>
           <view class='goods-price'>￥{{item.price}}<view wx:if='{{item.product.base_price}}' class='goods-old-price'>￥{{item.product.base_price}}</view></view>
         </view>
         <view wx:if='{{item.available}}' class='goods-num-controller'>
-          <view data-dateid='{{goodsList[dateid].date}}'  data-goodsId='{{item.product.id}}' wx:if='{{item.selected}}' bindtap='bindReduceTap' class='reduce icon'></view>
+          <view data-dateid='{{goodsList[dateid].date}}'  data-goodsId='{{item.product.id}}' data-can='{{item.can}}' wx:if='{{item.selected}}' bindtap='bindReduceTap' class='reduce icon'></view>
           <view wx:if='{{item.selected}}' class='num'>{{item.selected}}</view>
-          <view data-available='{{item.available}}' data-total='{{item.selected}}' data-dateid='{{goodsList[dateid].date}}'  data-goodsId='{{item.product.id}}' bindtap='bindAddTap' class='add icon'></view>
+          <view data-available='{{item.available}}' data-total='{{item.selected}}' data-can='{{item.can}}' data-dateid='{{goodsList[dateid].date}}'  data-goodsId='{{item.product.id}}' bindtap='bindAddTap' class='add icon'></view>
         </view>
       </view>
 
