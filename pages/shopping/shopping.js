@@ -257,6 +257,7 @@ Page({
     // 获取库存 当前数量
     var available = ev.currentTarget.dataset.available
     var total = ev.currentTarget.dataset.total
+    var can = ev.currentTarget.dataset.can
     if (available <= total){
         wx.showModal({
           title: '提示',
@@ -287,7 +288,7 @@ Page({
     //货柜ID
     var containerid = app.globalData.containerID
     // 计算当前商品数量
-    goodsList = utils.addgoods(goodsList, goodsid, dateid, containerid);
+    goodsList = utils.addgoods(goodsList, goodsid, dateid, containerid, can);
     // 计算总价与数量
     var res = utils.computeNumPrise(goodsList)
     var detail = utils.getdatefenzu(goodsList);
@@ -385,6 +386,7 @@ Page({
     var containerID = app.globalData.containerID
     var shopCard = wx.getStorageSync('showCard') || {}
     var shopCard2 = shopCard[containerID] || {}
+    
     var time = time || 'lunch'
     utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/3/?meal=' + time, { token: token })
       .then(function (res) {
@@ -529,7 +531,6 @@ Page({
         })
 
       //获取当前货柜的所有菜品
-      
       that.getContainers()
 
       wx.getSystemInfo({
@@ -584,7 +585,7 @@ Page({
 
 
     // 获取轮播图片
-    utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/slides')
+    /*utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/slides')
       .then(function (res) {
         var arr = []
         res.data.forEach(function (item, index) {
@@ -598,7 +599,7 @@ Page({
         }
       }, function (err) {
 
-      })
+      })*/
 
   },
 

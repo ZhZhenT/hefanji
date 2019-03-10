@@ -11,7 +11,7 @@ function formatNumber (n){
   return n[1] ? n : '0' + n
 }
 
-function addgoods(goodsList, goodsid, date, containerid){
+function addgoods(goodsList, goodsid, date, containerid, can){
   var nowindex = 0
   goodsList.forEach(function (item,index){
     if(item.date == date){
@@ -19,8 +19,8 @@ function addgoods(goodsList, goodsid, date, containerid){
       return 
     }
   });
-
-  goodsList[nowindex].products.forEach(function (item) {
+  goodsList[nowindex].products[can].forEach(function (item) {
+    
     if (item.product.id == goodsid) {
      item.selected++;
 
@@ -89,8 +89,8 @@ function removeallgoods(goodsList, containerid){
   if (showCard[containerid]) {
     showCard[containerid] = {}
   }
-  wx.setStorageSync('showCard', showCard)
 
+  wx.setStorageSync('showCard', showCard)
   goodsList.forEach(function (item) {
     item['products'].forEach(function (item) {
       item.selected = 0;
@@ -181,20 +181,33 @@ function computeNumPrise(goodsList) {
     }else{
       item.datetext1 = '预定'
     }
-    item['products'].forEach(function (item) {
 
+    for (var i in item['products']) {
+
+      item['products'][i].forEach(function (item) {
+        if (!item.is_hot_sale) {
+          item.zhekou = parseFloat(item.price / item.product.base_price * 10).toFixed(1);
+        } else {
+          item.zhekou = 0
+        }
+        res.totalNum += item.selected;
+        res.totalPrise = parseFloat((res.totalPrise * 100 + Number(item.price) * Number(item.selected) * 100) / 100).toFixed(2);
+        res.reducePrise = parseFloat((res.reducePrise * 100 + Number(item.product.base_price) * Number(item.selected) * 100) / 100).toFixed(2);
+      })
+
+    }
+
+    /*item['products'].forEach(function (item) {
       if (!item.is_hot_sale) {
         item.zhekou =  parseFloat(item.price / item.product.base_price * 10).toFixed(1);
       } else {
         item.zhekou = 0
       }
-
       res.totalNum += item.selected;
- 
       res.totalPrise = parseFloat((res.totalPrise * 100 + Number(item.price) * Number(item.selected) * 100) / 100).toFixed(2);
       res.reducePrise = parseFloat((res.reducePrise * 100 + Number(item.product.base_price) * Number(item.selected) * 100) / 100).toFixed(2);
-    
-    })
+    })*/
+
   })
 
   res.reducePrise = parseFloat((res.reducePrise * 100 - res.totalPrise * 100) / 100).toFixed(2);
@@ -229,6 +242,7 @@ function findMax (goodsList) {
 }
 
 function initGoodsList(goodsList, shopCard2){
+  console.log(goodsList)
   goodsList.forEach(function (item) {
 
     var goodsnumlist = {}
@@ -236,14 +250,25 @@ function initGoodsList(goodsList, shopCard2){
     if (shopCard2[item.date]) {
       goodsnumlist = shopCard2[item.date]
     }
+    
 
-    //console.log(goodsnumlist)
-    item['products'].forEach(function (item) {
+    for (var i in item['products']) {
+
+      item['products'][i].forEach(function (item) {
+        if (goodsnumlist[item.product.id]) {
+          item.selected = goodsnumlist[item.product.id]
+          item.selected = item.selected > item.available ? item.available : item.selected
+        }
+      })
+
+    }
+
+    /*item['product'].forEach(function (item) {
       if (goodsnumlist[item.product.id]){
         item.selected = goodsnumlist[item.product.id]
         item.selected = item.selected > item.available ? item.available : item.selected
       }
-    })
+    })*/
 
   })
   return goodsList
@@ -320,11 +345,22 @@ function getdatefenzu(goodsList){
   goodsList.forEach(function (item) {
     var obj = {}
     var arr = []
-    item.products.forEach(function (val) {
+
+    for (var i in item['products']) {
+      
+      item['products'][i].forEach(function (val) {
+        console.log(val,'val')
+        if (val.selected != 0) {
+          arr.push({ 'id': val.product.id, 'num': val.selected })
+        }
+      })
+
+    }
+    /*item.products.forEach(function (val) {
       if (val.selected != 0) {
         arr.push({ 'id': val.product.id, 'num': val.selected })
       }
-    })
+    })*/
 
     obj.order_date = item.date
     obj.products = arr
@@ -334,7 +370,7 @@ function getdatefenzu(goodsList){
     }
 
   })
-
+  console.log(detail,'detaildetail')
   return detail
 }
 
