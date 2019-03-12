@@ -186,11 +186,15 @@ Component({
       app.globalData.goodsList.forEach(function (item) {
         var obj = {}
         var arr = []
-        item.products.forEach(function (val) {
-          if (val.selected != 0) {
-            arr.push({ 'id': val.product.id, 'num': val.selected })
-          }
-        })
+
+        for (var i in item['products']) {
+          item['products'][i].forEach(function (val) {
+            if (val.selected != 0) {
+              arr.push({ 'id': val.product.id, 'num': val.selected })
+            }
+          })
+        }
+
         obj.order_date = item.date
         obj.products = arr
 

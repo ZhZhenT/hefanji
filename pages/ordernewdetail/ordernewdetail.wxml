@@ -55,7 +55,7 @@
           </view>
 
           <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}
-          data-ssid='{{val.slot_schema_id}}' data-ssid='{{val.slot_schema_id}}' data-order_detail_id='{{val.order_detail_id}}' bindtouchend='bindOpenlongTap' bindtouchstart='bindOpenTap' wx:if='{{ val.is_pick_button_visible && !val.refund_status}}' class='btn'>{{val.time? '再次开启' + '(' + val.time +')':'开启格子'}}</view>
+          data-ssid='{{val.slot_schema_id}}' data-ssid='{{val.slot_schema_id}}' data-order_detail_id='{{val.order_detail_id}}' bindtouchend='bindOpenlongTap' bindtouchstart='bindOpenTap' wx:if='{{ val.is_pick_button_visible && !val.refund_status}}' class='btn'>{{val.time? '再次开启' + '（' + val.time +'）':'开启格子'}}</view>
           <view style='background: transparent;color:#666666;  text-align: right' wx:elif='{{val.delivery_status == "picked_up" && !val.refund_status}}' class='btn no'>已取餐</view>
           <view wx:elif='{{!item.datetext && !val.refund_status}}' class='btn no'>已过期</view>
           <view data-tishi='{{val.pick_button_invisible_reason}}' bindtouchstart='bindNoOpenTap' class='btn no' wx:elif='{{val.delivery_status !="picked_up" && !val.refund_status}}'>开启格子</view>

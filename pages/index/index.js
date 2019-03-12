@@ -123,7 +123,22 @@ Page({
 
     })
 
+    utils.request('http://fanmofang.17d3.com/api/containers/all', { token: app.globalData.token })
+      .then(function (res) {
+        console.log(res,'containers')
+        var useList = res.data.map((item)=>{
+          return {
+            id:item.id,
+            ads: item.address
+          }
+        })
+        that.setData({
+          useList: useList
+        })
+      }, function (err) {
 
+      })
+    return
     var containerObj = wx.getStorageSync('containerObj1') || {};
     var useList = []
 

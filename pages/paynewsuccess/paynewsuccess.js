@@ -61,6 +61,24 @@ Page({
     }
     clearTimeout(this.data.bindtimer);
   },
+  searchStatus1: function (c) {
+    var that = this;
+    var beginTime = new Date().getTime();
+    clearInterval(c.timer1)
+    c.time = 59
+    c.time = c.time ? c.time : 59
+    c.timer1 = setInterval(function () {
+      that.setData({
+        ordergoodslist1: that.data.ordergoodslist1
+      });
+      console.log(c.time)
+      if (c.time == 0) {
+        clearInterval(c.timer1)
+      } else {
+        c.time--
+      }
+    }, 1000)
+  },
   bindOpenTap: function (ev) {
     var that = this;
     this.data.bindstarttime = new Date().getTime();
@@ -106,7 +124,7 @@ Page({
             var slot_schema_ids = res.data.data.slot_schema_id
             /* 开启一个轮询 查询取餐状态 */
             that.searchStatus(slot_schema_ids, token, c)
-            //that.searchStatus1(c)
+            that.searchStatus1(c)
             wx.showModal({
               title: '提示',
               showCancel: false,

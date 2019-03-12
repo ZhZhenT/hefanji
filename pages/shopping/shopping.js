@@ -557,6 +557,7 @@ Page({
       });
 
       utils.computeHeight(['.swiper-wrap', '.shopCart', '.dinner-time-wrap'], function (contentheight) {
+        console.log(contentheight,'contentheight')
         that.setData({
           scrollHeight: contentheight
         })

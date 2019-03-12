@@ -202,7 +202,7 @@ Page({
             // console.log(res.data.data)
             that.searchStatus(order_detail_id, token, c)
             that.searchStatus3(order_detail_id, token, c)
-            //that.searchStatus1(c) 
+            that.searchStatus1(c) 
             wx.showModal({
               title: '提示',
               showCancel: false,
@@ -321,10 +321,10 @@ Page({
     var that = this;
     var beginTime = new Date().getTime();
     clearInterval(c.timer1)
+    c.time = 59
     c.time = c.time ? c.time : 59
     c.timer1 = setInterval(function () {
       that.setData({
-        progressShow: false,
         ordergoodslist1: that.data.ordergoodslist1
       });
       console.log(c.time)

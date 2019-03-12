@@ -28,8 +28,8 @@
  .goods .goods-num-controller .icon.reduce{background: url('http://fanmofang.17d3.com/assets/images2/goods-reduce-icon.png') left center no-repeat;background-size: 48rpx 48rpx;}
  .goods .goods-num-controller .icon.add{background: url('http://fanmofang.17d3.com/assets/images2/goods-add-icon.png') right center no-repeat;background-size: 48rpx 48rpx;}/* pages/orderdetail/orderdetail.wxss */
 
- .goods .btn{background: #ff8339;color: #ffffff;font-size: 22rpx;font-weight: bold;text-align: center;height: 60rpx;line-height: 60rpx;width: 160rpx;margin: 0 auto;border-radius: 10rpx;position: absolute;right: 0;bottom: 0}
-  .goods .btn2{background: #48A3F6;color: #ffffff;font-size: 22rpx;font-weight: bold;text-align: center;height: 60rpx;line-height: 60rpx;width: 160rpx;margin: 0 auto;border-radius: 10rpx;position: absolute;right: 180rpx;bottom: 0}
+ .goods .btn{background: #ff8339;color: #ffffff;font-size: 22rpx;font-weight: bold;text-align: center;height: 60rpx;line-height: 60rpx;width: 165rpx;margin: 0 auto;border-radius: 10rpx;position: absolute;right: 0;bottom: 0}
+  .goods .btn2{background: #48A3F6;color: #ffffff;font-size: 22rpx;font-weight: bold;text-align: center;height: 60rpx;line-height: 60rpx;width: 165rpx;margin: 0 auto;border-radius: 10rpx;position: absolute;right: 180rpx;bottom: 0}
  .goods .btn.no{background:#969696}
 
  .progress{height: 10rpx;background: #ff5f00;position: fixed;width: 0;top:0;left: 0;z-index: 100}
