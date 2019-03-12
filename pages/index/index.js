@@ -10,7 +10,8 @@ Page({
     useList:[],
     indexshow:false,
     containerid:0,
-    bgH :0
+    bgH :0,
+    promotions: []
   },
   //扫一扫
   binSaoYiSaoTap:function(){
@@ -46,6 +47,14 @@ Page({
       url: '/pages/shopping/shopping?containerID=' + id
     })
 
+  },
+  bindTojuan (ev) {
+    
+    var code = ev.target.dataset.code
+    var containerid = ev.target.dataset.containerid
+    wx.navigateTo({
+      url: '/pages/index/index?containerID=' + containerid + '&code=' + code
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -134,6 +143,16 @@ Page({
         })
         that.setData({
           useList: useList
+        })
+      }, function (err) {
+
+      })
+
+    utils.request('http://fanmofang.17d3.com/api/promotions/all', { token: app.globalData.token })
+      .then(function (res) {
+        console.log(res, 'promotions')
+        that.setData({
+          promotions: res.data
         })
       }, function (err) {
 

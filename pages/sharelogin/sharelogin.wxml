@@ -89,7 +89,7 @@
         <view class='text'>给新朋友一些机会吧</view>
       </view>
     </view>
-    <view wx:if='{{ads}}' class='ads'>
+    <view wx:if='{{ads && ads != "undefined"}}' class='ads'>
       来源柜机：{{ads}}
     </view>
     <view class='btn-wrap'>

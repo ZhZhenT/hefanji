@@ -12,6 +12,11 @@
     <view data-containerID='{{item.id}}' bindtap='bindToShoppingTap' wx:key='{{index}}' class='item' wx:for="{{useList}}">
      <view class='ads'>{{item.ads}}</view>
     </view>
+
+    <view data-code='{{item.code}}'  data-containerID='{{item.id}}' wx:key='{{index}}' bindtap='bindTojuan' class='item' wx:for="{{promotions}}">
+      测试领卷：{{promotions.name}}
+    </view>
+
   </scroll-view>
 
 
