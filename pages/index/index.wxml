@@ -14,7 +14,7 @@
     </view>
 
     <view data-code='{{item.code}}'  data-containerID='{{item.id}}' wx:key='{{index}}' bindtap='bindTojuan' class='item' wx:for="{{promotions}}">
-      测试领卷：{{promotions.name}}
+      测试领卷：{{item.name}}
     </view>
 
   </scroll-view>

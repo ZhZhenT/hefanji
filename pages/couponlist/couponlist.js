@@ -110,6 +110,7 @@ Page({
     let juan = this.data.discount_list1.find((item) => {
       if (item.select) { 
         app.globalData.selectID = item.id
+        app.globalData.selectID_phone = item.is_mobile_required
         return item
       }
     })

@@ -24,10 +24,13 @@ Page({
    */
   binTocouponlistTap: function () {
     let selectID = ''
+    let selectID_phone = ''
     if (this.data.selectjuan) {
       selectID = this.data.selectjuan.id
+      selectID_phone = this.data.selectjuan.is_mobile_required
     }
     app.globalData.selectID = selectID
+    app.globalData.selectID_phone = selectID_phone
     wx.navigateTo({
       url: '/pages/couponlist/couponlist?selectjuan=' + selectID + '&totalPrise=' + app.globalData.totalPrise
     })
@@ -281,6 +284,7 @@ Page({
       juanprise: 0,
     })
     app.globalData.selectID = ''
+    app.globalData.selectID_phone = ''
   }, 
   onLoad: function (options) {
 

@@ -86,7 +86,7 @@ Component({
     
       if (this.data.isOrderConfirm) {
 
-        if ((/^1(3|4|5|7|8)\d{9}$/.test(wx.getStorageSync('mobile')))) {
+        if (wx.getStorageSync('mobile')) {
           // console.log('已经绑定手机号 直接拉起支付接口')
           that.pay()
         } else {
@@ -209,6 +209,22 @@ Component({
         detail: detail,
         user_coupon_id: app.globalData.selectID || ''
       }
+      
+      if (app.globalData.selectID && app.globalData.selectID_phone && !wx.getStorageSync('mobile')) {
+         // 选取必须绑定号码才能使用的优惠卷 
+        wx.showModal({
+          title: '提示',
+          content: '您使用的优惠卷需要绑定手机号码后使用，请到个人中心绑定手机号码后购买。',
+          confirmColor: '#ff8339',
+          confirmText: '确定',
+          showCancel: false,
+          success: function (res) {
+ 
+          }
+        }) 
+        return 
+      }
+      
       var token = app.globalData.token;
       console.log(data, '订单详情')
       utils.request('http://fanmofang.17d3.com/api/order/create', { method: 'POST', token: token, data: data })

@@ -36,7 +36,7 @@
 
         <view class="section">
           <view bindtap='submit' class='btn'>
-            领取礼包
+            领取礼包 {{'分享人：' + shareuserid}}
           </view>
         </view>
 
@@ -72,8 +72,9 @@
 
       <view style=' padding: 0 60rpx;'>
         <view class='btn-wrap'>
-           <view wx:if='{{!ads}}' bindtap='bindToIndexTap' class='btn btn1'>去首页</view>
-          <view wx:if='{{ads}}' bindtap='binToShopTab' class='btn btn1'>现在点餐</view>
+
+          <view wx:if='{{!containerID || containerID == "undefined"}}' bindtap='bindToIndexTap' class='btn btn1'>去首页</view>
+          <view wx:if='{{containerID && containerID != "undefined"}}' bindtap='binToShopTab' class='btn btn1'>现在点餐</view>
           <view bindtap='binCouponlistTab' class='btn btn2'>查看优惠卷</view>
         </view>
       </view>

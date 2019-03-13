@@ -87,7 +87,7 @@
       </view>
       <view class='item'>
         <view>优惠：
-          <text class='col969696'>(新人专享满20元减10元)</text>
+          <!-- <text class='col969696'>(新人专享满20元减10元)</text> -->
         </view>  
          <!-- util.tofix(, 2) -->
         <view class='col969696 text-line'>￥{{util.tofix(items.oldprice - items.amount, 2)}}</view>

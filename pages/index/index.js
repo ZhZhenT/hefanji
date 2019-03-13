@@ -53,7 +53,7 @@ Page({
     var code = ev.target.dataset.code
     var containerid = ev.target.dataset.containerid
     wx.navigateTo({
-      url: '/pages/index/index?containerID=' + containerid + '&code=' + code
+      url: '/pages/index/index?code=' + code
     })
   },
   /**
@@ -76,11 +76,11 @@ Page({
 
         if (options.code === 'register') {
           wx.navigateTo({
-            url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&code=' + options.code
+            url: '/pages/sharelogin/sharelogin?shareuserid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&code=' + options.code 
           })
         } else {
           wx.navigateTo({
-            url: '/pages/sharelogin/sharelogin?userid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&code=' + options.code
+            url: '/pages/sharelogin/sharelogin?shareuserid=' + options.userid + '&containerID=' + options.containerID + '&ads=' + options.ads + '&code=' + options.code
           })
         }  
 
