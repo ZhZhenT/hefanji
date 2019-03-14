@@ -17,7 +17,8 @@ Page({
     juanprice: '',
     coupons: [],
     shareuserid: '',
-    message: '福利到手'
+    message: '福利到手',
+    feature_image: ''
   },
   bindToIndexTap () {
     wx.navigateTo({
@@ -279,7 +280,8 @@ Page({
               })
             } else {
               this.setData({
-                coupons: res.data.data.got_coupons
+                coupons: res.data.data.got_coupons,
+                feature_image: res.data.data.feature_image
               })
             }
 
@@ -297,7 +299,8 @@ Page({
               })
             } else {
               this.setData({
-                coupons: res.data.data.got_coupons
+                coupons: res.data.data.got_coupons,
+                feature_image: res.data.data.feature_image
               })
             }
 

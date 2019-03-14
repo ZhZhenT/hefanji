@@ -1,4 +1,6 @@
-.share_login{height: 100vh;background:url('http://fanmofang.17d3.com/assets/images2/share_login_bg.jpg') center no-repeat; position: relative; background-position: 0 0;background-size: 750rpx 100vh}
+.share_login{height: 100vh;
+/* background:url('http://fanmofang.17d3.com/assets/images2/share_login_bg.jpg') center no-repeat; */
+ position: relative; background-position: 0 0;background-size: 750rpx 100vh}
 
 .give-up-wrap{
   padding-top: 55rpx;

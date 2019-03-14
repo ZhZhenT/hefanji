@@ -77,5 +77,5 @@
 }
 .pay-success .btn{background: #ff8339;color: #ffffff;font-size: 30rpx;font-weight: bold;text-align: center;height: 100rpx;line-height: 100rpx;width: 300rpx;border-radius: 50rpx;}
 .pay-success .btn2{
-  background: #696969;
+  background: #09BB07;
 }

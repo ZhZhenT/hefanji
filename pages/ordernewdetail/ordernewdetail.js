@@ -495,8 +495,6 @@ Page({
 
         }
 
-
-
         item.detail_by_date.forEach(function (item2) {
           item2.datetext = ''
           var nowDate = new Date()
@@ -508,6 +506,7 @@ Page({
           } else {
             item2.datetext = '预定'
           }
+          console.log(item2.products)
           item2.products.forEach(function (item3) {
 
             item.oldprice += item3.product.base_price

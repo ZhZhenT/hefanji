@@ -30,13 +30,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 13,
 			"list": [
 				{
 					"id": 0,
 					"name": "containerID=7&userid=4&ads=22222",
 					"pathName": "pages/index/index",
-					"query": "code=register&containerID=7&userid=4&ads=22222",
+					"query": "code=P_7ZQDY9RRQ0GRFQCV&containerID=7&userid=4&ads=22222",
 					"scene": 1011
 				},
 				{
@@ -123,9 +123,9 @@
 					"scene": "1011"
 				},
 				{
-					"id": -1,
+					"id": 13,
 					"name": "取餐",
-					"pathName": "pages/ordernewdetail/ordernewdetail",
+					"pathName": "pages/couponlist/couponlist",
 					"query": "",
 					"scene": null
 				}

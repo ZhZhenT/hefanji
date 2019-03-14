@@ -28,6 +28,7 @@
       <view class='order-zf-state'>
         <view>实际支付：
           <text class='money'>￥{{items.amount}}</text> </view>
+        <view  class='btn col8f8f8f' style='position:absolute;right:170rpx' data-orderID='{{items.id}}' bindtap='bindToOrderNewDetail'>申请退货</view>
         <view wx:if='{{!items.is_ended}}' class='btn' data-orderID='{{items.id}}' bindtap='bindToOrderNewDetail'>去取餐</view>
         <view wx:if='{{items.is_ended}}' data-orderID='{{items.id}}' bindtap='bindToOrderNewDetail' class='btn col8f8f8f'>已结束</view>
       </view>

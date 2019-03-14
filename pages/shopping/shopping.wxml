@@ -48,7 +48,7 @@
 
     <view wx:show='{{dinnerTimeList.length}}' >
       <scroll-view scroll-x>
-        <view class='dinner-time-wrap' >
+        <view class='dinner-time-wrap' style='{{dinnerTimeList.length < 3 ? "justify-content:flex-start" : "" }}'>
           <view bindtap='binddinnerTimeCurrentTap' data-id='{{item.id}}' data-index='{{index}}' class='time-list {{index==dinnerTimeCurrent?"active":""}}' wx:for='{{dinnerTimeList}}' wx:key='{{index}}'>{{item.text}}</view>
         </view>
       </scroll-view>

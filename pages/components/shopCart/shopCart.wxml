@@ -36,7 +36,7 @@
 
 <view wx:if='{{item.selected}}' wx:for='{{items1}}' wx:key='{{index}}'  class='goods'>
         <view class='goods-name'> <text class='cantext'>{{item.cantxt}}</text> {{item.product.name}} </view>
-        <view class='goods-cardtotalprice'>￥{{item.price*item.selected}}</view>
+        <view class='goods-cardtotalprice'>￥{{util.tofix(item.price*item.selected,2)}}</view>
         <view class='goods-num-controller'>
           <view data-dateid='{{items.date}}' data-goodsId='{{item.product.id}}' data-can='{{item.can}}'  bindtap='_bindReduceTap' class='reduce icon'></view>
           <view  class='num'>{{item.selected}}</view>

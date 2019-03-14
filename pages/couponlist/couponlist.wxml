@@ -29,9 +29,10 @@
       <view class='icon'></view> 
     </view> 
    </view> 
- 
-   <view  data-id = '{{item.id}}'  bindtap='binSelectTab'  wx:for='{{discount_list1}}'  wx:key='index' class='item'> 
-    <view class='prise'> 
+  
+   <view  wx:for='{{discount_list1}}'  wx:key='index' class='item-margin'>
+      <view  data-id = '{{item.id}}'  bindtap='binSelectTab'  class='item'> 
+       <view class='prise'> 
  
       <view wx:if="{{item.type === 'fixed'}}" class='prise_top_text'><text class='fh'>￥</text> 
       <text>{{item.value}}</text></view> 
@@ -50,7 +51,7 @@
       <view>{{item.description}}</view> 
     </view> 
     <view class='bot-text-wrap'> 
-      <view class='date'>{{item.not_after}}</view> 
+      <view class='date'>截至日期：{{item.not_after}}</view> 
       <view wx:if='{{!select}}' class='btn-text'>满{{item.min_amount}}元可用</view> 
     </view> 
  
@@ -61,8 +62,18 @@
     <!-- <view wx:if='{{see}}'> 
       <view class='icon'>11111</view> 
     </view> --> 
- 
+      <view data-id = '{{item.id}}' catchtap='showMore' class='see-more {{item.show ? "show" : "" }}'>
+      查看更多
+      <text>></text>
+      </view>
    </view> 
+    
+     <view wx:if='{{item.show}}' class='more-text'>
+      {{item.tips ? item.tips : '暂无更多详情' }}
+     </view>
+     
+   </view>
+
    <!-- <view class='item'> 
        <view class='prise'> 
       <view class='prise_top_text'><text style='transform: translateY(-13rpx) translateX(-10rpx);display:inline-block;' class='fh'>￥</text><text style='transform: rotate(-90deg) translateX(0rpx);display:inline-block;'>8</text></view> 
@@ -90,8 +101,12 @@
  
   <block> 
     <swiper-item> 
-        <view id='discount_list2' class='discount_list discount_disable_list'> 
-   <view wx:for='{{discount_list0}}' wx:key='index' class='item'> 
+  <audio></audio><view id='discount_list2' class='discount_list discount_disable_list'> 
+
+
+    <view wx:for='{{discount_list0}}' wx:key='index' class='item-margin'>
+    
+       <view  class='item'> 
  
     <view class='prise'> 
  
@@ -114,27 +129,16 @@
     </view> 
  
     <view class='bot-text-wrap'> 
-      <view class='date'>{{item.not_after}}</view> 
+      <view class='date'>截至日期：{{item.not_after}}</view> 
       <view wx:if='{{!select}}' class='btn-text'>满{{item.min_amount}}元可用</view> 
     </view> 
     <!-- <view class='delete'> 
       <view class='delete_btn'>删除</view> 
     </view> --> 
    </view> 
-   <!-- <view class='item'> 
-       <view class='prise'> 
-      <view class='prise_top_text'><text style='transform: translateY(-13rpx) translateX(-10rpx);display:inline-block;' class='fh'>￥</text><text style='transform: rotate(-90deg) translateX(0rpx);display:inline-block;'>8</text></view> 
-      <view class='prise_bot_text'>现金卷</view> 
-    </view> 
-    <view class='describe'> 
-      <view>新用户专享</view> 
-      <view>新用户专享</view> 
-    </view> 
-    <view class='bot-text-wrap'> 
-      <view class='date'>2018.12.05-2018.12.20</view> 
-      <view class='btn-text'>满十元可用</view> 
-    </view> 
-   </view> --> 
+
+    </view>
+
    <view wx:if='{{discount_list0.length === 0}}'  class='ordernobox'> 
   <view class='icon'>无相关优惠卷</view> 
 </view> 
@@ -146,7 +150,7 @@
 </scroll-view> 
  
 <view bindtap='bindToBackTab'  wx:if="{{ current == 0}}" class='yesbtn'> 
-  确定 
+  确定
 </view> 
  
  

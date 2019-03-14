@@ -68,6 +68,19 @@ Page({
       }
     })
   },
+  showMore (ev) {
+    let id = ev.currentTarget.dataset.id
+    this.data.discount_list1.forEach((item) => {
+      if (item.id == id) {
+        item.show = !item.show
+      } else {
+        item.show = false
+      }
+    })
+    this.setData({
+      discount_list1: this.data.discount_list1
+    })
+  },
   binSelectTab (ev) {
     if (this.data.see) {
       return
@@ -146,6 +159,7 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
+    app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFubW9mYW5nLjE3ZDMuY29tXC9hcGlcL3VzZXJcL2xvZ2luXC93ZWNoYXQiLCJpYXQiOjE1NTI1NzU5OTksImV4cCI6MTg2NzkzNTk5OSwibmJmIjoxNTUyNTc1OTk5LCJqdGkiOiJuakx5cEFZVExWZGpLM1lLIiwic3ViIjozOTEwLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.unXg8i1_eFfb3s4T3jR-7G9P4fmch_sXw9LhOzv26xM"
     var token = app.globalData.token
     this.modifyTitle()
 
@@ -176,6 +190,7 @@ Page({
         that.setData({
           discount_list1: res.data.data.map((item) => {
             item.select = false
+            item.show = false
             if (options.selectjuan == item.id) {
               item.select = true
             }
