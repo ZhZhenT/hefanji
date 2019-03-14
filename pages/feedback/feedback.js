@@ -68,20 +68,20 @@ Page({
     var regphone = /^1[3-9][0-9]{9}$/
     if (reg.test(that.data.contentText)) {
       wx.showModal({
-        title: '请填写反馈意见',
+        title: '提示',
         showCancel: false,
         confirmColor: '#ff8339',
-        content: '',
+        content: '请填写反馈意见',
       })
       return
     }
 
     if (!regphone.test(that.data.phoneText)) {
       wx.showModal({
-        title: '请填正确写联系方式',
+        title: '提示',
         showCancel: false,
         confirmColor: '#ff8339',
-        content: '',
+        content: '请填正确写联系方式',
       })
       return
     }
