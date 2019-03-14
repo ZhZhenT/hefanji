@@ -159,7 +159,7 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFubW9mYW5nLjE3ZDMuY29tXC9hcGlcL3VzZXJcL2xvZ2luXC93ZWNoYXQiLCJpYXQiOjE1NTI1NzU5OTksImV4cCI6MTg2NzkzNTk5OSwibmJmIjoxNTUyNTc1OTk5LCJqdGkiOiJuakx5cEFZVExWZGpLM1lLIiwic3ViIjozOTEwLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.unXg8i1_eFfb3s4T3jR-7G9P4fmch_sXw9LhOzv26xM"
+    //app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFubW9mYW5nLjE3ZDMuY29tXC9hcGlcL3VzZXJcL2xvZ2luXC93ZWNoYXQiLCJpYXQiOjE1NTI1NzU5OTksImV4cCI6MTg2NzkzNTk5OSwibmJmIjoxNTUyNTc1OTk5LCJqdGkiOiJuakx5cEFZVExWZGpLM1lLIiwic3ViIjozOTEwLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.unXg8i1_eFfb3s4T3jR-7G9P4fmch_sXw9LhOzv26xM"
     var token = app.globalData.token
     this.modifyTitle()
 
