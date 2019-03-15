@@ -265,7 +265,7 @@ Page({
         })
       }
     } else {
-
+      console.log('用户分享进来')  
       if (wx.getStorageSync('mobile')) {
         this.setData({
           type: 2
