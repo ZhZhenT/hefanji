@@ -157,7 +157,14 @@ Page({
       }, function (err) {
 
       })
+     wx.setStorageSync('containerObjFlag', '')
     return
+    if (!wx.getStorageSync('containerObjFlag')) {
+      wx.setStorageSync('containerObj1',{})
+    } else {
+      wx.setStorageSync('containerObjFlag', 1)
+    }
+
     var containerObj = wx.getStorageSync('containerObj1') || {};
     var useList = []
 
@@ -167,7 +174,7 @@ Page({
         continue
       }
     
-      var obj = { id: key, ads: containerObj[key].slice(0, -13), time: containerObj[key].slice(-13)}
+     var obj = { id: key, ads: containerObj[key].slice(0, -13), time: containerObj[key].slice(-13)}
      useList.unshift(obj)
     }
 

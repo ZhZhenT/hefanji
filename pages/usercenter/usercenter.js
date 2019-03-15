@@ -27,7 +27,7 @@ Page({
     //拨打客服电话 
     wx.makePhoneCall({
       confirmColor: '#ff8339',
-      phoneNumber: '18210990920' 
+      phoneNumber: '4008816527' 
     })
     
   },

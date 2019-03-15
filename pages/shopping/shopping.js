@@ -392,9 +392,33 @@ Page({
     var time = time || 'lunch'
     utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/3/?meal=' + time, { token: token })
       .then(function (res) {
-        console.log(res, containerID, '获取货柜菜品')
-        var goodsList = res.data instanceof Array ? res.data : [];
+        console.log(res, containerID, that.data.scrollViewLeftCurrent, '获取货柜菜品')
 
+        that.data.dinnerTimeList = Object.keys(res.data[that.data.scrollViewLeftCurrent].products).map((item, index) => {
+          let text = ''
+          if (item === 'breakfast') {
+            text = '早餐'
+          } else if (item === 'lunch') {
+            text = '午餐'
+
+            that.setData({
+              dinnerTimeCurrent: index
+            })
+          } else if (item === 'afternoon') {
+            text = '下午茶'
+          } else if (item === 'dinner') {
+            text = '晚餐'
+          }
+          return {
+            id: item,
+            text: text
+          }
+        })
+        that.setData({
+          dinnerTimeList: that.data.dinnerTimeList
+        })
+
+        var goodsList = res.data instanceof Array ? res.data : [];
         goodsList = utils.initGoodsList(goodsList, shopCard2)
         var res = utils.computeNumPrise(goodsList)
         //初始化左边日期
@@ -416,6 +440,7 @@ Page({
         that.setData({
           scrollViewLeftDateList: dataLsit
         })
+        
         utils.computeHeight(['.left .qucan'], function (contentheight) {
           that.setData({
             scrollLeftHeight: contentheight * len
@@ -465,9 +490,7 @@ Page({
       var token = res.data.token;
       app.globalData.token = token;
       var containerObj = wx.getStorageSync('containerObj1') || {};
-
-
-
+      
       // 获取货柜信息
       utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/info', {token:token})
         .then(function (res) {
@@ -484,13 +507,17 @@ Page({
             containerObj[res.data.id] = res.data.address + new Date().getTime()
             wx.setStorageSync('containerObj1', containerObj)
           }
-          if (res.data.meal_settings) {
-            that.data.dinnerTimeList = Object.keys(res.data.meal_settings).map((item) => {
+          if (0 && res.data.meal_settings) {
+            that.data.dinnerTimeList = Object.keys(res.data.meal_settings).map((item,index) => {
               let text = ''
               if (item === 'breakfast') {
                 text = '早餐'
               } else if (item === 'lunch') {
                 text = '午餐'
+                
+                that.setData({
+                  dinnerTimeCurrent: index
+                })
               } else if (item === 'afternoon') {
                 text = '下午茶'
               } else if (item === 'dinner') {

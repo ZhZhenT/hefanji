@@ -66,7 +66,8 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID + '&ads=' + app.globalData.ads + '&code=register' // system
+      path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID + '&ads=' + app.globalData.ads + '&code=register',// system
+      imageUrl: 'https://fanmofang.17d3.com/assets/images2/share_bg_2019_03.jpg'
     }
   }
 })

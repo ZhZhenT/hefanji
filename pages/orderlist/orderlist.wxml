@@ -11,7 +11,8 @@
     </view>
     <block wx:for='{{items.detail}}' wx:key='{{index}}'>
 
-      <view class='order-id-date'>
+      <view data-orderID='{{items.id}}' catchtap='bindToOrderNewDetail'>
+            <view class='order-id-date'>
         <view>订单编号：{{items.id}}</view>
         <view>下单时间：{{items.created_at}}</view>
       </view>
@@ -28,50 +29,16 @@
       <view class='order-zf-state'>
         <view>实际支付：
           <text class='money'>￥{{items.amount}}</text> </view>
-        <view wx:if='{{!items.is_ended}}' class='btn' data-orderID='{{items.id}}' bindtap='bindToOrderNewDetail'>去取餐</view>
-        <view wx:if='{{items.is_ended}}' data-orderID='{{items.id}}' bindtap='bindToOrderNewDetail' class='btn col8f8f8f'>已结束</view>
+        <view  class='btn col8f8f8f' style='position:absolute;right:170rpx' data-orderID='{{items.id}}' bindtap='bindToOrderNewDetail'>申请退货</view>
+        <view wx:if='{{!items.is_ended}}' class='btn' data-orderID='{{items.id}}' catchtap='bindToOrderNewDetail'>去取餐</view>
+        <view wx:if='{{items.is_ended}}' data-orderID='{{items.id}}' catchtap='bindToOrderNewDetail' class='btn col8f8f8f'>已结束</view>
       </view>
 
       <view class='order-line'>
 
       </view>
-      <!-- <view data-containerID='{{items.container.id}}' class='date'>
-          <text class='icon'>取餐日期：{{item.date}} <text wx:if='{{item.datetext}}' class='{{item.datetext == "今天"?"jintian":"yuding"}}'>（{{item.datetext}}）</text></text>
-        </view> -->
+      </view>
 
-      <!-- <view wx:key='{{index}}' class='goods' wx:for='{{item.products}}' wx:for-item="val">
-
-        <view data-goodsId='{{val.product.id}}' class='img'>
-          <image src='{{val.product.feature_image}}' style='width:154rpx;height:166rpx;display:block'></image>
-
-        </view>
-        <view data-goodsId='{{val.product.id}}' class='center'>
-          <view class='goods-details'>
-            <view class='goods-name'>
-              <text class='renqi' wx:if='{{item.is_hot_sale}}'>人气</text>
-              <text class='tuijian' wx:if='{{item.is_friend_like}}'>推荐</text> {{val.product.name}}
-            </view>
-
-            <view class='goods-num-text'>数量 x{{val.num}}</view>
-          </view>
-
-          <view class='goods-state {{val.is_pick_button_visible?"weiqu":"yiqu"}}' wx:if='{{val.is_pick_button_visible}}'>{{val.delivery_status_message}}</view>
-          <view class='goods-state {{val.is_pick_button_visible?"weiqu":"yiqu"}}' wx:else> {{val.delivery_status_message}} </view>
-
-          <view class='goods-price'>￥{{val.total_price}}
-            <view wx:if='{{val.product.base_price && val.total_price!= (val.product.base_price)*val.num }}' class='goods-old-price'>￥{{val.product.base_priceval.num}}</view>
-          </view>
-
-          <view style='position: absolute;font-size:12px;color:#999999;right:0;top:70rpx;'>
-            格子: {{ val.slot_display_numberstxt}}
-          </view>
-          <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' bindtouchend='bindOpenlongTap' bindtouchstart='bindOpenTap' wx:if='{{val.is_pick_button_visible}}' class='btn'>开启格子</view>
-          <view style='background: transparent;color:#666666;text:align:right;' wx:elif='{{val.delivery_status == "picked_up"}}' class='btn no'>已取餐</view>
-          <view style='background: transparent;color:#666666;text-align:right;' wx:elif='{{!item.datetext}}' class='btn no'>已过期</view>
-          <view data-tishi='{{val.pick_button_invisible_reason}}' bindtouchstart='bindNoOpenTap' class='btn no' wx:elif='{{val.delivery_status !="picked_up"}}'>开启格子</view>
-
-        </view>
-      </view> -->
     </block>
 
     <!-- <view class='order-info-box'>

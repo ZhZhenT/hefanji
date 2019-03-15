@@ -89,7 +89,7 @@ Page({
     }
     wx.showModal({
       title: '单品退货确认',
-      content: '确认申请退货退货 ' + date + ' 午餐 ' + name + ' 退款金额：￥' + money,
+      content: '确认申请退货 ' + date + ' 午餐 ' + name + ' 退款金额：￥' + money,
       confirmColor: '#ff8339',
       success: function (res) {
         if (res.confirm) {
@@ -495,8 +495,6 @@ Page({
 
         }
 
-
-
         item.detail_by_date.forEach(function (item2) {
           item2.datetext = ''
           var nowDate = new Date()
@@ -508,6 +506,7 @@ Page({
           } else {
             item2.datetext = '预定'
           }
+          console.log(item2.products)
           item2.products.forEach(function (item3) {
 
             item.oldprice += item3.product.base_price

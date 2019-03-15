@@ -5,7 +5,16 @@ scroll-view{padding: 20rpx 0;box-sizing: border-box}
 .discount .top_text .text2{font-size: 26rpx;color: #404040}
 .discount .top_text .text2 .icon{display: inline-block;background:#ff8339;color: white;height: 26rpx;width: 26rpx;text-align: center; line-height: 26rpx;padding-bottom: 3rpx}
 .discount .discount_list{padding:0 15rpx 0rpx 15rpx;}
-.discount .discount_list .item{height: 168rpx;background: url('http://fanmofang.17d3.com/assets/images2/discount_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
+.discount .discount_list .item{
+  height: 190rpx;
+  background: url('http://fanmofang.17d3.com/assets/images2/discount_bg_icon_03.png') center 0 no-repeat;
+  background-size: 100% 195rpx;
+
+  position: relative
+  }
+  .discount .discount_list .item-margin{
+  margin-bottom: 20rpx;
+  }
 .discount .discount_disable_list .item{height: 168rpx;background: url('http://fanmofang.17d3.com/assets/images2/discount__disable_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
 .discount .discount_list .item .prise{position: absolute;color: white;top:28rpx;left:55rpx;}
 .discount .discount_list .item .prise .prise_top_text{font-size: 65rpx;font-weight: bold; display: inline-block;vertical-align: bottom;line-height: 1}
@@ -35,18 +44,18 @@ border: 1rpx solid #dcd3ce;padding: 5rpx 18rpx;border-radius: 20rpx;
   justify-content: center
 }
 .discount .discount_list .item .select-btn .icon{
-  width: 28rpx;
-  height: 28rpx;
+  width: 40rpx;
+  height: 40rpx;
   background: url('http://fanmofang.17d3.com/assets/images2/select-icon.png') center 0 no-repeat;
-  background-size: 28rpx 56rpx;
+  background-size: 40rpx 80rpx;
 }
 
 .discount .discount_list .item .select-btn.select .icon{
-  width: 28rpx;
-  height: 28rpx;
+  width: 40rpx;
+  height: 40rpx;
   background: url('http://fanmofang.17d3.com/assets/images2/select-icon.png') center 0 no-repeat;
-  background-size: 28rpx 56rpx;
-  background-position-y: -28rpx;
+  background-size: 40rpx 80rpx;
+  background-position-y: -40rpx;
 }
 
 .selelct-all{
@@ -66,19 +75,18 @@ border: 1rpx solid #dcd3ce;padding: 5rpx 18rpx;border-radius: 20rpx;
   justify-content: center
 }
 .selelct-all .select-btn .icon{
-  width: 28rpx;
-  height: 28rpx;
+  width: 40rpx;
+  height: 40rpx;
   background: url('http://fanmofang.17d3.com/assets/images2/select-icon.png') center 0 no-repeat;
-  background-size: 28rpx 56rpx;
-  
+  background-size: 40rpx 80rpx;
 }
 
 .selelct-all .select-btn.select .icon{
-  width: 28rpx;
-  height: 28rpx;
+  width: 40rpx;
+  height: 40rpx;
   background: url('http://fanmofang.17d3.com/assets/images2/select-icon.png') center 0 no-repeat;
-  background-size: 28rpx 56rpx;
-    background-position-y: -28rpx;
+  background-size: 40rpx 80rpx;
+    background-position-y: -40rpx;
 }
 
 
@@ -93,4 +101,39 @@ border: 1rpx solid #dcd3ce;padding: 5rpx 18rpx;border-radius: 20rpx;
 
 .ordernobox .icon{width: 100%;text-align: center;background: url('http://fanmofang.17d3.com/assets/images2/yhjno.png') center 0 no-repeat; padding-top:230rpx;font-size: 28rpx;color:#969696;margin-top: 150rpx;background-size: 217rpx 196rpx;}
 
+#discount_list1 .item .describe{
+  top: -5rpx;
+  font-size: 28rpx;
+}
+#discount_list1 .item .bot-text-wrap  {
+  bottom:60rpx;
+}
+#discount_list1 .see-more{
 
+font-size:20rpx;
+color:#4a4a4a;
+left:270rpx;
+
+bottom:10rpx;
+position:absolute;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding: 10rpx 30rpx 10rpx 10rpx;
+}
+#discount_list1 .see-more text {
+  display: inline-block;
+  margin-top: 4rpx;
+  margin-left: 8rpx;
+  transform: scaleX(1.5) rotate(90deg);
+}
+
+#discount_list1 .see-more.show text {
+transform: scaleX(1.5) rotate(-90deg);
+}
+#discount_list1 .more-text{
+font-size:26rpx;
+color:#4a4a4a;
+box-shadow:inset 0px 15px 10px -15px #4a4a4a;
+padding: 10rpx 0 10rpx 10rpx;
+}

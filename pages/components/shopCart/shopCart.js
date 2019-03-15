@@ -86,11 +86,12 @@ Component({
     
       if (this.data.isOrderConfirm) {
 
-        if (wx.getStorageSync('mobile')) {
+        if (wx.getStorageSync('mobile') || wx.getStorageSync('first_ask')) {
           // console.log('已经绑定手机号 直接拉起支付接口')
           that.pay()
         } else {
           console.log('您尚未绑定手机号 绑定手机号可以享受更完整的售后服务')
+          wx.setStorageSync('first_ask',1)
           wx.showModal({
             title: '提示',
             content: '您尚未绑定手机号 绑定手机号可以享受更完整的售后服务',
