@@ -4,7 +4,7 @@
 .swiper-wrap .dian-list .dian{width: 15rpx;height: 15rpx;background: #5e5e5e;border-radius: 50%;margin: 0 8rpx;}
 .swiper-wrap .dian-list .dian.current{background: #ff8339;}
 .swiper-wrap .ads-mask{position: absolute;background: #000000;bottom: 0;left: 0;right: 0;height: 85rpx;background: rgba(0,0,0,0.15);display: flex;padding-left: 30rpx;line-height: 85rpx;z-index: 999}
-.swiper-wrap .ads-mask .txt{font-size: 22rpx;color: #ffffff;background: url('http://fanmofang.17d3.com/assets/images2/index-banner-ads-icon.png') 0 center no-repeat;background-size: 26rpx 36rpx;padding-left: 40rpx;}
+.swiper-wrap .ads-mask .txt{font-size: 22rpx;color: #ffffff;background: url('https://www.yuexd.com/assets/images2/index-banner-ads-icon.png') 0 center no-repeat;background-size: 26rpx 36rpx;padding-left: 40rpx;}
 .scroll-wrap {display: flex;position: relative;}
 .scroll-wrap .left{width: 150rpx;background: #f9f4f2;}
 .scroll-wrap .right{width: 600rpx;}
@@ -12,34 +12,34 @@
 
 .scroll-wrap .left .date.current{background: #ffffff;}
 
-.scroll-wrap .left .date.reserve .text{padding-top: 75rpx;background: url('http://fanmofang.17d3.com/assets/images2/index-scroll-date-yu-active.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #acacac;}
-.scroll-wrap .left .date .text{padding-top: 75rpx;background: url('http://fanmofang.17d3.com/assets/images2/index-scroll-date.png') no-repeat;background-size: 96rpx 111rpx;text-align: center;background-position: 45rpx 0;color: #acacac}
+.scroll-wrap .left .date.reserve .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date-yu-active.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #acacac;}
+.scroll-wrap .left .date .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date.png') no-repeat;background-size: 96rpx 111rpx;text-align: center;background-position: 45rpx 0;color: #acacac}
 
-.scroll-wrap .left .date.reserve.current .text{padding-top: 75rpx;background: url('http://fanmofang.17d3.com/assets/images2/index-scroll-date-yu-active.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #ff8339;}
+.scroll-wrap .left .date.reserve.current .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date-yu-active.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #ff8339;}
 
-.scroll-wrap .left .date.current .text{padding-top: 75rpx;background: url('http://fanmofang.17d3.com/assets/images2/index-scroll-date.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #ff8339;}
+.scroll-wrap .left .date.current .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date.png') no-repeat;background-size: 96rpx 111rpx;background-position: 45rpx 0;color: #ff8339;}
 
 .scroll-wrap .left .qucan{font-size: 22rpx;padding: 25rpx 0;border-bottom: 1rpx solid #ffffff;}
-.scroll-wrap .left .qucan .text{padding-top: 75rpx;background: url('http://fanmofang.17d3.com/assets/images2/index-scroll-date-all.png') no-repeat;background-size: 92rpx 107rpx;text-align: center;background-position: 45rpx 0;color: #acacac;}
+.scroll-wrap .left .qucan .text{padding-top: 75rpx;background: url('https://www.yuexd.com/assets/images2/index-scroll-date-all.png') no-repeat;background-size: 92rpx 107rpx;text-align: center;background-position: 45rpx 0;color: #acacac;}
 
-.scroll-wrap .left .Share .text{background: url('http://fanmofang.17d3.com/assets/images2/share_icon.png') no-repeat;background-size: 92rpx 107rpx;background-position: 45rpx 0;}
+.scroll-wrap .left .Share .text{background: url('https://www.yuexd.com/assets/images2/share_icon.png') no-repeat;background-size: 92rpx 107rpx;background-position: 45rpx 0;}
 
 .scroll-wrap .right .goods{padding: 40rpx 15rpx 40rpx 50rpx;background: #ffffff;border-bottom: 1rpx solid #f5f5f5;display: flex;position: relative}
 .scroll-wrap .right .goods .img{position: relative;}
-.scroll-wrap .right .goods .img .good-hot{position: absolute; top: -20rpx;color: #fefefe;font-size: 20rpx;background: url('http://fanmofang.17d3.com/assets/images2/goods-hot.png') no-repeat;background-size: 54rpx 50rpx;width: 54rpx;height: 50rpx;text-align: center;box-sizing: border-box;padding-top: 20rpx;}
-.scroll-wrap .right .goods .img .zhekou{position: absolute; top: 0rpx; left:10rpx;color: #fefefe;font-size:15rpx;background: url('http://fanmofang.17d3.com/assets/images2/goods-dazhe.png') no-repeat;background-size: 40rpx 61rpx;width: 40rpx;height: 61rpx;text-align: center;box-sizing: border-box;padding-top: 10rpx;}
+.scroll-wrap .right .goods .img .good-hot{position: absolute; top: -20rpx;color: #fefefe;font-size: 20rpx;background: url('https://www.yuexd.com/assets/images2/goods-hot.png') no-repeat;background-size: 54rpx 50rpx;width: 54rpx;height: 50rpx;text-align: center;box-sizing: border-box;padding-top: 20rpx;}
+.scroll-wrap .right .goods .img .zhekou{position: absolute; top: 0rpx; left:10rpx;color: #fefefe;font-size:15rpx;background: url('https://www.yuexd.com/assets/images2/goods-dazhe.png') no-repeat;background-size: 40rpx 61rpx;width: 40rpx;height: 61rpx;text-align: center;box-sizing: border-box;padding-top: 10rpx;}
 .scroll-wrap .right .goods .center{margin-left: 35rpx;display: flex; flex-direction:column;justify-content:space-between;}
 .scroll-wrap .right .goods .center .goods-details .goods-name{font-size: 28rpx;color: #000000;font-weight: bold;}
 .scroll-wrap .right .goods .center .goods-details .goods-kucun{font-size: 22rpx; color: #969696;margin-top: 10rpx;display: flex;align-items: center;}
 .scroll-wrap .right .goods .center .goods-details .goods-kucun .goods-hot{display: flex}
-.scroll-wrap .right .goods .center .goods-details .goods-kucun .goods-hot .hot{width: 30rpx;height: 30rpx;background: url('http://fanmofang.17d3.com/assets/images2/goods-lajiao.png') center no-repeat;background-size: 24rpx 24rpx;}
+.scroll-wrap .right .goods .center .goods-details .goods-kucun .goods-hot .hot{width: 30rpx;height: 30rpx;background: url('https://www.yuexd.com/assets/images2/goods-lajiao.png') center no-repeat;background-size: 24rpx 24rpx;}
 .scroll-wrap .right .goods .center .goods-price{font-size: 30rpx;color: #ff8339;display: flex;margin-top: 5rpx;font-weight: bold;}
 .scroll-wrap .right .goods .center .goods-price .goods-old-price{font-size: 22rpx;color: #969696;padding-top: 6rpx;text-decoration:line-through;font-weight: 400}
 .scroll-wrap .right .goods .goods-num-controller{flex-grow:1;display: flex;color: #4d4d4d;font-size: 26rpx;align-items: flex-end;justify-content: flex-end;position: absolute;right: 15rpx;bottom:35rpx;}
 .scroll-wrap .right .goods .goods-num-controller .icon{width: 60rpx;height: 60rpx;}
 .scroll-wrap .right .goods .goods-num-controller .num{height: 60rpx;line-height: 60rpx;}
-.scroll-wrap .right .goods .goods-num-controller .icon.reduce{background: url('http://fanmofang.17d3.com/assets/images2/goods-reduce-icon.png') left center no-repeat;background-size: 48rpx 48rpx;}
-.scroll-wrap .right .goods .goods-num-controller .icon.add{background: url('http://fanmofang.17d3.com/assets/images2/goods-add-icon.png') right center no-repeat;background-size: 48rpx 48rpx;}
+.scroll-wrap .right .goods .goods-num-controller .icon.reduce{background: url('https://www.yuexd.com/assets/images2/goods-reduce-icon.png') left center no-repeat;background-size: 48rpx 48rpx;}
+.scroll-wrap .right .goods .goods-num-controller .icon.add{background: url('https://www.yuexd.com/assets/images2/goods-add-icon.png') right center no-repeat;background-size: 48rpx 48rpx;}
 
 
 
@@ -56,8 +56,8 @@ left: 75rpx;bottom:50rpx;}
 }
 
 .scroll-wrap .prompt-layer{position: absolute;background: #fef8c2;color: #4d4d4d;font-size: 26rpx;border: 1rpx solid #fdebcd;border-radius: 15rpx;left: 50%;transform: translateX(-50%);white-space:nowrap;  word-break:keep-all;bottom: 20rpx;display: flex;}
-.scroll-wrap .prompt-layer .txt{padding: 25rpx 100rpx;background: url('http://fanmofang.17d3.com/assets/images2/prompt-layer-icon.png') 40rpx center no-repeat;background-size: 38rpx 38rpx;}
-.scroll-wrap .prompt-layer .close{position: absolute;width: 70rpx;height: 70rpx;background: url('http://fanmofang.17d3.com/assets/images2/prompt-layer-close-icon.png') center no-repeat;background-size: 14rpx 14rpx;top: 50%;transform: translateY(-50%);right: 10rpx;}
+.scroll-wrap .prompt-layer .txt{padding: 25rpx 100rpx;background: url('https://www.yuexd.com/assets/images2/prompt-layer-icon.png') 40rpx center no-repeat;background-size: 38rpx 38rpx;}
+.scroll-wrap .prompt-layer .close{position: absolute;width: 70rpx;height: 70rpx;background: url('https://www.yuexd.com/assets/images2/prompt-layer-close-icon.png') center no-repeat;background-size: 14rpx 14rpx;top: 50%;transform: translateY(-50%);right: 10rpx;}
 
 .dinner-time-wrap {padding: 0 0 0 40rpx;display: flex;justify-content: space-around;border-bottom: 1rpx solid #f6f6f6;height: 80rpx;}
 .dinner-time-wrap .time-list{color: #666666;font-size: 28rpx;padding: 20rpx 20rpx;font-weight: bold;position: relative}

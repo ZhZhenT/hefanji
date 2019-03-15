@@ -194,7 +194,7 @@ Page({
 
 
     // 获取货柜信息
-    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=1' + '&cart_amount=' + totalPrise, {token: token})
+    utils.request('https://www.yuexd.com/api/my/coupons?type=1' + '&cart_amount=' + totalPrise, {token: token})
       .then(function (res) {
         console.log(res,'优惠卷 可用')
         that.setData({
@@ -212,7 +212,7 @@ Page({
 
       })
 
-    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=0' + '&cart_amount=' + totalPrise, { token: token })
+    utils.request('https://www.yuexd.com/api/my/coupons?type=0' + '&cart_amount=' + totalPrise, { token: token })
       .then(function (res) {
         console.log(res, '优惠卷 不可用')
         that.setData({

@@ -3,7 +3,7 @@
   <scroll-view scroll-y style="height:{{contentheight}}px;">
 
     <view class='top'>
-      <image style='width:125rpx;height:125rpx;' src='http://fanmofang.17d3.com/assets/images2/pay-success-icon.png'></image>
+      <image style='width:125rpx;height:125rpx;' src='https://www.yuexd.com/assets/images2/pay-success-icon.png'></image>
       <view class='txt'>支付成功!</view>
       <!-- <text class='ads'>{{swiperAdsText}}</text>
       <view class='progress {{progressShow?"show":""}}'></view> -->

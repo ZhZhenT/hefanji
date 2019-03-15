@@ -41,7 +41,7 @@ Page({
       confirmColor: '#ff8339',
       success: function (res) {
         if (res.confirm) {
-          utils.request('http://fanmofang.17d3.com/api/order/' + orderid + '/refund?type=order', {
+          utils.request('https://www.yuexd.com/api/order/' + orderid + '/refund?type=order', {
             token: token,
             method: 'POST'
           })
@@ -82,18 +82,32 @@ Page({
     var ssid = ev.target.dataset.ssid //商品ID 
     var token = app.globalData.token
     var refund_status = ev.target.dataset.refund_status
+    var status_msg = ev.target.dataset.status_msg
+
+    console.log(status_msg)
+    if (status_msg == '已取餐') {
+      console.log(status_msg)
+      wx.showModal({
+        title: '提示',
+        content: status_msg + '',
+        showCancel: false,
+        confirmColor: '#ff8339'
+      })
+      return
+    }
     if (refund_status == 'refund_success') {
       return
     } else if (!!refund_status) {
       return
     }
+
     wx.showModal({
       title: '单品退货确认',
       content: '确认申请退货 ' + date + ' 午餐 ' + name + ' 退款金额：￥' + money,
       confirmColor: '#ff8339',
       success: function (res) {
         if (res.confirm) {
-          utils.request('http://fanmofang.17d3.com/api/order/' + orderid + '/refund?type=single_product&slot_schema_id=' + ssid, {
+          utils.request('https://www.yuexd.com/api/order/' + orderid + '/refund?type=single_product&slot_schema_id=' + ssid, {
             token: token,
             method: 'POST'
           })
@@ -173,7 +187,7 @@ Page({
  
     this.data.bindtimer = setTimeout(function () {
 
-      utils.request('http://fanmofang.17d3.com/api/slot_schema/' + ssid + '/pickup', {
+      utils.request('https://www.yuexd.com/api/slot_schema/' + ssid + '/pickup', {
         token: token,
         method: 'POST'
       })
@@ -255,7 +269,7 @@ Page({
     var beginTime = new Date().getTime();
     clearInterval(c.timer)
     c.timer = setInterval(function () {
-      var url = 'http://fanmofang.17d3.com/api/order_detail/' + order_detail_id + '/status'
+      var url = 'https://www.yuexd.com/api/order_detail/' + order_detail_id + '/status'
       wx.request({
         url: url,
         method: 'get',
@@ -288,7 +302,7 @@ Page({
   },
   searchStatus3: function (order_detail_id, token, c) {
     var that = this
-    var url = 'http://fanmofang.17d3.com/api/order_detail/' + order_detail_id + '/status'
+    var url = 'https://www.yuexd.com/api/order_detail/' + order_detail_id + '/status'
     wx.request({
       url: url,
       method: 'get',
@@ -371,7 +385,7 @@ Page({
 
     if (that.data.date + 2000 < date) {
       var token = app.globalData.token;
-      utils.request('http://fanmofang.17d3.com/api/my/orders?page=' + that.data.currentPage, {
+      utils.request('https://www.yuexd.com/api/my/orders?page=' + that.data.currentPage, {
         token: token
       })
         .then(function (res) {
@@ -448,7 +462,7 @@ Page({
     //拨打客服电话  
     wx.makePhoneCall({
       confirmColor: '#ff8339',
-      phoneNumber: '18210990920'
+      phoneNumber: '4008816527'
     })
 
   },
@@ -463,7 +477,7 @@ Page({
     var token = app.globalData.token;
 
     //options.orderid = 100010987 
-    utils.request('http://fanmofang.17d3.com/api/order/' + options.orderid + '/detail', {
+    utils.request('https://www.yuexd.com/api/order/' + options.orderid + '/detail', {
       token: token
     })
       .then(function (res) {
@@ -528,7 +542,7 @@ Page({
 
       })
 
-    /*utils.request('http://fanmofang.17d3.com/api/my/orders', { token: token }) 
+    /*utils.request('https://www.yuexd.com/api/my/orders', { token: token })
      .then(function (res) { 
        //console.log(res.data) 
        if (res.statusCode == 200) { 

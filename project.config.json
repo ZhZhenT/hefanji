@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -47,9 +47,9 @@
 				},
 				{
 					"id": 1,
-					"name": "containerID=7",
+					"name": "containerID=9",
 					"pathName": "pages/index/index",
-					"query": "containerID=82",
+					"query": "containerID=9",
 					"scene": 1011
 				},
 				{

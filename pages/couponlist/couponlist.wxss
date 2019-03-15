@@ -7,7 +7,7 @@ scroll-view{padding: 20rpx 0;box-sizing: border-box}
 .discount .discount_list{padding:0 15rpx 0rpx 15rpx;}
 .discount .discount_list .item{
   height: 190rpx;
-  background: url('http://fanmofang.17d3.com/assets/images2/discount_bg_icon_03.png') center 0 no-repeat;
+  background: url('https://www.yuexd.com/assets/images2/discount_bg_icon_03.png') center 0 no-repeat;
   background-size: 100% 195rpx;
 
   position: relative
@@ -15,7 +15,7 @@ scroll-view{padding: 20rpx 0;box-sizing: border-box}
   .discount .discount_list .item-margin{
   margin-bottom: 20rpx;
   }
-.discount .discount_disable_list .item{height: 168rpx;background: url('http://fanmofang.17d3.com/assets/images2/discount__disable_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
+.discount .discount_disable_list .item{height: 168rpx;background: url('https://www.yuexd.com/assets/images2/discount__disable_bg_icon_03.png') center 0 no-repeat;background-size: 100%;margin-bottom: 20rpx;position: relative}
 .discount .discount_list .item .prise{position: absolute;color: white;top:28rpx;left:55rpx;}
 .discount .discount_list .item .prise .prise_top_text{font-size: 65rpx;font-weight: bold; display: inline-block;vertical-align: bottom;line-height: 1}
 .discount .discount_list .item .prise .prise_top_text .fh{font-size: 30rpx;}
@@ -46,14 +46,14 @@ border: 1rpx solid #dcd3ce;padding: 5rpx 18rpx;border-radius: 20rpx;
 .discount .discount_list .item .select-btn .icon{
   width: 40rpx;
   height: 40rpx;
-  background: url('http://fanmofang.17d3.com/assets/images2/select-icon.png') center 0 no-repeat;
+  background: url('https://www.yuexd.com/assets/images2/select-icon.png') center 0 no-repeat;
   background-size: 40rpx 80rpx;
 }
 
 .discount .discount_list .item .select-btn.select .icon{
   width: 40rpx;
   height: 40rpx;
-  background: url('http://fanmofang.17d3.com/assets/images2/select-icon.png') center 0 no-repeat;
+  background: url('https://www.yuexd.com/assets/images2/select-icon.png') center 0 no-repeat;
   background-size: 40rpx 80rpx;
   background-position-y: -40rpx;
 }
@@ -77,14 +77,14 @@ border: 1rpx solid #dcd3ce;padding: 5rpx 18rpx;border-radius: 20rpx;
 .selelct-all .select-btn .icon{
   width: 40rpx;
   height: 40rpx;
-  background: url('http://fanmofang.17d3.com/assets/images2/select-icon.png') center 0 no-repeat;
+  background: url('https://www.yuexd.com/assets/images2/select-icon.png') center 0 no-repeat;
   background-size: 40rpx 80rpx;
 }
 
 .selelct-all .select-btn.select .icon{
   width: 40rpx;
   height: 40rpx;
-  background: url('http://fanmofang.17d3.com/assets/images2/select-icon.png') center 0 no-repeat;
+  background: url('https://www.yuexd.com/assets/images2/select-icon.png') center 0 no-repeat;
   background-size: 40rpx 80rpx;
     background-position-y: -40rpx;
 }
@@ -99,7 +99,7 @@ border: 1rpx solid #dcd3ce;padding: 5rpx 18rpx;border-radius: 20rpx;
 
 .yesbtn{height: 98rpx;line-height: 98rpx;text-align: center;color: #fefefe;font-size: 30rpx;background: #ff8339}
 
-.ordernobox .icon{width: 100%;text-align: center;background: url('http://fanmofang.17d3.com/assets/images2/yhjno.png') center 0 no-repeat; padding-top:230rpx;font-size: 28rpx;color:#969696;margin-top: 150rpx;background-size: 217rpx 196rpx;}
+.ordernobox .icon{width: 100%;text-align: center;background: url('https://www.yuexd.com/assets/images2/yhjno.png') center 0 no-repeat; padding-top:230rpx;font-size: 28rpx;color:#969696;margin-top: 150rpx;background-size: 217rpx 196rpx;}
 
 #discount_list1 .item .describe{
   top: -5rpx;

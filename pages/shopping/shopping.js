@@ -16,7 +16,7 @@ Page({
     hasUserInfo: false,
 
     swiperImgUrls: [
-      'http://fanmofang.17d3.com/assets/images2/index-banner1.jpg'
+      'https://www.yuexd.com/assets/images2/index-banner1.jpg'
     ],
     swiperCurrent: 0,
     swiperAdsText: '',
@@ -390,7 +390,7 @@ Page({
     var shopCard2 = shopCard[containerID] || {}
     
     var time = time || 'lunch'
-    utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/3/?meal=' + time, { token: token })
+    utils.request('https://www.yuexd.com/api/containers/' + containerID + '/3/?meal=' + time, { token: token })
       .then(function (res) {
         console.log(res, containerID, that.data.scrollViewLeftCurrent, '获取货柜菜品')
 
@@ -492,7 +492,7 @@ Page({
       var containerObj = wx.getStorageSync('containerObj1') || {};
       
       // 获取货柜信息
-      utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/info', {token:token})
+      utils.request('https://www.yuexd.com/api/containers/' + containerID + '/info', {token:token})
         .then(function (res) {
           //存储货柜信息
           console.log(res, '货柜信息')
@@ -597,7 +597,7 @@ Page({
 
 
     // 获取轮播图片
-    utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/slides')
+    utils.request('https://www.yuexd.com/api/containers/' + containerID + '/slides')
     .then(function(res){
       var arr = []
       res.data.forEach(function(item,index){
@@ -615,7 +615,7 @@ Page({
 
 
     // 获取轮播图片
-    /*utils.request('http://fanmofang.17d3.com/api/containers/' + containerID + '/slides')
+    /*utils.request('https://www.yuexd.com/api/containers/' + containerID + '/slides')
       .then(function (res) {
         var arr = []
         res.data.forEach(function (item, index) {

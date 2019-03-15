@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    savedFilePath: ''
   },
 
   /**
@@ -15,6 +15,22 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData, '分享详情')
+    var that = this;
+    wx.downloadFile({
+      url: 'https://www.yuexd.com/assets/images2/share_bg_2019_03.jpg',
+      success: function (res) {
+        wx.saveFile({
+          tempFilePath: res.tempFilePath,
+          success: function (res) {
+            console.log(res.savedFilePath)
+            that.setData({
+              savedFilePath: res.savedFilePath
+            })
+          }
+        })
+
+      }
+    })
   },
 
   /**
@@ -65,9 +81,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    var that = this
     return {
       path: 'pages/index/index?userid=' + app.globalData.userid + '&containerID=' + app.globalData.containerID + '&ads=' + app.globalData.ads + '&code=register',// system
-      imageUrl: 'https://fanmofang.17d3.com/assets/images2/share_bg_2019_03.jpg'
+      imageUrl: that.data.savedFilePath
     }
   }
 })

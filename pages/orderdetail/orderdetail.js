@@ -303,7 +303,7 @@ Page({
     })
 
     // 获取货柜信息
-    utils.request('http://fanmofang.17d3.com/api/my/coupons?type=1' + '&cart_amount=' + app.globalData.totalPrise, { token: token })
+    utils.request('https://www.yuexd.com/api/my/coupons?type=1' + '&cart_amount=' + app.globalData.totalPrise, { token: token })
       .then(function (res) {
         console.log(res, '优惠卷 可用')
         that.setData({

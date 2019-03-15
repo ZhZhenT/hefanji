@@ -85,7 +85,7 @@ Page({
 
     this.data.bindtimer = setTimeout(function () {
 
-      utils.request('http://fanmofang.17d3.com/api/order/' + orderid + '/open/' + date + '/' + goodsid, { token: token, method: 'POST' })
+      utils.request('https://www.yuexd.com/api/order/' + orderid + '/open/' + date + '/' + goodsid, { token: token, method: 'POST' })
         .then(function (res) {
           console.log(res, '开启格子返回')
 
@@ -160,7 +160,7 @@ Page({
     var that = this;
     var beginTime = new Date().getTime();
     timer = setInterval(function () {
-      var url = 'http://fanmofang.17d3.com/api/status/picking/?slot_schema_id=' + slot_schema_ids
+      var url = 'https://www.yuexd.com/api/status/picking/?slot_schema_id=' + slot_schema_ids
       wx.request({
         url: url,
         method: 'get',
@@ -229,7 +229,7 @@ Page({
 
     if (that.data.date + 2000 < date) {
       var token = app.globalData.token;
-      utils.request('http://fanmofang.17d3.com/api/my/orders?page=' + that.data.currentPage, { token: token })
+      utils.request('https://www.yuexd.com/api/my/orders?page=' + that.data.currentPage, { token: token })
         .then(function (res) {
           console.log(res, '获取所有订单分页信息')
           if (res.data.length == 0) {
@@ -310,7 +310,7 @@ Page({
     //app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
     var token = app.globalData.token;
 
-    utils.request('http://fanmofang.17d3.com/api/my/refunds', { token: token })
+    utils.request('https://www.yuexd.com/api/my/refunds', { token: token })
       .then(function (res) {
         //console.log(res.data)
         if (res.statusCode == 200) {

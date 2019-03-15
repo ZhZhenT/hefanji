@@ -1,7 +1,7 @@
 <view class='share_login'>
 
   <view style='position:absolute;top:0;left:0;right:0;z-index:0;'>
-    <image style="width: 100%; height: 100vh;display:block" src="{{feature_image ? feature_image : 'http://fanmofang.17d3.com/assets/images2/share_login_bg.jpg' }}"></image> 
+    <image style="width: 100%; height: 100vh;display:block" src="{{feature_image ? feature_image : 'https://www.yuexd.com/assets/images2/share_login_bg.jpg' }}"></image>
   </view>
 
   <view style='position:absolute;top:0;left:0;right:0;z-index:1;' wx:if='{{type == 1}}'>

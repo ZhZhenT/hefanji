@@ -31,7 +31,7 @@ Page({
   },
   unbd () {
     wx.setStorageSync('mobile', '')
-    utils.request('http://fanmofang.17d3.com/api/user/unbindMobile', {  token :app.globalData.token})
+    utils.request('https://www.yuexd.com/api/user/unbindMobile', {  token :app.globalData.token})
       .then(function (res) {
 
       }, function (err) {
@@ -132,7 +132,7 @@ Page({
 
     })
 
-    utils.request('http://fanmofang.17d3.com/api/containers/all', { token: app.globalData.token })
+    /*utils.request('https://www.yuexd.com/api/containers/all', { token: app.globalData.token })
       .then(function (res) {
         console.log(res,'containers')
         var useList = res.data.map((item)=>{
@@ -148,7 +148,7 @@ Page({
 
       })
 
-    utils.request('http://fanmofang.17d3.com/api/promotions/all', { token: app.globalData.token })
+    utils.request('https://www.yuexd.com/api/promotions/all', { token: app.globalData.token })
       .then(function (res) {
         console.log(res, 'promotions')
         that.setData({
@@ -156,14 +156,17 @@ Page({
         })
       }, function (err) {
 
-      })
-     wx.setStorageSync('containerObjFlag', '')
-    return
+      })*/
+
+    
     if (!wx.getStorageSync('containerObjFlag')) {
-      wx.setStorageSync('containerObj1',{})
-    } else {
       wx.setStorageSync('containerObjFlag', 1)
+      wx.setStorageSync('containerObj1',{})
+      wx.setStorageSync('showCard', {})
+    } else {
+      
     }
+    
 
     var containerObj = wx.getStorageSync('containerObj1') || {};
     var useList = []

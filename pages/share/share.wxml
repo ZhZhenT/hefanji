@@ -1,7 +1,7 @@
 <!--pages/share/share.wxml-->
 <view class='share'>
  <view class='img'>
-  <image style="width: 152rpx;height:120rpx;" src="http://fanmofang.17d3.com/assets/images2/wechat_share_icon.png"></image>
+  <image style="width: 152rpx;height:120rpx;" src="https://www.yuexd.com/assets/images2/wechat_share_icon.png"></image>
  </view>
   <view class='text'>
 分享到微信

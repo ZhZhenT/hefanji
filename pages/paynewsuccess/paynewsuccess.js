@@ -97,7 +97,7 @@ Page({
 
     this.data.bindtimer = setTimeout(function () {
 
-      utils.request('http://fanmofang.17d3.com/api/slot_schema/' + ssid + '/pickup', {
+      utils.request('https://www.yuexd.com/api/slot_schema/' + ssid + '/pickup', {
         token: token,
         method: 'POST'
       })
@@ -194,7 +194,7 @@ Page({
     var beginTime = new Date().getTime();
     clearInterval(c.timer)
     c.timer = setInterval(function () {
-      var url = 'http://fanmofang.17d3.com/api/slot_schema/' + slot_schema_ids + '/status'
+      var url = 'https://www.yuexd.com/api/slot_schema/' + slot_schema_ids + '/status'
       wx.request({
         url: url,
         method: 'get',
@@ -242,7 +242,7 @@ Page({
     //app.globalData.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzM1ODY0MywiZXhwIjoxODYyNzE4NjQzLCJuYmYiOjE1NDczNTg2NDMsImp0aSI6IkthbXV4U2V6NFV6Ymttc0ciLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.c-J54eE5QHEGBq8TpyKP2DtmbJt9XCucVQ1sgz9mfrA"
     var token = app.globalData.token
 
-    utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/detail', { token: token })
+    utils.request('https://www.yuexd.com/api/order/' + orderID + '/detail', { token: token })
       .then(function (res) {
         console.log(res, '获取单个订单详情')
 

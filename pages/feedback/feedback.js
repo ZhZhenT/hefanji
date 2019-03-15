@@ -86,7 +86,7 @@ Page({
       return
     }
     var token = app.globalData.token;
-    utils.request('http://fanmofang.17d3.com/api/feedback/create', {
+    utils.request('https://www.yuexd.com/api/feedback/create', {
         "method": 'POST',
         "token": token,
         "data": {
@@ -133,7 +133,7 @@ Page({
     });
 
     // /my/feedback
-    utils.request('http://fanmofang.17d3.com/api/my/feedback', {
+    utils.request('https://www.yuexd.com/api/my/feedback', {
         "token": token
       })
       .then(function(res) {

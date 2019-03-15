@@ -1,5 +1,5 @@
 .share_login{height: 100vh;
-/* background:url('http://fanmofang.17d3.com/assets/images2/share_login_bg.jpg') center no-repeat; */
+/* background:url('https://www.yuexd.com/assets/images2/share_login_bg.jpg') center no-repeat; */
  position: relative; background-position: 0 0;background-size: 750rpx 100vh}
 
 .give-up-wrap{
@@ -31,12 +31,12 @@
 }
 .detail .text1{
 
-  background:url('http://fanmofang.17d3.com/assets/images2/share_login_juan.png') center no-repeat;
+  background:url('https://www.yuexd.com/assets/images2/share_login_juan.png') center no-repeat;
    background-position: 0 6rpx;background-size: 51rpx 36rpx;
 }
 
 .detail .text2{
-  background:url('http://fanmofang.17d3.com/assets/images2/share_login__money.png') center no-repeat;
+  background:url('https://www.yuexd.com/assets/images2/share_login__money.png') center no-repeat;
    background-position: 0 6rpx;background-size: 51rpx 36rpx;
 }
 
@@ -111,7 +111,7 @@
   margin: 0 auto;
   width: 477rpx;
   height: 331rpx;
-  background: url(http://fanmofang.17d3.com/assets/images2/youhuijuan-bg.png);
+  background: url(https://www.yuexd.com/assets/images2/youhuijuan-bg.png);
   background-size: 477rpx 331rpx;
   position: relative;
 }
@@ -119,7 +119,7 @@
   margin: 0 auto;
   width: 477rpx;
   height: 331rpx;
-  background: url(http://fanmofang.17d3.com/assets/images2/youhuijuan-bg2.png);
+  background: url(https://www.yuexd.com/assets/images2/youhuijuan-bg2.png);
   background-size: 477rpx 331rpx;
   position: relative;
 }
@@ -196,7 +196,7 @@
 .threeowrap .no-wrap .no-bg{
   width: 563rpx;
   height: 339rpx;
-  background: url(http://fanmofang.17d3.com/assets/images2/no-fulibg.png);
+  background: url(https://www.yuexd.com/assets/images2/no-fulibg.png);
   background-size: 563rpx 339rpx;
   position: relative;
   margin: 0 auto;

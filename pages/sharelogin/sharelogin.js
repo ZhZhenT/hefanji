@@ -131,7 +131,7 @@ Page({
     
     var token = app.globalData.token;
 
-    utils.request('http://fanmofang.17d3.com/api/sms/verificationCode/send?mobile=' + this.data.phonenum, {})
+    utils.request('https://www.yuexd.com/api/sms/verificationCode/send?mobile=' + this.data.phonenum, {})
       .then(function (res) {
 
       }, function (err) {
@@ -166,7 +166,7 @@ Page({
     }
     // mobile: 必需，11位国内手机号，不支持国际
     //  verification_code: 必需，短信验证码
-    utils.request('http://fanmofang.17d3.com/api/user/bindMobile?mobile=' + this.data.phonenum + '&verification_code=' + this.data.yzm + '&get_coupons=1' + '&referer_user_id=' + this.data.shareuserid + '&container_id=' + this.data.containerID, { token: app.globalData.token })
+    utils.request('https://www.yuexd.com/api/user/bindMobile?mobile=' + this.data.phonenum + '&verification_code=' + this.data.yzm + '&get_coupons=1' + '&referer_user_id=' + this.data.shareuserid + '&container_id=' + this.data.containerID, { token: app.globalData.token })
       .then(function (res) {
          if (res.data.status) {
            that.showAlert('恭喜您！绑定成功')
@@ -223,7 +223,7 @@ Page({
       
   },
   binToIndexTab () {
-    // utils.request('http://fanmofang.17d3.com/api/user/unbindMobile', {  token :app.globalData.token})
+    // utils.request('https://www.yuexd.com/api/user/unbindMobile', {  token :app.globalData.token})
     //   .then(function (res) {
 
     //   }, function (err) {
@@ -271,7 +271,7 @@ Page({
         this.setData({
           type: 2
         })
-        utils.request('http://fanmofang.17d3.com/api/promotions/' + options.code, { token: app.globalData.token })
+        utils.request('https://www.yuexd.com/api/promotions/' + options.code, { token: app.globalData.token })
           .then((res) => {
             console.log(res, 'system')
             if (res.data.message == '活动已结束') {
@@ -290,7 +290,7 @@ Page({
         this.setData({
           type: 2
         })
-        utils.request('http://fanmofang.17d3.com/api/promotions/' + options.code, { token: app.globalData.token })
+        utils.request('https://www.yuexd.com/api/promotions/' + options.code, { token: app.globalData.token })
           .then((res) => {
             console.log(res, 'system')
             if (res.data.message == '活动已结束') {

@@ -1,8 +1,8 @@
 .tabbarbox{display: flex;font-size: 22rpx;justify-content: space-around;height: 95rpx;color: #969696;background: #ffffff;border-top: 1rpx solid #e1e1e1;}
 .tabbarbox .icon{padding-top: 55rpx;width: 100rpx; text-align: center;}
-.tabbarbox .icon.diancan{background: url('http://fanmofang.17d3.com/assets/images2/tabbar-icon-1.png') center 15rpx no-repeat;background-size: 45rpx 33rpx;}
-.tabbarbox .icon.dingdan{background: url('http://fanmofang.17d3.com/assets/images2/tabbar-icon-2.png') center 15rpx no-repeat;background-size: 30rpx 32rpx;}
-.tabbarbox .wode.wode{background: url('http://fanmofang.17d3.com/assets/images2/tabbar-icon-3.png') center 15rpx no-repeat;background-size: 34rpx 32rpx;}
-.tabbarbox .icon.diancan.active{background: url('http://fanmofang.17d3.com/assets/images2/tabbar-icon-1-active.png') center 15rpx no-repeat;background-size: 45rpx 33rpx;color: #ff8339;}
-.tabbarbox .icon.active{background: url('http://fanmofang.17d3.com/assets/images2/tabbar-icon-2-active.png') center 15rpx no-repeat;background-size: 30rpx 32rpx;color: #ff8339;}
-.tabbarbox .wode.active{background: url('http://fanmofang.17d3.com/assets/images2/tabbar-icon-3-active.png') center 15rpx no-repeat;background-size: 34rpx 32rpx;color: #ff8339;}
+.tabbarbox .icon.diancan{background: url('https://www.yuexd.com/assets/images2/tabbar-icon-1.png') center 15rpx no-repeat;background-size: 45rpx 33rpx;}
+.tabbarbox .icon.dingdan{background: url('https://www.yuexd.com/assets/images2/tabbar-icon-2.png') center 15rpx no-repeat;background-size: 30rpx 32rpx;}
+.tabbarbox .wode.wode{background: url('https://www.yuexd.com/assets/images2/tabbar-icon-3.png') center 15rpx no-repeat;background-size: 34rpx 32rpx;}
+.tabbarbox .icon.diancan.active{background: url('https://www.yuexd.com/assets/images2/tabbar-icon-1-active.png') center 15rpx no-repeat;background-size: 45rpx 33rpx;color: #ff8339;}
+.tabbarbox .icon.active{background: url('https://www.yuexd.com/assets/images2/tabbar-icon-2-active.png') center 15rpx no-repeat;background-size: 30rpx 32rpx;color: #ff8339;}
+.tabbarbox .wode.active{background: url('https://www.yuexd.com/assets/images2/tabbar-icon-3-active.png') center 15rpx no-repeat;background-size: 34rpx 32rpx;color: #ff8339;}

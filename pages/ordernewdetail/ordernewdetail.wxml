@@ -42,7 +42,7 @@
           <view class='goods-state {{val.is_pick_button_visible?"weiqu":"yiqu"}}' wx:else> {{val.delivery_status_message}} </view>
 
           <view class='goods-price'>￥{{val.product.price}}
-            <view wx:if='{{val.product.base_price && val.product.price!= (val.product.base_price)*val.num }}' class='goods-old-price'>￥{{util.tofix(val.product.base_price*val.num, 2)}}</view>
+            <view wx:if='{{val.product.base_price && val.product.price!= (val.product.base_price)*val.num }}' class='goods-old-price'>￥{{util.tofix(val.product.base_price * val.num, 2)}}</view>
           </view>
 
           <view style='position: absolute;font-size:12px;color:#999999;right:0;top:70rpx;'>
@@ -50,7 +50,7 @@
           </view>
 
 
-          <view style="{{ val.refund_status ? 'right:0' :'none' }}" data-name='{{val.product.name}}' data-money='{{val.product.price}}' data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' data-refund_status='{{val.refund_status}}'  data-ssid='{{val.slot_schema_id}}' data-order_detail_id='{{val.order_detail_id}}' class='btn2' bindtap='bindTHTab'>
+          <view style="{{ val.refund_status ? 'right:0' :'none' }}" data-name='{{val.product.name}}' data-money='{{val.product.price}}' data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' data-refund_status='{{val.refund_status}}'  data-ssid='{{val.slot_schema_id}}' data-order_detail_id='{{val.order_detail_id}}' class='btn2' data-status_msg = '{{val.delivery_status_message}}' bindtap='bindTHTab'>
           {{val.refund_status ? val.refund_status == "refund_success"? '退款成功' :'退款中' :'单品退货'}} 
           </view>
 
@@ -105,9 +105,9 @@
       联系客服
     </view>
 
-    <view data-money='{{util.tofix(items.amount, 2)}}' data-orderID='{{items.id}}' bindtap='bindorderIDTap' class='order-re'>
+    <!-- <view data-money='{{util.tofix(items.amount, 2)}}' data-orderID='{{items.id}}' bindtap='bindorderIDTap' class='order-re'>
       申请取消订单>
-    </view>
+    </view> -->
 
   </block>
 

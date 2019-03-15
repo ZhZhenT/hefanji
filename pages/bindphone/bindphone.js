@@ -3,22 +3,22 @@ const app = getApp()
 
 Page({
 
-  /**
-   * 页面的初始数据
+  /** 
+   * 页面的初始数据 
    */
   data: {
     sendYZM: false,
     yzmtext: '获取验证码',
     phonenum: '',
     yzm: '',
-    hasphone:''
+    hasphone: ''
   },
-  binToBackTab () {
+  binToBackTab() {
     wx.navigateBack({
       delta: 1
     })
-  },  
-  
+  },
+
   bindPhoneInput(e) {
     this.setData({
       phonenum: e.detail.value
@@ -120,12 +120,12 @@ Page({
     })
     this.countDown()
   },
-  // 获取验证码
+  // 获取验证码 
   countDown() {
 
     var token = app.globalData.token;
 
-    utils.request('http://fanmofang.17d3.com/api/sms/verificationCode/send?mobile=' + this.data.phonenum, {})
+    utils.request('https://www.yuexd.com/api/sms/verificationCode/send?mobile=' + this.data.phonenum, {})
       .then(function (res) {
 
       }, function (err) {
@@ -148,7 +148,7 @@ Page({
     }, 1000)
 
   },
-  // 提交 
+  // 提交  
 
   submit() {
     var that = this;
@@ -158,9 +158,9 @@ Page({
     if (!this.regYZM()) {
       return
     }
-    // mobile: 必需，11位国内手机号，不支持国际
-    //  verification_code: 必需，短信验证码
-    utils.request('http://fanmofang.17d3.com/api/user/bindMobile?mobile=' + this.data.phonenum + '&verification_code=' + this.data.yzm , { token: app.globalData.token })
+    // mobile: 必需，11位国内手机号，不支持国际 
+    //  verification_code: 必需，短信验证码 
+    utils.request('https://www.yuexd.com/api/user/bindMobile?mobile=' + this.data.phonenum + '&verification_code=' + this.data.yzm, { token: app.globalData.token })
       .then(function (res) {
         if (res.data.status) {
           that.showAlert('恭喜您！绑定成功')
@@ -184,7 +184,7 @@ Page({
       })
 
   },
-  updataphone () {
+  updataphone() {
     this.setData({
       hasphone: ''
     })
@@ -193,46 +193,46 @@ Page({
     this.setData({
       hasphone: wx.getStorageSync('mobile')
     })
-    // app.globalData.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzI3MzE3NiwiZXhwIjoxODYyNjMzMTc2LCJuYmYiOjE1NDcyNzMxNzYsImp0aSI6IjZ5WWRBU25rOUVuZnZaaEMiLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.FPzvPzP95bM8Cc9f5WVS2EJFXmno7cE4K7sLxZggTSM'
+    // app.globalData.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9mYW5tb2ZhbmcuMTdkMy5jb21cL2FwaVwvdXNlclwvbG9naW5cL3dlY2hhdCIsImlhdCI6MTU0NzI3MzE3NiwiZXhwIjoxODYyNjMzMTc2LCJuYmYiOjE1NDcyNzMxNzYsImp0aSI6IjZ5WWRBU25rOUVuZnZaaEMiLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.FPzvPzP95bM8Cc9f5WVS2EJFXmno7cE4K7sLxZggTSM' 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
+  /** 
+   * 生命周期函数--监听页面初次渲染完成 
    */
   onReady: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
+  /** 
+   * 生命周期函数--监听页面显示 
    */
   onShow: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
+  /** 
+   * 生命周期函数--监听页面隐藏 
    */
   onHide: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
+  /** 
+   * 生命周期函数--监听页面卸载 
    */
   onUnload: function () {
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
+  /** 
+   * 页面相关事件处理函数--监听用户下拉动作 
    */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
+  /** 
+   * 页面上拉触底事件的处理函数 
    */
   onReachBottom: function () {
 

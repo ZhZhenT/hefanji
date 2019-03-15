@@ -1,8 +1,8 @@
-.index{height: 100vh;background:url('http://fanmofang.17d3.com/assets/images2/index-bg1.jpg') center no-repeat; position: relative; background-position: 0 0;}
+.index{height: 100vh;background:url('https://www.yuexd.com/assets/images2/index-bg1.jpg') center no-repeat; position: relative; background-position: 0 0;}
 .logo{padding-top: 70rpx;text-align: center;}
 .once-use-list{font-size: 26rpx;color: #4d4d4d;margin-top: 40rpx;}
-.once-use-list .item{border-bottom:1rpx solid #f4f0ee;padding: 30rpx 0; background:url('http://fanmofang.17d3.com/assets/images2/index-btn-toright.png') right 25rpx center no-repeat; background-size: 14rpx 22rpx;}
-.once-use-list .item .ads{padding:15rpx 0 15rpx 70rpx;background:url('http://fanmofang.17d3.com/assets/images2/index-color-ads-icon.png') 25rpx center no-repeat; background-size: 27rpx 36rpx;}
+.once-use-list .item{border-bottom:1rpx solid #f4f0ee;padding: 30rpx 0; background:url('https://www.yuexd.com/assets/images2/index-btn-toright.png') right 25rpx center no-repeat; background-size: 14rpx 22rpx;}
+.once-use-list .item .ads{padding:15rpx 0 15rpx 70rpx;background:url('https://www.yuexd.com/assets/images2/index-color-ads-icon.png') 25rpx center no-repeat; background-size: 27rpx 36rpx;}
 .btn-saoyisao{background: #ff8339;color: #ffffff;font-size: 30rpx;font-weight: bold;text-align: center;height: 100rpx;line-height: 100rpx;width: 350rpx;border-radius: 50rpx;position: absolute;margin-top: 50rpx;}
 
 /*.btn-saoyisao:after {

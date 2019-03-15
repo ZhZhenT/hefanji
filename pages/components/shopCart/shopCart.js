@@ -228,7 +228,7 @@ Component({
       
       var token = app.globalData.token;
       console.log(data, '订单详情')
-      utils.request('http://fanmofang.17d3.com/api/order/create', { method: 'POST', token: token, data: data })
+      utils.request('https://www.yuexd.com/api/order/create', { method: 'POST', token: token, data: data })
         .then(function (res) {
           var orderID = res.data.order_id;
 
@@ -262,7 +262,7 @@ Component({
             // 订单生成成功
             
             console.log(res, '订单生成');
-            utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/pay', { method: 'POST', token: token })
+            utils.request('https://www.yuexd.com/api/order/' + orderID + '/pay', { method: 'POST', token: token })
               .then(function (res) {
                 console.log(res, '调起支付接口');
                 if (res.data.status) {
@@ -289,7 +289,7 @@ Component({
                     },
                     'fail': function (res) {
 
-                      utils.request('http://fanmofang.17d3.com/api/order/' + orderID + '/cancel', { method: 'POST', token: token })
+                      utils.request('https://www.yuexd.com/api/order/' + orderID + '/cancel', { method: 'POST', token: token })
                         .then(function (res) {
                           console.log(res, '订单取消')
                           wx.showToast({
