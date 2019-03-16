@@ -42,7 +42,7 @@
           <view class='goods-state {{val.is_pick_button_visible?"weiqu":"yiqu"}}' wx:else> {{val.delivery_status_message}} </view>
 
           <view class='goods-price'>￥{{val.product.price}}
-            <view wx:if='{{val.product.base_price && val.product.price!= (val.product.base_price)*val.num }}' class='goods-old-price'>￥{{util.tofix(val.product.base_price * val.num, 2)}}</view>
+            <view wx:if='{{val.product.base_price && val.product.price!= (val.product.base_price)*val.num }}' class='goods-old-price'>￥{{util.tofix2(val.product.base_price * val.num, 2, val.num,val.product.base_price)}}</view>
           </view>
 
           <view style='position: absolute;font-size:12px;color:#999999;right:0;top:70rpx;'>

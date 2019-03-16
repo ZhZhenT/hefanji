@@ -328,6 +328,7 @@ Page({
 
                 if (item.container.id == that.data.containerID) {
                   containerflag = true
+                  
                   if (item.detail.length === 0) {
                     that.data.showorderno = true;
                   }
@@ -335,7 +336,7 @@ Page({
 
               }
             })
-            if (!containerflag) {
+            if (!containerflag && that.data.containerID) {
               that.data.showorderno = true;
             }
           }

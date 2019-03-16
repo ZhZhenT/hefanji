@@ -96,6 +96,7 @@
       border-radius: 50rpx;
       margin: 0 auto;
       margin-top: 50rpx;
+      margin-bottom: 50rpx;
       }
       .order-re{
         font-size: 26rpx;

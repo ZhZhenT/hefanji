@@ -394,6 +394,10 @@ Page({
       .then(function (res) {
         console.log(res, containerID, that.data.scrollViewLeftCurrent, '获取货柜菜品')
 
+        if (!res.data[that.data.scrollViewLeftCurrent]) {
+          return
+        }
+
         that.data.dinnerTimeList = Object.keys(res.data[that.data.scrollViewLeftCurrent].products).map((item, index) => {
           let text = ''
           if (item === 'breakfast') {
