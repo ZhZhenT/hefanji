@@ -3,7 +3,7 @@
 .swiper-wrap .dian-list{z-index: 99;display: flex;position: absolute;bottom: 0;right:30rpx;height: 85rpx;align-items: center;}
 .swiper-wrap .dian-list .dian{width: 15rpx;height: 15rpx;background: #5e5e5e;border-radius: 50%;margin: 0 8rpx;}
 .swiper-wrap .dian-list .dian.current{background: #ff8339;}
-.swiper-wrap .ads-mask{position: absolute;background: #000000;bottom: 0;left: 0;right: 0;height: 85rpx;background: rgba(0,0,0,0.15);display: flex;padding-left: 30rpx;line-height: 85rpx;z-index: 999}
+.swiper-wrap .ads-mask{position: absolute;background: #000000;bottom: 0;left: 0;right: 0;height: 55rpx;background: rgba(0,0,0,0.15);display: flex;padding-left: 30rpx;line-height: 55rpx;z-index: 999}
 .swiper-wrap .ads-mask .txt{font-size: 22rpx;color: #ffffff;background: url('https://www.yuexd.com/assets/images2/index-banner-ads-icon.png') 0 center no-repeat;background-size: 26rpx 36rpx;padding-left: 40rpx;}
 .scroll-wrap {display: flex;position: relative;}
 .scroll-wrap .left{width: 150rpx;background: #f9f4f2;}
