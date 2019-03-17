@@ -97,7 +97,7 @@
        style='transform: translateY(-20rpx) translateX(-0rpx);display:inline-block;' class='fh'>
        ￥</text><text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text>
        </view> 
-      <view class='prise_bot_text' style=" {{selectjuan.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{selectjuan.type === 'fixed' ? '现金卷' : '饭票'}}</view>
+      <view class='prise_bot_text' style=" {{selectjuan.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{selectjuan.type === 'fixed' ? '现金券' : '饭票'}}</view>
     </view>
 
     <view class='describe'>

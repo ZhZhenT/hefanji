@@ -36,13 +36,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "containerID=7&userid=4&ads=22222",
 					"pathName": "pages/index/index",
-					"query": "code=pr&containerID=7&userid=4&ads=22222",
+					"query": "code=register&containerID=7&userid=4&ads=22222",
 					"scene": 1011
 				},
 				{

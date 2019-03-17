@@ -6,7 +6,8 @@
 
   <view style='position:absolute;top:0;left:0;right:0;z-index:1;' wx:if='{{type == 1}}'>
     <view class='give-up-wrap'>
-      <view class='give-up' bindtap='binToIndexTab'>任性放弃</view>
+      <view wx:if='{{containerID && containerID != "undefined"}}' class='give-up' bindtap='binToShopTab'>任性放弃</view>
+      <view wx:if='{{!containerID || containerID == "undefined"}}' class='give-up' bindtap='binToIndexTab'>任性放弃</view>
     </view>
 
     <view class='title'>分享不停，立减不停</view>
@@ -46,7 +47,8 @@
         </view>
 
         <view class='to-index' bindtap='bindToIndexTap'>
-          <text bindtap='binToIndexTab'>返回饭魔方首页></text>
+          <text  wx:if='{{containerID && containerID != "undefined"}}'  bindtap='binToShopTab'>返回饭魔方首页></text>
+           <text wx:if='{{!containerID || containerID == "undefined"}}' bindtap='binToIndexTab'>返回饭魔方首页></text>
         </view>
       </view>
     </view>
@@ -64,7 +66,7 @@
           <view class='yhj-top' wx:if="{{item.type === 'fixed'}}">
             <text class='text1'>￥</text>
             <text class='text2'>{{item.value}}</text>
-            <text class='text3'>{{item.type === 'fixed' ? '现金卷' : '饭票'}}</text>
+            <text class='text3'>{{item.type === 'fixed' ? '现金券' : '饭票'}}</text>
           </view>
 
           <view class='yhj-bot' wx:if="{{item.type === 'fixed'}}">
@@ -101,8 +103,10 @@
     <view wx:if='{{ads && ads != "undefined"}}' class='ads'>
       来源柜机：{{ads}}
     </view>
+
     <view class='btn-wrap'>
-      <view bindtap='bindToIndexTap' class='btn'>返回饭魔方</view>
+      <view wx:if='{{containerID && containerID != "undefined"}}' bindtap='binToShopTab' class='btn'>现在点餐</view>
+      <view wx:if='{{!containerID || containerID == "undefined"}}' bindtap='bindToIndexTap' class='btn'>返回饭魔方</view>
     </view>
 
   </view>

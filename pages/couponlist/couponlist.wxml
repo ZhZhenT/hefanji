@@ -44,7 +44,7 @@
        ￥</text><text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text> 
        </view> 
  
-      <view class='prise_bot_text' style=" {{item.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{item.type === 'fixed' ? '现金卷' : '饭票'}}</view> 
+      <view class='prise_bot_text' style=" {{item.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{item.type === 'fixed' ? '现金券' : '饭票'}}</view>
     </view> 
     <view class='describe'> 
       <view>{{item.name}}</view> 
@@ -77,7 +77,7 @@
    <!-- <view class='item'> 
        <view class='prise'> 
       <view class='prise_top_text'><text style='transform: translateY(-13rpx) translateX(-10rpx);display:inline-block;' class='fh'>￥</text><text style='transform: rotate(-90deg) translateX(0rpx);display:inline-block;'>8</text></view> 
-      <view class='prise_bot_text'>现金卷</view> 
+      <view class='prise_bot_text'>现金券</view>
     </view> 
     <view class='describe'> 
       <view>新用户专享</view> 
@@ -120,7 +120,7 @@
        ￥</text><text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text> 
        </view> 
  
-      <view class='prise_bot_text' style=" {{item.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{item.type === 'fixed' ? '现金卷' : '饭票'}}</view> 
+      <view class='prise_bot_text' style=" {{item.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{item.type === 'fixed' ? '现金券' : '饭票'}}</view>
     </view> 
  
     <view class='describe'> 
