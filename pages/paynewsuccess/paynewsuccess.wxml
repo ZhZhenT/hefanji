@@ -13,13 +13,13 @@
 
       <block wx:for='{{items.detail_by_date}}' wx:key='{{index}}'>
 
-        <view data-containerID='{{items.container.id}}' class='date'>
+        <view  data-containerID='{{items.container.id}}' class='date'>
 
           <text class='icon'>取餐日期：{{item.date}} <text wx:if='{{item.datetext}}' class='{{item.datetext == "今天"?"jintian":"yuding"}}'>（{{item.datetext}}）</text></text>
 
         </view>
 
-        <view class='new-goods-wrap'>
+        <view bindtap='bindorderIDTap' data-orderID='{{orderID}}' class='new-goods-wrap'>
           <view wx:key='{{index}}' class='goods ' wx:for='{{item.products}}' wx:for-item="val">
             <view data-goodsId='{{val.product.id}}' class='img'>
               <image src='{{val.product.feature_image}}' style='width:95rpx;height:95rpx;display:block'>
@@ -28,10 +28,8 @@
           </view>
         </view>
 
-
-
       </block>
-        <view class='new-goods-info'>
+        <view bindtap='bindorderIDTap' data-orderID='{{orderID}}' class='new-goods-info'>
           <view>共{{items.ordernum}}件商品</view>
           <view>总计：<text class='money'>￥{{items.amount}}</text></view>
         </view>

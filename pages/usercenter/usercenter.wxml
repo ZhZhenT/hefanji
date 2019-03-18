@@ -14,7 +14,7 @@
     <view bindtap='binCallTap' class='item'> <view class='txt phone'>客服热线</view> </view>
     <view bindtap='bindToFeedbackTap' class='item'> <view class='txt yijian'>意见反馈</view> </view>
     <view bindtap='bindToBindPhoneTap' class='item'> <view class='txt bindphone'>绑定手机号</view> </view>
-    <view bindtap='binTocouponlistTap' class='item'> <view class='txt mycoupon'>我的优惠卷</view> </view>
+    <view bindtap='binTocouponlistTap' class='item'> <view class='txt mycoupon'>我的优惠券</view> </view>
   </view>
 
   <view class='banquan'>
