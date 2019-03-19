@@ -48,17 +48,20 @@
           <view style='position: absolute;font-size:12px;color:#999999;right:0;top:70rpx;'>
             格子: {{ val.slot_display_number}}
           </view>
-
-
-          <view style="{{ val.refund_status ? 'right:0' :'none' }}" data-name='{{val.product.name}}' data-money='{{val.product.price}}' data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' data-refund_status='{{val.refund_status}}'  data-ssid='{{val.slot_schema_id}}' data-order_detail_id='{{val.order_detail_id}}' class='btn2' data-status_msg = '{{val.delivery_status_message}}' bindtap='bindTHTab'>
+          <view  style="{{ val.refund_status ? 'right:0' :'none' }}" data-name='{{val.product.name}}' data-money='{{val.product.price}}' data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}' data-refund_status='{{val.refund_status}}'  data-ssid='{{val.slot_schema_id}}' data-order_detail_id='{{val.order_detail_id}}' class='btn2' data-status_msg = '{{val.delivery_status_message}}' bindtap='bindTHTab'>
           {{val.refund_status ? val.refund_status == "refund_success"? '退款成功' :'退款中' :'单品退货'}} 
           </view>
 
           <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}
           data-ssid='{{val.slot_schema_id}}' data-ssid='{{val.slot_schema_id}}' data-order_detail_id='{{val.order_detail_id}}' bindtouchend='bindOpenlongTap' bindtouchstart='bindOpenTap' wx:if='{{ val.is_pick_button_visible && !val.refund_status}}' class='btn'>{{val.time? '再次开启' + '（' + val.time +'）':'开启格子'}}</view>
+
           <view style='background: transparent;color:#666666;  text-align: right' wx:elif='{{val.delivery_status == "picked_up" && !val.refund_status}}' class='btn no'>已取餐</view>
           <view wx:elif='{{!item.datetext && !val.refund_status}}' class='btn no'>已过期</view>
           <view data-tishi='{{val.pick_button_invisible_reason}}' bindtouchstart='bindNoOpenTap' class='btn no' wx:elif='{{val.delivery_status !="picked_up" && !val.refund_status}}'>开启格子</view>
+
+
+          <!-- <view data-orderID='{{items.id}}' data-date='{{item.date}}' data-goodsid='{{val.product.id}}
+          data-ssid='{{val.slot_schema_id}}' data-ssid='{{val.slot_schema_id}}' data-order_detail_id='{{val.order_detail_id}}' bindtap='test' >{{val.time? '再次开启' + '（' + val.time +'）':'开启格子'}}</view> -->
 
         </view>
       </view>
