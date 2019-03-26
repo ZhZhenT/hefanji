@@ -4,7 +4,7 @@ App({
   onLaunch: function() { // 当小程序初始化完成时，会触发 onLaunch（全局只触发一次） console.log('App onLaunch')
     var that = this;
 
-    that.getUserToken = function(userid) {
+    that.getUserToken = function(userid,cid) {
       return new Promise(function(resolve, reject) {
         // if (that.globalData.tokenRes){
         //   resolve(that.globalData.tokenRes)
@@ -17,7 +17,8 @@ App({
             utils.request('https://www.yuexd.com/api/user/login/wechat', {
                 data: {
                   code: res.code,
-                  referer_user_id: userid || ''
+                  referer_user_id: userid || '',
+                  container_id: cid || ''
                 }
               })
               .then(function(res) {
