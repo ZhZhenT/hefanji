@@ -482,7 +482,7 @@ Page({
     var shopCard2 = shopCard[containerID] || {}
 
     //获取tocken
-    app.getUserToken().then(function(res){
+    app.getUserToken(app.globalData.userid, containerID).then(function(res){
       var restoken = res;
       return new Promise(function (resolve, reject){
         resolve(restoken)

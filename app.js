@@ -13,7 +13,7 @@ App({
         wx.login({
           success: res => {
             //发送 res.code 到后台换取 openId, sessionKey, unionId
-
+            console.log('登陆cid', cid)
             utils.request('https://www.yuexd.com/api/user/login/wechat', {
                 data: {
                   code: res.code,

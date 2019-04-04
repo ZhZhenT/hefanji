@@ -66,7 +66,7 @@ Page({
         bgH: h
       })
     })
-    console.log(options)
+    app.globalData.userid = options.userid
     //获取tocken
     app.getUserToken(options.userid, options.containerID).then(function (res) {
       var token = res.data.token;
