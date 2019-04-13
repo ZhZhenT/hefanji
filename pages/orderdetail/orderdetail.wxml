@@ -3,16 +3,16 @@
 
 
 
-      <block wx:key='{{idx}}'wx:for-index="idx" wx:for='{{goodsList}}' wx:for-item="items">     
+  <block wx:key='{{idx}}' wx:for-index="idx" wx:for='{{goodsList}}' wx:for-item="items">
 
-        <view  wx:key='{{idx}}' wx:for-index="idx"  class='date' wx:for='{{detail}}' wx:for-item="dates" >
-          <text wx:if='{{dates.order_date == items.date}}' class='icon'> 取餐日期：{{items.date}} <text class='{{items.datetext1 == "今天"?"jintian":"yuding"}}'>({{items.datetext1}})</text></text>
-       </view>
+    <view wx:key='{{idx}}' wx:for-index="idx" class='date' wx:for='{{detail}}' wx:for-item="dates">
+      <text wx:if='{{dates.order_date == items.date}}' class='icon'> 取餐日期：{{items.date}} <text class='{{items.datetext1 == "今天"?"jintian":"yuding"}}'>({{items.datetext1}})</text></text>
+    </view>
 
-      <view wx:for='{{items.products}}' wx:key='{{index}}' wx:for-item="items1" >
+    <view wx:for='{{items.products}}' wx:key='{{index}}' wx:for-item="items1">
 
-        <view wx:if='{{item.selected}}' wx:for='{{items1}}' wx:key='{{index}}' >
-          <view class='goods'>
+      <view wx:if='{{item.selected}}' wx:for='{{items1}}' wx:key='{{index}}'>
+        <view class='goods'>
           <view data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail' class='img'>
             <image src='{{item.product.feature_image}}' style='width:154rpx;height:166rpx;display:block'></image>
             <!-- 打折 zhekou  热销 good-hot -->
@@ -23,19 +23,22 @@
             <view wx:if='{{item.zhekou && item.zhekou != 10}}' class='zhekou'>{{item.zhekou}}折</view>-->
 
           </view>
-          <view data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail'  class='center'>
-            <view  class='goods-details'>
+          <view data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail' class='center'>
+            <view class='goods-details'>
               <view class='goods-name'>
                 <text class='renqi' wx:if='{{item.is_hot_sale}}'>人气</text>
-                <text class='tuijian' wx:if='{{item.is_friend_like}}'>推荐</text>
-              {{item.product.name}}<text wx:if='{{0}}'>{{item.product.description}}</text></view>
+                <text class='tuijian' wx:if='{{item.is_friend_like}}'>推荐</text> {{item.product.name}}
+                <text wx:if='{{0}}'>{{item.product.description}}</text>
+              </view>
               <!--<view class='goods-kucun'>剩余{{item.kucun}}份<view class='goods-hot'><view class='hot' wx:key='{{index}}' wx:for='{{item.hot}}'></view></view></view>-->
               <view class='goods-num-text'>数量 x{{item.selected}}</view>
-                          <view class='goods-kucun'>
-              <text>{{item.cantxt}}</text>
+              <view class='goods-kucun'>
+                <text>{{item.cantxt}}</text>
+              </view>
             </view>
+            <view class='goods-price'>￥{{item.price}}
+              <view wx:if='{{item.product.base_price}}' class='goods-old-price'>￥{{item.product.base_price}} </view>
             </view>
-            <view class='goods-price'>￥{{item.price}}<view wx:if='{{item.product.base_price}}' class='goods-old-price'>￥{{item.product.base_price}}                 </view></view>
           </view>
 
           <!--<view class='goods-num-controller'>
@@ -44,12 +47,12 @@
             <view data-dateid='{{item.dateid}}' data-goodsId='{{item.id}}' bindtap='bindAddTap' class='add icon'></view>
           </view>-->
 
-            </view>
         </view>
-
       </view>
 
-        <!-- <block wx:if='{{item.selected}}' wx:for='{{items.products}}' wx:key='{{index}}'>
+    </view>
+
+    <!-- <block wx:if='{{item.selected}}' wx:for='{{items.products}}' wx:key='{{index}}'>
 
           <view class='goods'>
           <view data-goodsId='{{item.product.id}}' bindtap='binToGoodsDetail' class='img'>
@@ -73,48 +76,114 @@
 
         </block> -->
 
-      </block>
+  </block>
 
-<view class='discount'>
-  <view class='top_text' bindtap='binTocouponlistTap'>
-   <view class='text1' >使用优惠卷</view>
-   <view class='text2'>
-   <text wx:if='{{discountnum}}'>{{discountnum}}张可用 </text> <view class='icon'>></view>
-   </view>
+  <view  class='discount'>
+    <view class='top_text' bindtap='binTocouponlistTap'>
+      <view class='text1'>使用优惠卷</view>
+      <view class='text2'>
+        <text wx:if='{{discountnum}}'>{{discountnum}}张可用 </text>
+        <view class='icon'>></view>
+      </view>
+    </view>
+
+    <view class='discount_list' wx:if='{{selectjuan}}'>
+      <view class='item'>
+
+        <view class='prise'>
+
+          <view wx:if="{{selectjuan.type === 'fixed'}}" class='prise_top_text'>
+            <text class='fh'>￥</text>
+            <text>{{selectjuan.value}}</text>
+          </view>
+
+          <view wx:if="{{selectjuan.type !== 'fixed'}}" class='prise_top_text'>
+            <text style='transform: translateY(-20rpx) translateX(-0rpx);display:inline-block;' class='fh'>
+       ￥</text>
+            <text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text>
+          </view>
+          <view class='prise_bot_text' style=" {{selectjuan.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{selectjuan.type === 'fixed' ? '现金券' : '饭票'}}</view>
+        </view>
+
+        <view class='describe'>
+          <view>{{selectjuan.name}}</view>
+          <view>{{selectjuan.description}}</view>
+        </view>
+        <view bindtap='bindDeleteTab' class='delete'>
+          <view class='delete_btn'>删除</view>
+        </view>
+      </view>
+    </view>
+
   </view>
 
-  <view class='discount_list' wx:if='{{selectjuan}}'>
-   <view class='item'>
+  <view wx:if='{{!showorderno}}' style='margin-top:20rpx' class='discount'>
+    <view id='discount_list1' class='discount_list'>
 
-    <view class='prise'>
+      <view class='selelct-all' wx:if='{{select && !see}}'>
+        <text style='padding-left:5px'>不使用优惠卷</text>
+        <view bindtap='binSelectAlltab' class='select-btn {{selectAll ? "select" : "" }}' wx:if='{{select}}'>
+          <view class='icon'></view>
+        </view>
+      </view>
 
-      <view wx:if="{{selectjuan.type === 'fixed'}}" class='prise_top_text'><text class='fh'>￥</text>
-      <text>{{selectjuan.value}}</text></view>
+      <view wx:if='{{index < seelength}}' wx:for='{{discount_list1}}' wx:key='index' class='item-margin'>
+        <view data-id='{{item.id}}' bindtap='binSelectTab' class='item'>
+          <view class='prise'>
 
-      <view
-       wx:if="{{selectjuan.type !== 'fixed'}}" 
-       class='prise_top_text'><text
-       style='transform: translateY(-20rpx) translateX(-0rpx);display:inline-block;' class='fh'>
-       ￥</text><text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text>
-       </view> 
-      <view class='prise_bot_text' style=" {{selectjuan.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{selectjuan.type === 'fixed' ? '现金券' : '饭票'}}</view>
+            <view wx:if="{{item.type === 'fixed'}}" class='prise_top_text'>
+              <text class='fh'>￥</text>
+              <text>{{item.value}}</text>
+            </view>
+
+            <view wx:if="{{item.type !== 'fixed'}}" class='prise_top_text'>
+              <text style='transform: translateY(-20rpx) translateX(-0rpx);display:inline-block;' class='fh'> 
+       ￥</text>
+              <text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text>
+            </view>
+
+            <view class='prise_bot_text' style=" {{item.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{item.type === 'fixed' ? '现金券' : '饭票'}}</view>
+          </view>
+          <view class='describe'>
+            <view>{{item.name}}</view>
+            <view>{{item.description}}</view>
+          </view>
+          <view class='bot-text-wrap'>
+            <view class='date'>截至日期：{{item.not_after}}</view>
+            <view wx:if='{{!select}}' class='btn-text'>满{{item.min_amount}}元可用</view>
+          </view>
+
+          <view class='select-btn {{item.select ? "select" : "" }}' wx:if='{{select && !see}}'>
+            <view class='icon'></view>
+          </view>
+          <view data-id='{{item.id}}' catchtap='showMore' class='see-more {{item.show ? "show" : "" }}'>
+            查看更多
+            <text>></text>
+          </view>
+        </view>
+
+        <view wx:if='{{item.show}}' class='more-text'>
+          {{item.tips ? item.tips : '暂无更多详情' }}
+        </view>
+
+      </view>
+
+      <view bindtap='bindSeeAll' wx:if='{{discount_list1.length>3}}' class='seemore'>
+      {{discount_list1.length > seelength?'查看更多':'收起'}}
+      </view>
+
+      <view wx:if='{{discount_list1.length === 0}}' class='ordernobox'>
+        <view class='icon'>无相关优惠卷</view>
+      </view>
     </view>
 
-    <view class='describe'>
-      <view>{{selectjuan.name}}</view>
-      <view>{{selectjuan.description}}</view>
-    </view>
-    <view bindtap='bindDeleteTab' class='delete'>
-      <view class='delete_btn'>删除</view>
-    </view>
-   </view>
   </view>
 
-</view>
 
-<view wx:if='{{showorderno}}' class='ordernobox'>
-  <view class='icon'>亲！您的购物车是空的！</view>
-</view>
+  <view wx:if='{{showorderno}}' class='ordernobox'>
+    <view class='icon'>亲！您的购物车是空的！</view>
+  </view>
 
-<shopCart  detail='{{detail}}' isCartShow="{{isCartShow}}" bindMyEventRemoveShopCartTap="onMyEventRemoveShopCartTap" bindMyEventReduceGoods="onMyEventReduceGoods"  bindMyEventAddGoods="onMyEventAddGoods" goodsList='{{goodsList}}' totalPrise='{{totalPrise}}' totalNum='{{totalNum}}' juanprise='{{juanprise}}' reducePrise='{{reducePrise}}' class='shopCart'></shopCart>  
+  <shopCart detail='{{detail}}' isCartShow="{{isCartShow}}" bindMyEventRemoveShopCartTap="onMyEventRemoveShopCartTap" bindMyEventReduceGoods="onMyEventReduceGoods" bindMyEventAddGoods="onMyEventAddGoods" goodsList='{{goodsList}}' totalPrise='{{totalPrise}}'
+    totalNum='{{totalNum}}' juanprise='{{juanprise}}' reducePrise='{{reducePrise}}' class='shopCart'></shopCart>
 </view>

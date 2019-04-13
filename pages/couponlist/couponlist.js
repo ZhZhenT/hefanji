@@ -99,6 +99,7 @@ Page({
     this.data.discount_list1.forEach((item) => {
       if (item.id == id) {
         item.select = !item.select
+        var itemselect = item.select
         var juan = item
         var juanprise = 0
 
@@ -113,8 +114,8 @@ Page({
         pages.forEach(function (item, index) {
           if (index < pages.length) {
             item.setData({
-              selectjuan: juan || '',
-              juanprise: juanprise
+              selectjuan: itemselect ? juan || '' : '',
+              juanprise: itemselect ? juanprise : 0
             })
           }
         })

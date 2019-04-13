@@ -1,14 +1,19 @@
 var utils = {}
 
-utils.tofix = function (val, num) {
-  console.log(val.toFixed(num || 0))
-  return val.toFixed(num || 0) < 0 ? 0 : val.toFixed(num || 0)
+utils.tofix = function (val, num,c) {
+  return val.toFixed(num || 0) < 0 ? '0' : val.toFixed(num || 0) + '';
 }
+
 utils.tofix2 = function (val, num,count,price) {
   if (!count) {
     return price.toFixed(2)
   }
   return val.toFixed(num || 0) < 0 ? 0 : val.toFixed(num || 0)
+}
+
+utils.tofix3 = function (val, num, c) {
+  console.log(val.toFixed(num || 0),c)
+  return val.toFixed(num || 0) <= 0 ? '0' : val.toFixed(num || 0) + '';
 }
 
 module.exports = utils
