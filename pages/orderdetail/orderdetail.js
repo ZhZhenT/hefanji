@@ -45,7 +45,6 @@ Page({
     let id = ev.currentTarget.dataset.id
     this.data.discount_list1.forEach((item) => {
       if (item.id == id) {
-        console.log(item,'优惠卷')
         item.select = !item.select
         var juan = item
         var juanprise = 0
@@ -69,6 +68,7 @@ Page({
  
         app.globalData.selectID = item.id
         app.globalData.selectID_phone = item.is_mobile_required
+
 
       } else {
         item.select = false

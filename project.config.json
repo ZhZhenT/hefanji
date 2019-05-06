@@ -96,10 +96,10 @@
 				},
 				{
 					"id": 8,
-					"name": "订单100010942",
-					"pathName": "pages/ordernewdetail/ordernewdetail",
-					"query": "orderid=100010944",
-					"scene": "1011"
+					"name": "1",
+					"pathName": "pages/orderdetail/orderdetail",
+					"query": "containerID=8",
+					"scene": 1011
 				},
 				{
 					"id": 9,
