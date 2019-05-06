@@ -17,11 +17,87 @@ Page({
     showorderno:false,
     selectjuan: '',
     discountnum: 0,
-    juanprise: 0
+    juanprise: 0,
+
+    swiperheigh: 1200,
+    sildeHeight: 0,
+    current: 0,
+    scrollTop: 0,
+    select: true,
+    selectAll: false,
+    discount_list1: [],
+    see: false,
+    seelength:3
   },
   /**
    * 生命周期函数--监听页面加载
    */
+  bindSeeAll () {
+    console.log(this.data.discount_list1)
+    this.setData({
+      seelength: this.data.seelength == 3 ? this.data.discount_list1.length : 3
+    })
+  },
+  binSelectTab(ev) {
+    if (this.data.see) {
+      return
+    }
+    let id = ev.currentTarget.dataset.id
+    this.data.discount_list1.forEach((item) => {
+      if (item.id == id) {
+        console.log(item,'优惠卷')
+        item.select = !item.select
+        var juan = item
+        var juanprise = 0
+        var itemselect = item.select
+        if (juan.type !== 'fixed') {
+          juanprise = utils.findMax(app.globalData.goodsList)
+        } else if (juan.type == 'fixed') {
+          juanprise = juan.value
+        }
+        
+        //更新上个页面数据
+        var pages = getCurrentPages();
+        pages.forEach(function (item, index) {
+          if (index < pages.length) {
+            item.setData({
+              selectjuan: itemselect ? juan || '' : '' ,
+              juanprise: itemselect ? juanprise : 0
+            })
+          }
+        })
+ 
+        app.globalData.selectID = item.id
+        app.globalData.selectID_phone = item.is_mobile_required
+
+      } else {
+        item.select = false
+      }
+    })
+    this.setData({
+      discount_list1: this.data.discount_list1,
+      selectAll: false
+    })
+  },
+  binSelectAlltab() {
+    let flag = !this.data.selectAll
+    this.data.discount_list1.forEach((item) => {
+      item.select = false
+    })
+    this.setData({
+      discount_list1: this.data.discount_list1,
+      selectAll: flag
+    })
+    var pages = getCurrentPages();
+    pages.forEach(function (item, index) {
+      if (index < pages.length) {
+        item.setData({
+          selectjuan: '',
+          juanprise: 0
+        })
+      }
+    })
+  },
   binTocouponlistTap: function () {
     let selectID = ''
     let selectID_phone = ''
@@ -65,6 +141,7 @@ Page({
     app.globalData.totalPrise = res.totalPrise;
     app.globalData.reducePrise = res.reducePrise;
     that.bindDeleteTab()
+    this.getjuan()
     //更新上个页面数据
     var pages = getCurrentPages();
 
@@ -117,6 +194,7 @@ Page({
     app.globalData.totalPrise = res.totalPrise;
     app.globalData.reducePrise = res.reducePrise;
     that.bindDeleteTab()
+    this.getjuan()
     //更新上个页面数据
     var pages = getCurrentPages();
     
@@ -183,6 +261,7 @@ Page({
     app.globalData.totalPrise = res.totalPrise;
     app.globalData.reducePrise = res.reducePrise;
     that.bindDeleteTab()
+    this.getjuan()
     //更新上个页面数据
     var pages = getCurrentPages();
 
@@ -224,6 +303,7 @@ Page({
     app.globalData.totalPrise = res.totalPrise;
     app.globalData.reducePrise = res.reducePrise;
     that.bindDeleteTab()
+    this.getjuan()
     //更新上个页面数据
     var pages = getCurrentPages();
 
@@ -236,6 +316,29 @@ Page({
           goodsList: goodsList
         })
       }
+    })
+  },
+  showMore(ev) {
+    let id = ev.currentTarget.dataset.id
+    var that = this
+    this.data.discount_list1.forEach((item) => {
+      if (item.id == id) {
+        item.show = !item.show
+        // setTimeout(function () {
+        //   utils.computeHeight2(['#discount_list1', '#discount_list2']).then(function (results) {
+        //     that.setData({
+        //       swiperheigh: Math.max(...(results).slice(1), that.data.swiperheigh),
+        //     })
+        //   }).catch(function (e) {
+
+        //   });
+        // }, 30)
+      } else {
+        item.show = false
+      }
+    })
+    this.setData({
+      discount_list1: this.data.discount_list1
     })
   },
   bindAddTap: function (ev) {
@@ -266,6 +369,8 @@ Page({
 
     that.bindDeleteTab()
 
+    this.getjuan()
+
     //更新上个页面数据
     var pages = getCurrentPages();
 
@@ -279,20 +384,37 @@ Page({
   // 删除优惠卷
   bindDeleteTab: function (ev) {
     console.log(this.data.selectjuan)
+
+    this.data.discount_list1.forEach((item) => {
+      item.select = false
+    })
     this.setData({
       selectjuan: false,
       juanprise: 0,
+      discount_list1: this.data.discount_list1
     })
     app.globalData.selectID = ''
     app.globalData.selectID_phone = ''
   }, 
-  onLoad: function (options) {
+  getjuan () {
+    var that = this;
+    utils.request('https://www.yuexd.com/api/my/coupons?type=1' + '&cart_amount=' + app.globalData.totalPrise, { token: app.globalData.token })
+      .then(function (res) {
+        console.log(res, '优惠卷 可用')
+        that.setData({
+          discountnum: res.data.data.length,
+          discount_list1: res.data.data
+        });
+      }, function (err) {
 
+      })
+  },
+  onLoad: function (options) {
+ 
     var that = this;
     var token = app.globalData.token
-    
     var detail =  utils.getdatefenzu(app.globalData.goodsList);
-
+    
     //初始化购物车数据
     this.setData({
       goodsList: app.globalData.goodsList,
@@ -302,16 +424,8 @@ Page({
       detail: detail
     })
 
-    // 获取货柜信息
-    utils.request('https://www.yuexd.com/api/my/coupons?type=1' + '&cart_amount=' + app.globalData.totalPrise, { token: token })
-      .then(function (res) {
-        console.log(res, '优惠卷 可用')
-        that.setData({
-          discountnum: res.data.data.length
-        })
-      }, function (err) {
 
-      })
+    this.getjuan()
 
   },
 

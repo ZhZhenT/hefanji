@@ -167,6 +167,31 @@ Page({
 
     clearTimeout(this.data.bindtimer);
   },
+  test (ev) {
+    var that = this;
+    this.data.bindstarttime = new Date().getTime();
+    this.data.bindendtime = 0;
+    this.data.bindtimer = null;
+    var orderid = ev.target.dataset.orderid //订单号 
+    var date = ev.target.dataset.date //取餐时间 
+    var goodsid = ev.target.dataset.goodsid //商品ID 
+    var ssid = ev.target.dataset.ssid //商品ID 
+    // data-order_detail_id='{{val.order_detail_id}
+    var order_detail_id = ev.target.dataset.order_detail_id
+    var token = app.globalData.token
+    var a = that.data.ordergoodslist1.find(function (item) {
+      return item.id == orderid
+    })
+    var b = a.detail_by_date.find(function (item) {
+      return item.date == date
+    })
+    var c = b.products.find(function (item) {
+      return item.slot_schema_id == ssid
+    })
+    console.log(orderid, orderid, ssid,c)
+    console.log(that.data.ordergoodslist1)
+    // that.searchStatus1(c) 
+  },
   bindOpenTap: function (ev) {
     var that = this;
     this.data.bindstarttime = new Date().getTime();

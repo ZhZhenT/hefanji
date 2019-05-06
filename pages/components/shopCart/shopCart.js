@@ -15,11 +15,11 @@ Component({
     },
     reducePrise:{
       value: 0,
-      type: String, 
+      type: Number
     },
     juanprise: {
       value: 0,
-      type: String,
+      type: Number,
     },
     goodsList:{
       value:{},

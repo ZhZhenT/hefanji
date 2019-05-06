@@ -1,159 +1,143 @@
-<!--pages/couponlist/couponlist.wxml--> 
-<view class='discount'> 
+<!--pages/couponlist/couponlist.wxml-->
+<view class='discount'>
   <!-- <view class='top_text' bindtap='binTocouponlistTap'> 
    <view class='text1' >使用优惠卷</view> 
    <view class='text2'> 
    2张可用 <view class='icon'>></view> 
    </view> 
-  </view> --> 
- 
- 
- 
-    <view class='dinner-time-wrap' > 
-    <view bindtap='binddinnerTimeCurrentTap' data-index='{{index}}' class='time-list {{index==dinnerTimeCurrent?"active":""}}' wx:for='{{dinnerTimeList}}' wx:key='{{index}}'>{{item.text}}</view> 
-  </view>  
- 
- 
- 
-<scroll-view scroll-top="{{scrollTop}}" scroll-y style="height:{{sildeHeight}}px;"> 
- 
-<swiper bindchange='bindCurrentchange'  current='{{current}}'  style="height:{{swiperheigh}}px;"> 
-  <block> 
-    <swiper-item> 
- 
-   <view  id='discount_list1' class='discount_list'> 
- 
-   <view  class='selelct-all' wx:if='{{select && !see}}'> 
-    <text style='padding-left:5px'>不使用优惠卷</text> 
-    <view bindtap='binSelectAlltab' class='select-btn {{selectAll ? "select" : "" }}'  wx:if='{{select}}'> 
-      <view class='icon'></view> 
-    </view> 
-   </view> 
-  
-   <view  wx:for='{{discount_list1}}'  wx:key='index' class='item-margin'>
-      <view  data-id = '{{item.id}}'  bindtap='binSelectTab'  class='item'> 
-       <view class='prise'> 
- 
-      <view wx:if="{{item.type === 'fixed'}}" class='prise_top_text'><text class='fh'>￥</text> 
-      <text>{{item.value}}</text></view> 
- 
-      <view 
-       wx:if="{{item.type !== 'fixed'}}"  
-       class='prise_top_text'><text 
-       style='transform: translateY(-20rpx) translateX(-0rpx);display:inline-block;' class='fh'> 
-       ￥</text><text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text> 
-       </view> 
- 
-      <view class='prise_bot_text' style=" {{item.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{item.type === 'fixed' ? '现金券' : '饭票'}}</view>
-    </view> 
-    <view class='describe'> 
-      <view>{{item.name}}</view> 
-      <view>{{item.description}}</view> 
-    </view> 
-    <view class='bot-text-wrap'> 
-      <view class='date'>截至日期：{{item.not_after}}</view> 
-      <view wx:if='{{!select}}' class='btn-text'>满{{item.min_amount}}元可用</view> 
-    </view> 
- 
-    <view  class='select-btn {{item.select ? "select" : "" }}'  wx:if='{{select && !see}}'> 
-      <view class='icon'></view> 
-    </view> 
- 
-    <!-- <view wx:if='{{see}}'> 
-      <view class='icon'>11111</view> 
-    </view> --> 
-      <view data-id = '{{item.id}}' catchtap='showMore' class='see-more {{item.show ? "show" : "" }}'>
-      查看更多
-      <text>></text>
-      </view>
-   </view> 
-    
-     <view wx:if='{{item.show}}' class='more-text'>
-      {{item.tips ? item.tips : '暂无更多详情' }}
-     </view>
-     
-   </view>
-
-   <!-- <view class='item'> 
-       <view class='prise'> 
-      <view class='prise_top_text'><text style='transform: translateY(-13rpx) translateX(-10rpx);display:inline-block;' class='fh'>￥</text><text style='transform: rotate(-90deg) translateX(0rpx);display:inline-block;'>8</text></view> 
-      <view class='prise_bot_text'>现金券</view>
-    </view> 
-    <view class='describe'> 
-      <view>新用户专享</view> 
-      <view>新用户专享</view> 
-    </view> 
-    <view class='bot-text-wrap'> 
-      <view class='date'>2018.12.05-2018.12.20</view> 
-      <view class='btn-text'>满十元可用</view> 
-    </view> 
-   </view> --> 
- 
-      <view wx:if='{{discount_list1.length === 0}}'  class='ordernobox'> 
-        <view class='icon'>无相关优惠卷</view> 
-      </view> 
-    </view> 
-    </swiper-item> 
- 
- 
- 
-  </block> 
- 
-  <block> 
-    <swiper-item> 
-  <audio></audio><view id='discount_list2' class='discount_list discount_disable_list'> 
+  </view> -->
 
 
-    <view wx:for='{{discount_list0}}' wx:key='index' class='item-margin'>
-    
-       <view  class='item'> 
- 
-    <view class='prise'> 
- 
-      <view wx:if="{{item.type === 'fixed'}}" class='prise_top_text'><text class='fh'>￥</text> 
-      <text>{{item.value}}</text></view> 
- 
-      <view
-       wx:if="{{item.type !== 'fixed'}}"  
-       class='prise_top_text'><text 
-       style='transform: translateY(-20rpx) translateX(-0rpx);display:inline-block;' class='fh'> 
-       ￥</text><text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text> 
-       </view> 
- 
-      <view class='prise_bot_text' style=" {{item.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{item.type === 'fixed' ? '现金券' : '饭票'}}</view>
-    </view> 
- 
-    <view class='describe'> 
-      <view>{{item.name}}</view> 
-      <view>{{item.description}}</view> 
-    </view> 
- 
-    <view class='bot-text-wrap'> 
-      <view class='date'>截至日期：{{item.not_after}}</view> 
-      <view wx:if='{{!select}}' class='btn-text'>满{{item.min_amount}}元可用</view> 
-    </view> 
-    <!-- <view class='delete'> 
+
+  <view class='dinner-time-wrap'>
+    <view bindtap='binddinnerTimeCurrentTap' data-index='{{index}}' class='time-list {{index==dinnerTimeCurrent?"active":""}}' wx:for='{{dinnerTimeList}}' wx:key='{{index}}'>{{item.text}}</view>
+  </view>
+
+
+
+  <scroll-view scroll-top="{{scrollTop}}" scroll-y style="height:{{sildeHeight}}px;">
+
+    <swiper bindchange='bindCurrentchange' current='{{current}}' style="height:{{swiperheigh}}px;">
+      <block>
+        <swiper-item>
+
+          <view id='discount_list1' class='discount_list'>
+
+            <view class='selelct-all' wx:if='{{select && !see}}'>
+              <text style='padding-left:5px'>不使用优惠卷</text>
+              <view bindtap='binSelectAlltab' class='select-btn {{selectAll ? "select" : "" }}' wx:if='{{select}}'>
+                <view class='icon'></view>
+              </view>
+            </view>
+
+            <view wx:for='{{discount_list1}}' wx:key='index' class='item-margin'>
+              <view data-id='{{item.id}}' bindtap='binSelectTab' class='item'>
+                <view class='prise'>
+
+                  <view wx:if="{{item.type === 'fixed'}}" class='prise_top_text'>
+                    <text class='fh'>￥</text>
+                    <text>{{item.value}}</text>
+                  </view>
+
+                  <view wx:if="{{item.type !== 'fixed'}}" class='prise_top_text'>
+                    <text style='transform: translateY(-20rpx) translateX(-0rpx);display:inline-block;' class='fh'> 
+       ￥</text>
+                    <text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text>
+                  </view>
+
+                  <view class='prise_bot_text' style=" {{item.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{item.type === 'fixed' ? '现金券' : '饭票'}}</view>
+                </view>
+                <view class='describe'>
+                  <view>{{item.name}}</view>
+                  <view>{{item.description}}</view>
+                </view>
+                <view class='bot-text-wrap'>
+                  <view class='date'>截至日期：{{item.not_after}}</view>
+                  <view wx:if='{{!select}}' class='btn-text'>满{{item.min_amount}}元可用</view>
+                </view>
+
+                <view class='select-btn {{item.select ? "select" : "" }}' wx:if='{{select && !see}}'>
+                  <view class='icon'></view>
+                </view>
+                <view data-id='{{item.id}}' catchtap='showMore' class='see-more {{item.show ? "show" : "" }}'>
+                  查看更多
+                  <text>></text>
+                </view>
+              </view>
+
+              <view wx:if='{{item.show}}' class='more-text'>
+                {{item.tips ? item.tips : '暂无更多详情' }}
+              </view>
+
+            </view>
+
+            <view wx:if='{{discount_list1.length === 0}}' class='ordernobox'>
+              <view class='icon'>无相关优惠卷</view>
+            </view>
+          </view>
+        </swiper-item>
+
+
+
+      </block>
+
+      <block>
+        <swiper-item>
+          <audio></audio>
+          <view id='discount_list2' class='discount_list discount_disable_list'>
+
+
+            <view wx:for='{{discount_list0}}' wx:key='index' class='item-margin'>
+
+              <view class='item'>
+
+                <view class='prise'>
+
+                  <view wx:if="{{item.type === 'fixed'}}" class='prise_top_text'>
+                    <text class='fh'>￥</text>
+                    <text>{{item.value}}</text>
+                  </view>
+
+                  <view wx:if="{{item.type !== 'fixed'}}" class='prise_top_text'>
+                    <text style='transform: translateY(-20rpx) translateX(-0rpx);display:inline-block;' class='fh'> 
+       ￥</text>
+                    <text style='transform: rotate(-90deg) translateX(0rpx) translateY(20rpx);display:inline-block;font-size:100rpx;'>8</text>
+                  </view>
+
+                  <view class='prise_bot_text' style=" {{item.type !== 'fixed' ? 'transform: translateY(-15rpx)' : ''}} ">{{item.type === 'fixed' ? '现金券' : '饭票'}}</view>
+                </view>
+
+                <view class='describe'>
+                  <view>{{item.name}}</view>
+                  <view>{{item.description}}</view>
+                </view>
+
+                <view class='bot-text-wrap'>
+                  <view class='date'>截至日期：{{item.not_after}}</view>
+                  <view wx:if='{{!select}}' class='btn-text'>满{{item.min_amount}}元可用</view>
+                </view>
+                <!-- <view class='delete'> 
       <view class='delete_btn'>删除</view> 
-    </view> --> 
-   </view> 
+    </view> -->
+              </view>
 
-    </view>
+            </view>
 
-   <view wx:if='{{discount_list0.length === 0}}'  class='ordernobox'> 
-  <view class='icon'>无相关优惠卷</view> 
-</view> 
-  </view> 
-    </swiper-item> 
-  </block> 
- 
-</swiper> 
-</scroll-view> 
- 
-<view bindtap='bindToBackTab'  wx:if="{{ current == 0}}" class='yesbtn'> 
-  确定
-</view> 
- 
- 
- 
- 
-</view> 
+            <view wx:if='{{discount_list0.length === 0}}' class='ordernobox'>
+              <view class='icon'>无相关优惠卷</view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+
+    </swiper>
+  </scroll-view>
+
+  <view bindtap='bindToBackTab' wx:if="{{ current == 0}}" class='yesbtn'>
+    确定
+  </view>
+
+
+
+
+</view>

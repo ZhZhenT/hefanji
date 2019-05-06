@@ -99,6 +99,7 @@ Page({
     this.data.discount_list1.forEach((item) => {
       if (item.id == id) {
         item.select = !item.select
+        var itemselect = item.select
         var juan = item
         var juanprise = 0
 
@@ -112,13 +113,15 @@ Page({
         var pages = getCurrentPages();
         pages.forEach(function (item, index) {
           if (index < pages.length) {
+            console.log(juan,'juan')
             item.setData({
-              selectjuan: juan || '',
-              juanprise: juanprise
+              selectjuan: itemselect ? juan || '' : '',
+              juanprise: itemselect ? juanprise : 0
             })
           }
         })
-
+        app.globalData.selectID = item.id
+        app.globalData.selectID_phone = item.is_mobile_required
       } else {
         item.select = false
       }

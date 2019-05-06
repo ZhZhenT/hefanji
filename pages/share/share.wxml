@@ -10,7 +10,7 @@
 推荐给好友，您和好友都将得到优惠券福利！
  </view>
   <view class='text2'>
-（限新用户，优惠券在好友绑定手机号自动发放） 
+（限新用户，优惠券在好友完成首单后自动发放） 
  </view>
 
 <button open-type='share' class='btn-saoyisao'>分享</button>
